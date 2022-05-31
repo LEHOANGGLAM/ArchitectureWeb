@@ -1,0 +1,109 @@
+﻿@model BlueDataWeb.Models.Entites.Contact
+@using BlueDataWeb.Models.Entites;
+@using BlueDataWeb.Models.Enum;
+
+@{
+    ViewBag.Title = "Edit";
+    List<ItemStatus> lstDichVuID = ViewBag.DichVu as List<ItemStatus>;
+    List<ItemStatus> lstMoTaDichVuID = ViewBag.MoTaDichVu as List<ItemStatus>;
+}
+@using (Html.BeginForm("EditDichVu", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Cập nhật thông tin liên hệ</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/Contact/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <div>
+                <fieldset class="fromlist">
+                    <ul>
+                        @Html.HiddenFor(model => model.AppID)
+                        @Html.HiddenFor(model => model.ContactId)
+                        @Html.HiddenFor(model => model.TypeContact)
+                        @Html.HiddenFor(model => model.CreateDate)
+                        <li>
+                            @Html.LabelFor(model => model.Name, "Tên")
+                            @Html.TextBoxFor(model => model.Name, new { size = "70", @readonly = "readonly" , @class= "TextRequire" })
+                            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Phone, "Điện thoại")
+                            @Html.TextBoxFor(model => model.Phone, new { size = "70", @readonly = "readonly", @class = "TextRequire" })
+                            @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Email, "Email")
+                            @Html.TextBoxFor(model => model.Email, new { size = "70", @readonly = "readonly", @class = "TextRequire" })
+                            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.ChucVu, "Chức vụ")
+                            @Html.TextBoxFor(model => model.ChucVu, new { size = "70", @readonly = "readonly", @class = "TextRequire" })
+                            @Html.ValidationMessageFor(model => model.ChucVu, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.CongTy, "Công ty")
+                            @Html.TextBoxFor(model => model.CongTy, new { size = "70", @readonly = "readonly", @class = "TextRequire" })
+                            @Html.ValidationMessageFor(model => model.CongTy, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Address, "Địa chỉ")
+                            @Html.TextBoxFor(model => model.Address, new { size = "70", @readonly = "readonly", @class = "TextRequire" })
+                            @Html.ValidationMessageFor(model => model.Address, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.LinhVuc, "Lĩnh vực")
+                            @Html.TextBoxFor(model => model.LinhVuc, new { size = "70", @readonly = "readonly", @class = "TextRequire" })
+                            @Html.ValidationMessageFor(model => model.LinhVuc, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.DichVu, "Dịch vụ")
+                            @Html.DropDownList("DichVu")
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.contents, "Nội dung")
+                            @Html.TextAreaFor(model => model.contents, new { cols = "55", rows = "10" })
+                            @Html.ValidationMessageFor(model => model.contents, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.Status, "Trạng thái")
+                            @Html.DropDownList("Status")
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</div>

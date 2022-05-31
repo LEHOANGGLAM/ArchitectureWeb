@@ -1,0 +1,53 @@
+﻿@model  BlueDataWeb.Models.QuangCao
+
+@{
+    var height_quangcao_Top = 0;
+    var height_quangcao_Top_css = "";
+    if (Model != null && Model.IsShow == true)
+    {
+        height_quangcao_Top = Model.Height.Value;
+        height_quangcao_Top_css = height_quangcao_Top + 20 + "px";
+    }
+
+}
+
+@if (height_quangcao_Top > 0)
+{
+
+    <div class="top_quangcao">
+        <div class="container" style="position: relative;">
+            <a href="@Model.Link">
+                <img src="~/Images/QuangCao/@Model.Image" />
+            </a>
+
+            <img alt="close" id="close_topBanner" class="close_topBanner_img" src="~/Content/images/bnt_close.png" />
+        </div>
+    </div>
+}
+
+@if (height_quangcao_Top > 0)
+{
+    <text> <div class="navbar navbar-inverse navbar-fixed-top" style="top:@height_quangcao_Top_css !important">
+    </text>
+
+}
+else
+{
+    <text> <div class="navbar navbar-inverse navbar-fixed-top">
+    </text>
+
+}
+
+<script>
+    $(function () {
+        //Jquery quảng cáo
+        $("#close_topBanner").click(function () {
+            $(".top_quangcao").remove();
+
+            $(".navbar-fixed-top").removeAttr("style");
+
+            $(".navbar-fixed-top").css("top", "0px!important");
+        });
+
+    });
+</script>

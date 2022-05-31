@@ -1,0 +1,152 @@
+﻿@model BlueDataWeb.Models.CustomsModel.NewsModels
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="~/nicEditor/nicEdit.js"></script>
+<script>
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area1');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area2');
+
+    });
+</script>
+@using (Html.BeginForm("Edit", "GiaiPhap", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Cập nhật giải pháp</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/GiaiPhap/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <div>
+                <fieldset class="fromlist">
+
+                    @Html.HiddenFor(model => model.NewsID)
+                    @Html.HiddenFor(model => model.AppID)
+                    @Html.HiddenFor(model => model.CreatedDate)
+                    @Html.HiddenFor(model => model.IsDelete)
+
+
+                    <ul>
+                        <li>
+                            @Html.LabelFor(model => model.Title, "Thể loại")
+                            @Html.DropDownList("NewCategoriesID")
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Title, "Tên  ")
+                            @Html.TextBoxFor(model => model.Title, new { size = "66", @id = "tilte", @class = "TextRequire", @maxlength = "200" })
+                            @Html.ValidationMessageFor(model => model.Title, null, new { @class = "validate" })
+                        </li>
+
+
+
+                        <li>
+                            @Html.LabelFor(model => model.MetaTitle, "Meta Title")
+                            @Html.TextBoxFor(model => model.MetaTitle, new { size = "80", @class = "TextRequire", @maxlength = "65" })
+                            @Html.ValidationMessageFor(model => model.MetaTitle, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.MetaKeywords, "Meta Keywords")
+                            @Html.TextBoxFor(model => model.MetaKeywords, new { size = "80", @class = "TextRequire", maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.MetaKeywords, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.MetaDescription, "Meta Description")
+                            @Html.TextAreaFor(model => model.MetaDescription, new { rows = 3, clos = 123, @class = "TextRequire", @maxlength = "160", style = "Width:595px;" })
+                            @Html.ValidationMessageFor(model => model.MetaDescription, null, new { @class = "validate" })
+                        </li>
+
+
+
+                        <li>
+                            @Html.LabelFor(model => model.IsNew, "Mới")
+                            @Html.CheckBox("IsNew")
+                        </li>
+
+
+                        <li>
+                            @Html.LabelFor(model => model.ShortDescription, "Mô tả ngắn")
+                            @Html.TextAreaFor(model => model.ShortDescription, new { cols = "75", rows = "3", @id = "ShortDes", @class = "TextRequire", @maxlength = "400" })
+                            @Html.ValidationMessageFor(model => model.ShortDescription, null, new { @class = "validate" })
+                        </li>
+                        <p id="ShortDesError" style="color: red"></p>
+
+                        <li>
+                            @Html.LabelFor(model => model.OrderBY, "Vị trí")
+                            @Html.TextBoxFor(model => model.OrderBY, new { size = "66", @id = "tilte", @maxlength = "200", @type = "number", @min = "0", @class = "numericOnly" })
+
+                        </li>
+
+
+                        @*<li>
+                            <label class="red">Hình ảnh  (Tỉ lệ  5 x 3) </label>
+                            <input type="file" name="img" id="img" />
+                            @Html.HiddenFor(m => m.ImagePath)
+
+                            <img src="/Images/News/@(Model.ImagePath)" width="85px" height="50px" />
+                        </li>*@
+
+                        <li>
+                            <label class="red" style="float: left;">Hình ảnh  (Tỉ lệ  5 x 3) </label>
+                            <input name="img" id="img" style="float: left; margin: 0px 4px;" type="file">
+
+                            @Html.HiddenFor(m => m.ImagePath)
+
+                            <img src="/Images/News/@(Model.ImagePath)" width="85" />
+                            <br />
+
+                        </li>
+
+
+                        <li>
+                            <div>
+                                @Html.LabelFor(model => model.Description, "Nội dung")
+                                <div style="margin-left: 203px">
+                                    @Html.TextAreaFor(model => model.Description, new { @id = "area", rows = 20, clos = 55, style = "Width:100%;", @class = "Descriptionvali" })
+                                    @Html.ValidationMessageFor(model => model.Description, null, new { @class = "validate" })
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</div>

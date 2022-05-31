@@ -1,0 +1,65 @@
+﻿@model BlueDataWeb.Models.AboutCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AboutCategory</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.AboutID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AboutID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TinhTrang)
+    </div>
+    <div class="display-field">
+        @if (int.Parse(Model.TinhTrang.ToString()) == 1)
+        {
+            <text>Các Công Trình Đã Thực Hiện</text>
+        }
+        else
+        {
+            <text> Các Công Trình Đang Triển Khai</text>
+
+        }
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Parentcate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Parentcate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Contents)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Contents)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</p>

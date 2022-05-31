@@ -1,0 +1,79 @@
+﻿/*nav menu*/
+@charset "utf-8";
+/* CSS Document */
+.ic-alldeal, .ic-fashion, .ic-used, .ic-electronic, .ic-health, .ic-mum, .ic-res, .ic-tour, .ic-gift{ background:url(/Content/images/isset/icon.png) no-repeat;}
+ul.menusibar { background:#fff; box-shadow:0px 0px 3px #818080;-webkit-box-shadow:0px 0px 3px #818080;-moz-box-shadow:0px 0px 3px #818080; padding-left:10px; position:relative}
+ul.menusibar li{ border-top:1px solid #e4e4e4; padding:8px 0px 8px 25px; line-height:20px; font-weight:normal;}
+ul.menusibar li:first-child{ border:none}
+
+
+.ic-alldeal a, .ic-fashion a, .ic-used a, .ic-electronic a, .ic-health a, .ic-mum a, .ic-res a, .ic-tour a, .ic-gift a{ color:#000 }
+.ic-alldeal{ background-position:-18px 0px}
+.ic-alldeal a, .menusibar li.ic-alldeal:hover a{ color:#cc0000; font-weight:bold}
+.ic-fashion{ background-position:-17px -59px}
+.ic-used { background-position:-17px -129px}
+.ic-electronic{ background-position:-19px -266px}
+.ic-health{ background-position:-17px -198px}
+.ic-mum{ background-position:-17px -330px}
+.ic-gift{background-position:-18px -401px}
+.ic-res{background-position:-18px -469px}
+.ic-tour{background-position:-18px -532px}
+.menusibar li.ic-alldeal:hover { background:url(/Content/images/isset/icon.png) no-repeat -18px 0px }
+/*sub menu*/
+ li.ic-fashion:hover .menu-children, li.ic-used:hover .menu-children, li.ic-electronic:hover .menu-children, li.ic-health:hover .menu-children, li.ic-mum:hover .menu-children, li.ic-gift:hover .menu-children, li.ic-res:hover .menu-children, li.ic-tour:hover .menu-children,  li.ic-fashion:hover .menu-children1, li.ic-used:hover .menu-children1, li.ic-electronic:hover .menu-children1, li.ic-health:hover .menu-children1, li.ic-mum:hover .menu-children1, li.ic-gift:hover .menu-children1, li.ic-res:hover .menu-children1, li.ic-tour:hover .menu-children1{ display:block}
+.menu-children, .menu-children1{width:520px;}
+.menu-children{top:0px}
+.menu-children1{top: 0px; }
+.menu-children, .menu-children1{
+list-style: none;
+margin-left:170px; float:left;
+display: none;
+padding:10px;
+height:349px;
+}
+.menu-children, .menu-children1{-khtml-border-radius: 0px 0px 5px 5px; /* Konqueror */
+-moz-border-radius: 0px 0px 5px 5px; /* Firefox */
+-webkit-border-radius: 0px 0px 5px 5px; /* Safari &amp; Google Chrome */
+border-radius:0px 0px 5px 5px; /* Opera */
+background:#fff;z-index:960;
+box-shadow:2px 0px 5px #818080;
+ position: absolute;
+}
+.menu-children img.categories_images, .menu-children1 img.categories_images {
+bottom:0px;
+right: 0px;
+position: absolute;
+z-index: -1;
+max-width:100%
+}
+.subnav-level2{width:100%; float:left; display:block; margin:0px; margin-bottom:5px;}
+ul.subnav{ width:200px; float:left; margin-right:20px;}
+.menu-children ul.subnav li, .menu-children1 ul.subnav li { border:none; line-height:18px; font-weight:normal }
+.menu-children ul.subnav li a, .menu-children1 ul.subnav li a{ color:#cc0000;}
+.menu-children ul.subnav li a:hover, .menu-children1 ul.subnav li a:hover{ text-decoration:underline}
+.menu-children ul.subnav li:hover, .menu-children1 ul.subnav li:hover{ background:none;}
+.menu-children ul.subnav li:hover .subnav-level2, .menu-children1 ul.subnav li:hover .subnav-level2{ display:block; }
+.menu-children ul.subnav li .subnav-level2 li a, .menu-children1 ul.subnav li .subnav-level2 li a{font-weight:normal; color:#000}
+
+.menu-children ul.subnav li:hover .subnav-level2 li a, .menu-children1 ul.subnav li:hover .subnav-level2 li a{ color:#000}
+.menu-children ul.subnav li:first-child, .menu-children1 ul.subnav li:first-child{ border:none}
+
+.mt{ background:url(/Content/images/isset/icon.png) no-repeat -20px -1180px; width:20px; height:20px; float:right; position:relative}
+
+.menusibar li:hover a{ color:#cc0000; font-weight:bold}
+.titlenamepro{ font-size:18px; color:white; height:38px; margin:20px 0px 0px 0px; width:220px; background:url(/Content/images/isset/ic-arowd.png) no-repeat right 8px; float:left}
+#header .promotetop .container .alllistall .titlenamepro:hover .alllist{ display:block}
+#header .promotetop .container .alllistall .titlenamepro .alllist {width:220px; border-top:none; 
+list-style: none;
+position:absolute; 
+top: 58px; float:left;
+display: none;
+z-index:10000; font-size:13px;}
+.fontbol{ font-weight:bold}
+.arow2{ background:url(/Content/images/isset/allicon.png) no-repeat -301px -785px; width:20px; height:20px; float:left; position:relative}
+ul.ulcontact{ width:100%;}
+ul.ulcontact li { display:block; padding:5px 0px 20px 0px; clear:both; position:relative;float:left}
+ul.ulcontact li span{ font-weight:bold; text-transform:uppercase}
+ul.ulcontact li ul.subct{ float:left; top:0px; width:90%; margin-left:9%; margin-top:5px;}
+ul.ulcontact li ul.subct li{ padding:5px 0px}
+ul.ulcontact li ul.subct li a:hover{ text-decoration:underline}

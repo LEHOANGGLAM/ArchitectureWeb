@@ -1,0 +1,38 @@
+﻿@model List<BlueDataWeb.Models.Entites.Image>
+
+@{
+    var Setting = (List<BlueDataWeb.Models.Entites.SettingDB>)ViewBag.lstSetting;
+
+    var Hotline = Setting.Where(x => x.Ma == "Hotline").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "Hotline").FirstOrDefault().Value : "";
+
+
+}
+
+
+<div class="main-slider">
+
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+
+        <div class="item-slider">
+            <a href="@Model[i].ImagePath">
+                <img src="~/Images/Sliders/@Model[i].ImgName" />
+            </a>
+        </div>
+    }
+</div>
+
+<div class="contact_below">
+    <div class="title">
+        <strong>bạn đang muốn thi công một dự án</strong>
+        <p>Hãy liên hệ ngay với chúng tôi để được tư vấn miễn phí</p>
+    </div>
+    <div class="hotline">
+        <div class="hotline_box">
+            <p class="m-0">Hotline:</p>
+            <strong>@Hotline</strong>
+        </div>
+    </div>
+</div>
+ 

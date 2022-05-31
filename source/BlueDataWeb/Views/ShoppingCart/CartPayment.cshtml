@@ -1,0 +1,60 @@
+﻿@model ExpressBD.ViewModels.ShoppingCartViewModel
+@using ExpressBD.Models;
+
+ <div class="ic-complete">Hoàn Tất</div>
+                                <p>
+                                    <span class="mp">Giỏ Hàng</span>
+                                    <span>(@Model.CartItems.Sum(m=>m.Quantity))</span>
+ </p>
+<table class="tableCart">
+    <tbody>
+        @foreach (var item in Model.CartItems)
+        {
+            <tr id="row-@item.ItemId">
+                
+                    @if (Model.Colors.Where(m=>m.ProductId==item.ProductId).Count() > 0 && item.ColorId !=null)
+                    {
+                        Color color = Model.Colors.Where(m => m.Id == item.ColorId).FirstOrDefault();
+                        <td>
+                            <img src="~/Images/Colors/Img80.80/@color.ImagePath" width="50px" data-src ="/Images/Colors/@color.ImagePath" />
+                        </td>
+                        <td>
+                            <a href="@Url.RouteUrl("product", new { titlecate = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Product.Category.CategoryName), title = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Product.ProductName), id = item.ProductId })">@item.Product.ProductName - @(color.ProductColor == null ? "" : color.ProductColor.Name)</a>
+                        </td>
+                    }
+                    else
+                    {
+                         <td>
+                            <img src="~/Images/Products/Img80.80/@item.Product.ImagePath" width="50px" data-src ="/Images/Products/@item.Product.ImagePath" />
+                        </td>
+                        <td>
+                           <a href="@Url.RouteUrl("product", new { titlecate = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Product.Category.CategoryName), title = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Product.ProductName), id = item.ProductId })">@item.Product.ProductName</a>
+                        </td>
+                    }
+                <script>
+                    $().ready(function () {
+                        $('#row-' + @item.ItemId + ' img').each(function () {
+                                        var urlsrc = $(this).attr("data-src");
+                                        $(this).attr('src', $(this).attr('src'))
+                                                  .error(function () { $(this).attr('src', urlsrc); });
+
+                                    });
+
+                                });
+                            </script>
+                <td style="width: 30px" align="center">@item.Quantity</td>
+                <td width="70px">@string.Format("{0:0,0 đ}", item.Product.UnitPriceNew)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="login-1">
+    <ol>
+        @{Html.RenderAction("ShipPrice", "Payment");}
+        <li>
+            <div class="clear10"></div>
+            <label>Ghi chú</label>
+            <textarea rows="4" class="textare" id="comment" name="comment"></textarea>
+        </li>
+    </ol>
+</div>

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Image>
+<div class="col-sm-12 col-xs-12 paddingleft0 paddingright0">
+    <div><h3 class=" title title-side_right title-side  hongha">
+        <a href="~/hinh-anh">Hình ảnh</a></h3></div>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4 col-xs-6">
+            <a href="~/hinh-anh" title="@item.ImgName" class="thumbnail img-hover">
+                <img src="/Images/AnhHoatDong/@item.ImgName" class=" img-responsive">
+
+            </a>
+        </div>
+    }
+</div>
+
+<div class="clearfix"></div>

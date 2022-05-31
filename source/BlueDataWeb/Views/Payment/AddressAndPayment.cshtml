@@ -1,0 +1,175 @@
+﻿@model BlueDataWeb.Models.User
+@{
+    ViewBag.Title = "AddressAndPayment";
+    Layout = "~/Views/Shared/_LayoutShoppingcart.cshtml";
+}
+
+<script type="text/javascript">
+    function create(template, vars, opts) {
+        return $container.notify("create", template, vars, opts);
+    }
+
+    $(function () {
+
+        $container = $("#container").notify();
+
+        // bindings for the examples
+        $("#default").click(function () {
+            create("themeroller", { title: 'Warning!', text: 'The <code>custom</code> option is set to false for this notification, which prevents the widget from imposing it\'s own coloring.  With this option off, you\'re free to style however you want without changing the original widget\'s CSS.' }, {
+                custom: true,
+                expires: false
+            });
+        });
+    });
+</script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="bg-cart">
+        <div class="bg-cart-white minheight">
+            <div class="pad15">
+                <div class="bgw mart inclocktable">
+                    <div class="formCart borr">
+                        <div class="margin">
+                            <div class="login-1">
+                                <div class="icon-cart">Giỏ Hàng</div>
+                                <h1 class="title-tt">Thông Tin Thanh Toán</h1>
+                                <fieldset>
+                                    <ol>
+                                        <li>
+                                             @Html.HiddenFor(m => m.Email)
+                                             @Html.HiddenFor(m => m.Id)
+                                             @Html.HiddenFor(m => m.Birthday)
+                                             @Html.HiddenFor(m => m.Gender)
+                                             @Html.HiddenFor(m => m.Password)
+
+
+                                            <label>Họ Tên<span class="star">&nbsp;*</span></label>
+                                           
+                                            @Html.TextBoxFor(m => m.Name)
+                                        </li>
+                                        <li>
+                                            <label>Điện Thoại<span class="star">&nbsp;*</span></label>
+                                            @Html.TextBoxFor(m => m.Phone)
+                                             <p class="cssphonepayment">@ViewBag.errorphone</p>
+
+                                        </li>
+                                        <li>
+                    	                    <label>Số Nhà - Ngõ - Ngách :</label>
+                                            @Html.TextBoxFor(m => m.Home_Number)
+                                        </li>
+                                        <li>
+                    	                    <label>Đường :</label>
+                                            @Html.TextBoxFor(m => m.Street)
+                                        </li>
+                                        <li>
+                                            @Html.DropDownList("City_Province", ViewBag.Provices as SelectList, "Tỉnh/TP", new { @class = "select ct" })
+                                            @Html.DropDownList("District", ViewBag.Districts as SelectList, "--Quận/Huyện--", new { @class = "select ct" })
+                                        </li>
+                                        <li>
+                                            @Html.DropDownList("Ward", ViewBag.Wards as SelectList, "--Phường/Xã--", new { @class = "select px" })
+                                        </li>
+                                    </ol>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end formCart-->
+                    <div class="formCart">
+                        <div class="margin">
+                            <div class="login-1">
+                                <div class="ptpament">Thanh Toán</div>
+                                <h1 class="title-tt">Thông Tin Thanh Toán</h1>
+                                <fieldset>
+                                    <ol>
+                                        <li>
+                                            <span>
+                                                <input name="PaymentTransactionId" value="E_Cash" type="radio" /></span>
+                                            <span><b>Thanh Toán Tiền Mặt Khi Nhận Hàng</b></span>
+                                        </li>
+                                        <li>
+                                            <label class="note">Áp Dụng Cho Các Quận Trung Tâm Thành Phố</label>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <input name="PaymentTransactionId" value="E_Transfer" type="radio" /></span>
+                                            <span><b>Thanh Toán Chuyển Khoản</b></span>
+                                        </li>
+                                        <li>
+                                            <label class="note">Dành Cho Khách Ở Tỉnh (có phí vận chuyển)</label>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <input name="PaymentTransactionId" value="E_Ship" type="radio" /></span>
+                                            <span><b>Nhận Hàng Tại BlueDataWeb.vn</b></span>
+                                        </li>
+                                        <li>
+                                            <label class="note">76 Bàu Cát 3, P.14, Q.Tân Bình</label>
+                                        </li>
+                                    </ol>
+
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end formCart-->
+                    <div class="formCart borl bg-complete">
+                        <div class="margin">
+                            <div class="login-1">                               
+                                @{Html.RenderAction("CartPayment", "ShoppingCart");}
+
+                                <div class="clear10"></div>
+                                <div class="floatr">
+                                    <input class="btn" type="submit" name="" value="Đặt Hàng">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--end formCart-->
+                </div>
+                <!--end bgw-->
+                <div class="clear20"></div>
+            </div>
+            <!--end pad15-->
+        </div>
+        <!--end bg-cart ưhite-->
+    </div>
+    <!--end bg-cart-->
+    <div class="clear10"></div>
+}
+
+@Html.Partial("_Notify");
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('form').submit(function () {
+            if ($('#Home_Number').val().trim()== '' || $('#Street').val().trim() == '' || $('#Name').val().trim() == ''
+                || $('#Phone').val().trim() == '' || $('#City_Province').val() == '' || $('#District').val() == '' || $('#Ward').val() == ''
+                || $('#Home_Number').val() == null || $('#Street').val() == null || $('#Name').val() == null
+                || $('#Phone').val() == null || $('#City_Province').val() == null || $('#District').val() == null || $('#Ward').val() == null) {
+                create("themeroller", { title: 'Error!', text: 'Vui lòng điền đầy đủ thông tin thanh toán' }, {
+                    custom: true,
+                    expires: false
+                });
+                return false;
+            }
+
+            var id = $('input[name="PaymentTransactionId"]:checked ').val();
+            if (id == null) {
+                create("themeroller", { title: 'Error!', text: 'Vui lòng chọn hình thức thanh toán' }, {
+                    custom: true,
+                    expires: false
+                });
+                return false;
+            }
+            else
+                return true;
+
+
+        });
+    });
+</script>
+@Html.Partial("_ScriptRegTop")

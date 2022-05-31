@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Product>
+@{
+    ViewBag.Description = "Nơi mua hàng giảm giá cùng các đợt khuyến mãi đặc biết giá cực rẻ cực shock, deal giảm giá hot mỗi ngày với những sản phẩm mới lạ, dealtop 1 kênh shopping giá rẻ  dành cho bạn";
+    ViewBag.Keywords = "BlueDataWeb,mua hàng theo nhóm,mua chung, nhóm mua, cùng mua, deal, deals, giá tốt, giá rẻ, giảm giá, khuyến mại, ưu đãi, Group Buy, daily deals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "dealtop 1, deal, mua hang giam gia, khuyen mai, deal giam gia, deal hot";
+}
+@using BlueDataWeb.Models.Entites;
+@{
+    string s=  ViewBag.s ;
+    int counter = Model.Count();    
+}
+@section featured {
+    
+    <br/> <h2 style="text-align:center; color: green"> Tìm thấy @counter deal chứa từ khóa "@s"</h2>
+    <br/>
+    <br/>
+    <section class="clearfix">
+    <div class="container">
+        <div class="row">
+            @if(Model != null)
+            {
+            foreach (var product in Model)
+            {
+            <div class="span4 product-item">
+                <div class="meta">
+                     @{Html.RenderAction("getCountOder", "ShoppingCart", new { id = product.ProductID, viewname = "getCountOderHome" });}
+                    <div class="time">
+                        <div class="cdown" style="display:none">@((product.EndDate.Value - DateTime.Now).TotalSeconds)</div>
+                   <div class="multi_clockss"></div>
+                    </div> 
+                </div>
+                @if(product.IsVoucher ==true)
+                {
+                 <div class="type type-voucher"></div>
+                }
+                else
+                {
+                    <div class="type type-product"></div>
+                }
+            	<div class="thuml">
+                	<div class="img-sp4">
+                    	<a  href="@Url.RouteUrl("product", new{titlecate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(product.Category.CategoryName) , title=  BlueDataWeb.Utility.HelperSEO.ToSeoUrl(product.ProductName) ,id = product.ProductID})"><img src="~/Images/Products/@product.ImagePath"/></a>
+                    </div>
+                </div>
+                <div class="meta-icon-deal-new"></div>
+                <div class="title">
+                    <h2><a title="@product.ProductName"  href="@Url.RouteUrl("product", new{titlecate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(product.Category.CategoryName) , title=  BlueDataWeb.Utility.HelperSEO.ToSeoUrl(product.ProductName) ,id = product.ProductID})">@product.ProductName</a></h2>
+                    <span class="sell-price">@string.Format("{0:0,0}", product.UnitPriceNew) <sup>đ</sup></span>
+                    <span class="original-price">@string.Format("{0:0,0}", product.UnitPrice)<sup>đ</sup></span>
+                    <a class="view"  href="@Url.RouteUrl("product", new{titlecate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(product.Category.CategoryName) , title=  BlueDataWeb.Utility.HelperSEO.ToSeoUrl(product.ProductName) ,id = product.ProductID})"></a>
+                </div>
+           
+            </div>
+            }
+            }
+            
+            
+        </div><!--end row-->
+        </div>
+        </section>
+    }

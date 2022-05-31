@@ -1,0 +1,87 @@
+﻿@model BlueDataWeb.Models.Membership
+@using BlueDataWeb.Models.Entites;
+@{
+    BlueDataWebEntities db= new BlueDataWebEntities();
+    List<UsersInRole> lstrole = ViewBag.lstuserrole as List<UsersInRole>;
+    ViewBag.Title = "Details";
+    int u=ViewBag.userid;
+    
+}
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" /></span>
+            <span class="title-name">Thông tin thành viên</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/Home/Index">
+                    <span class="icon-32-cancel"></span>
+                    Quay lại
+                </a>
+            </li>
+           
+        </ul>
+    </div>
+    <!--end borall-->
+
+ <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+
+            <div>
+
+                <fieldset class="fromlist">
+    <legend>Thông tin thành viên</legend>
+
+     <ul>
+                     <li>
+                        <label></label>
+
+                        ID: <b>@Html.DisplayFor(model => model.UserId)</b>  <br />
+
+                    </li>
+
+                         <li>
+                        <label></label>
+
+                        Tên đăng nhập: <b>@Html.DisplayFor(model => model.Username)</b> <br />
+
+                    </li>
+    <li>
+                        <label></label>
+
+                        Email: <b>@Html.DisplayFor(model => model.Email)</b> <br />
+
+                    </li>
+                         <li>
+                        <label></label>
+
+                        Quyền: <b>@if (lstrole != null)
+                        {
+                            var lstroles = lstrole.Where(m => m.UserId == u).ToList();
+                            if (lstroles.Count() > 0)
+                            {
+                                foreach (var role in lstroles)
+                                {
+                            <text>
+                            @role.Role.RoleName .
+                            </text>
+                                }
+                            }
+                        }</b>  <br />
+
+                    </li>
+
+    </ul>
+
+   
+</fieldset>
+                </div>
+            </div>
+        </div>
+

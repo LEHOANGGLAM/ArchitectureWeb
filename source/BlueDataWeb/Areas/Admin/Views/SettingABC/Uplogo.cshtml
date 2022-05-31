@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Uplogo";
+}
+
+<h2>Uplogo</h2>
+
+@using (Html.BeginForm("UplogoPost", "SettingDB", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Update logo website</span>
+        </div>
+        <ul class="floatr toolbar-list">
+
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/Admin/SettingDB/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mar10 borall">
+        <div class="div100">
+            <fieldset class="fromlist">
+                <legend>Edit</legend>
+                <ul>
+                    <li>
+                        <div class="control-group">
+
+                            <label>Cập nhật logo</label>
+                            <input type="file" name="img" class="form-control col-md-8" style="width:200px" />
+                            
+                            @*<img src="/Images/Logo/logo.png" />*@
+                        </div>
+
+                        <br />
+                        <div class="control-group">
+
+                            <label>Loại logo</label>
+                            
+                            <select name="loai">
+                                <option value="logo">Logo</option>
+                                <option value="banner">Banner</option>
+                                <option value="banner2">Banner GPLX công ty</option>
+                            </select>
+                        </div>
+
+                        <br />
+                        <div>
+                            <img src="/Images/Logo/logo.png" style="max-width:200px" /><br />
+                            <img src="/Images/Logo/banner.jpg" style="max-width:200px" /> <br />
+                            <img src="/Images/Logo/banner2.jpg"  style="max-width:200px"   />
+
+
+                        </div>
+
+                    </li>
+
+                </ul>
+            </fieldset>
+        </div>
+    </div>
+}

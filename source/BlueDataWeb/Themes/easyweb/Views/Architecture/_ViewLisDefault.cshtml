@@ -1,0 +1,22 @@
+﻿@model List<BlueDataWeb.Models.Entites.ArchitectureNew>
+
+
+@foreach (var item in Model)
+{
+    string link_detail = Url.RouteUrl("KienTrucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.ArchitectureCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.ID });
+
+    <div class="col s6 m6 l4 xl4 nomargin">
+        <div class="col s12">
+            <a class="d-block" href="@link_detail">
+                <img class="d-block w-100" src="~/Images/News/@item.ImagePath" alt="@item.Title">
+
+            </a>
+        </div>
+        <div class="col s12">
+            <a class="d-block name_newstpl" href="@link_detail">@item.Title</a>
+            <p class="d-block desc_newstpl">@item.ShortDescription</p>
+        </div>
+    </div>
+
+}
+

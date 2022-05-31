@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ExpressBD.Models.Image>
+<!-- Partner -->
+
+<div class="wrap-customer">
+    <div><h3 class="title-side hongha">Đối tác, khách hàng</h3></div>
+
+ 
+    @foreach (var item in Model)
+    {
+        <div class="new-up">
+            <div class="img-new">
+
+                <a href="@item.ImagePath">
+                    <img class="imgmember" src="/Images/Partners/@item.ImgName" />
+                </a>
+            </div>
+            <div class="new-des">
+
+                <a href="@item.ImagePath">
+                    <h2 class="content_new">
+
+                        Đối tác
+                    </h2>
+                </a>
+            </div> 
+            <div class="clearfix"></div> 
+        </div>
+
+    }
+</div>

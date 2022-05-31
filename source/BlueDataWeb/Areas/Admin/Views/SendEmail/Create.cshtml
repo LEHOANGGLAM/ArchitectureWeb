@@ -1,0 +1,81 @@
+﻿@model BlueDataWeb.Models.SendEmail
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SendEmail</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Emailfrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Emailfrom)
+            @Html.ValidationMessageFor(model => model.Emailfrom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subject)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Body)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Passmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Passmail)
+            @Html.ValidationMessageFor(model => model.Passmail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Servermail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Servermail)
+            @Html.ValidationMessageFor(model => model.Servermail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Port)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Port)
+            @Html.ValidationMessageFor(model => model.Port)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</div>

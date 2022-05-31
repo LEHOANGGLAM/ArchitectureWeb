@@ -1,0 +1,808 @@
+﻿@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #fff;
+    line-height: 18px;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+    a img {
+        border: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+ul li {
+    list-style: none;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+.clearfix {
+    display: block;
+    zoom: 1;
+}
+
+body#minwidth {
+    min-width: 1200px;
+}
+
+#header {
+    background: #efefef none repeat scroll 0 0;
+    border-bottom: 2px solid #cccccc;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.1);
+    height: 44px;
+    padding: 4px 0;
+    width: 100%;
+}
+
+.floatl, ul.menumain li {
+    float: left;
+}
+
+.floatr {
+    float: right;
+}
+
+.floatl, .floatr, ul.menumain li {
+    position: relative;
+}
+
+ul.menumain {
+    margin-left: 20px;
+}
+
+    ul.menumain li {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #fff;
+        height: 26px;
+        line-height: 26px;
+    }
+
+        ul.menumain li:last-child {
+            border-right: none;
+        }
+
+        ul.menumain li:first-child {
+            border-left: none;
+        }
+
+        ul.menumain li a {
+            color: #333333;
+            cursor: default;
+            font-size: 1em;
+            font-weight: bold;
+            margin: 0 1px;
+            padding: 5px 1em;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+
+        ul.menumain li:hover {
+            background: #fff;
+            cursor: default;
+        }
+
+            ul.menumain li:hover .subnav, ul.menumain .subnav li:hover .sublevel2 {
+                display: block;
+            }
+
+.subnav {
+    top: 26px;
+    position: absolute;
+}
+
+.subnav, .sublevel2 {
+    display: none;
+    border: 1px solid #e4e4e4;
+    background: #fff;
+    box-shadow: 2px 2px 2px #ccc;
+    float: left;
+    width: 200px;
+    z-index: 100;
+}
+
+.arow {
+    width: 17px;
+    height: 15px;
+    background: url(/Areas/Admin/images/icon.png) no-repeat 0px 0px;
+    float: right;
+    margin-top: 9px;
+}
+
+ul.menumain .subnav li {
+    clear: both;
+    display: block;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+    ul.menumain .subnav li a {
+        font-weight: normal;
+        padding: 5px 20px 5px 25px;
+        line-height: 1.2em;
+    }
+
+        ul.menumain .subnav li a:hover {
+            color: #C00;
+        }
+
+.icon-16-user, .icon-16-newarticle, .icon-16-groups, .icon-16-levels, .icon-16-massmail, .icon-16-menumgr, .icon-16-menu, .icon-16-article, .icon-16-category, .ico-16-featured, .admin-ic {
+    background: url(/Areas/Admin/images/all-icmenu.png) no-repeat;
+}
+
+ul.menumain li a.admin-ic {
+    padding-left: 30px;
+    background-position: 0px -318px;
+}
+
+.icon-16-user {
+    background-position: 0px 2px;
+}
+
+.icon-16-newarticle {
+    background-position: 0px -39px;
+}
+
+.icon-16-groups {
+    background-position: 0px -58px;
+}
+
+.icon-16-levels {
+    background-position: 0px -95px;
+}
+
+.icon-16-massmail {
+    background-position: 0px -127px;
+}
+
+.icon-16-menumgr {
+    background-position: 0px -158px;
+}
+
+.icon-16-menu {
+    background-position: 0px -192px;
+}
+
+.icon-16-article {
+    background-position: 0px -218px;
+}
+
+.icon-16-category {
+    background-position: 0px -257px;
+}
+
+.ico-16-featured {
+    background-position: 0px -286px;
+}
+
+.sublevel2 {
+    display: none;
+    margin-left: 200px;
+    float: left;
+    top: 0px;
+    position: absolute;
+}
+
+.clear10, .clear20 {
+    clear: both;
+}
+
+.clear10 {
+    height: 10px;
+}
+
+.clear20 {
+    height: 20px;
+}
+
+.content {
+    width: 100%;
+    overflow: hidden;
+}
+
+.div100 {
+    width: 100%;
+    display: inline-block;
+}
+
+.mar10 {
+    margin: 10px;
+}
+
+.cpanel {
+    width: 49%;
+    margin-top: 20px;
+}
+
+.marb20 {
+    margin-bottom: 20px;
+}
+
+.borall, .waper-ic, .borallman {
+    border: 1px solid #ccc;
+}
+
+.borall {
+    background: #f4f4f4;
+    padding: 5px;
+}
+
+.waper-ic h3 {
+    border-bottom: 1px solid #ccc;
+    line-height: 22px;
+    color: #090;
+    font-size: 12px;
+    display: block;
+    padding: 5px 0px 0px 15px;
+}
+
+.borall, .borallman {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.borallman {
+    margin: 10px;
+}
+
+.waper-ic {
+    background: #fff;
+}
+
+.icon1 {
+    margin: 5px;
+    float: left;
+    position: relative;
+}
+
+div.icon1 a {
+    background-color: #FFFFFF;
+    background-position: -30px center;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    color: #565656;
+    display: block;
+    float: left;
+    height: 97px;
+    text-decoration: none;
+    transition-duration: 0.8s;
+    transition-property: background-position, -moz-border-radius-bottomleft, -moz-box-shadow;
+    vertical-align: middle;
+    text-align: center;
+    width: 108px;
+}
+
+div.icon1 img {
+    margin-top: 15px;
+}
+
+.icon1 span {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+}
+
+.waper-ic .icon1 a:hover {
+    border-radius: 5px 5px 5px 30px;
+    box-shadow: -5px 7px 15px #ccc;
+    z-index: 10;
+}
+
+table.adminlist {
+    background-color: #F3F3F3;
+    border-spacing: 1px;
+    color: #666666;
+    width: 100%;
+}
+
+    table.adminlist td, table.adminlist th {
+        padding: 4px;
+    }
+
+    table.adminlist td {
+        padding-left: 8px;
+    }
+
+    table.adminlist thead th {
+        background: none repeat scroll 0 0 #F7F7F7;
+        border-bottom: 1px solid #CCCCCC;
+        border-left: 1px solid #FFFFFF;
+        color: #666666;
+        text-align: center;
+    }
+
+        table.adminlist thead th.left {
+            text-align: left;
+        }
+
+    table.adminlist thead a:hover {
+        text-decoration: none;
+    }
+
+    table.adminlist thead th img {
+        padding-left: 3px;
+        vertical-align: middle;
+    }
+
+    table.adminlist tbody th {
+        font-weight: bold;
+    }
+
+    table.adminlist tbody tr {
+        background-color: #FFFFFF;
+        text-align: left;
+    }
+
+        table.adminlist tbody tr.row0:hover td, table.adminlist tbody tr.row1:hover td {
+            background-color: #E8F6FE;
+        }
+
+        table.adminlist tbody tr td {
+            background: none repeat scroll 0 0 #FFFFFF;
+            border: 1px solid #FFFFFF;
+        }
+
+td.center, th.center, .center {
+    float: none;
+    text-align: center;
+}
+
+.minhe {
+    min-height: 600px;
+}
+
+.title-name {
+    color: #060;
+    line-height: 45px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.content-main {
+    width: 900px;
+    margin: 0px auto;
+}
+
+fieldset.fromlist {
+    background: #fff;
+    overflow: hidden;
+    border: 1px #ccc solid;
+    padding: 10PX 16px;
+}
+
+    fieldset.fromlist legend {
+        color: #146295;
+        font-weight: bold;
+        font-size: 14PX;
+    }
+
+    fieldset.fromlist ul li {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+        fieldset.fromlist ul li label {
+            float: left;
+            font-weight: bold;
+            padding: 5px 20px 0 0;
+            position: relative;
+            text-align: right;
+            width: 220px;
+        }
+
+        fieldset.fromlist ul li p {
+            float: left;
+            position: relative;
+            padding: 5px 20px 0px 0px;
+            text-align: right;
+        }
+
+.start {
+    color: red;
+    vertical-align: top;
+    padding-left: 5px;
+}
+
+input[type="text"], input[type="number"], input[type="password"], input[type="select"], input[type="email"] {
+    border: 1px solid #ccc;
+    padding: 4px;
+}
+
+
+.toolbar-list {
+}
+
+    .toolbar-list li {
+        color: #666666;
+        float: right;
+        height: 48px;
+        list-style: none outside none;
+        padding: 1px 1px 3px 4px;
+        text-align: center;
+    }
+
+    .toolbar-list a {
+        border: 1px solid #F4F4F4;
+        cursor: pointer;
+        display: block;
+        float: left;
+        padding: 1px 5px;
+        white-space: nowrap;
+    }
+
+        .toolbar-list a:hover, .toolbar-list a:focus, .toolbar-list a:active, .toolbar-list input:hover {
+            border-color: #EEEEEE #CCCCCC #CCCCCC #EEEEEE;
+            border-left: 1px solid #EEEEEE;
+            border-style: solid;
+            border-width: 1px;
+            color: #0B55C4;
+            text-decoration: none;
+        }
+
+    .toolbar-list span {
+        display: block;
+        float: none;
+        height: 32px;
+        margin: 0 auto;
+        width: 32px;
+    }
+
+    .toolbar-list a {
+        border: 1px solid #F4F4F4;
+        cursor: pointer;
+        display: block;
+        float: left;
+        padding: 1px 5px;
+        white-space: nowrap;
+    }
+
+    .toolbar-list input {
+        border: 1px solid #F4F4F4;
+        cursor: pointer;
+        display: block;
+        float: left;
+        padding: 1px 5px;
+        white-space: nowrap;
+    }
+
+.icon-32-apply, .icon-32-save, .icon-32-cancel, .icon-32-new, .frue-on, .tthai, .frue-of {
+    background: url(/Areas/Admin/images/icon.png) no-repeat;
+}
+
+.icon-32-apply {
+    background-position: -30px -64px;
+}
+
+.icon-32-save {
+    background-position: 0px -20px;
+}
+
+.icon-32-cancel {
+    background-position: -30px -29px;
+}
+
+.icon-32-new {
+    background-position: -84px -29px;
+}
+
+.frue-on {
+    background-position: -167px -39px;
+}
+
+.frue-of {
+    background-position: -167px -64px;
+}
+
+.tthai {
+    background-position: -133px -38px;
+}
+
+.state {
+    width: 20px;
+    height: 20px;
+    margin: auto auto;
+}
+
+table.formtable, table.formcontent {
+    border: 0 none;
+    border-collapse: separate;
+    border-spacing: 0 1px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+    table.formtable td, table.formcontent td {
+        border-top: 0 none;
+        color: #333333;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0px 10px;
+        vertical-align: middle;
+    }
+
+    table.formtable th {
+        background: none repeat scroll 0 0 #E9E9E9;
+        color: #666666;
+        font-size: 11px;
+        line-height: 30px;
+        margin: 0;
+        padding: 0 10px;
+    }
+
+.font11 {
+    font-size: 13px;
+}
+
+.formtable a {
+    color: #060;
+}
+
+table.formtable th, table.formtable td {
+    text-align: left;
+}
+
+table.formtable tr {
+    background: none repeat scroll 0 0 #F9F9F9;
+}
+
+table.formtable .button {
+    display: block;
+    float: left;
+    height: 32px;
+    margin-left: 1px;
+    padding: 6px 0 0 3px;
+    text-decoration: none;
+    width: 29px;
+}
+
+    table.formtable .button:hover {
+        opacity: 0.8;
+    }
+
+.icon-tab, .ic-edit, .ic-delete, .ic-details {
+    background: url(/Areas/Admin/images/glyphicons-halflings1.png) no-repeat;
+    width: 23px;
+    height: 20px;
+}
+
+.icon-tab {
+    background-position: -259px 1px;
+}
+
+.ic-edit {
+    background-position: 4px -67px;
+}
+
+.ic-delete {
+    background-position: -452px 5px;
+}
+
+.ic-details {
+    background-position: -260px -18px;
+}
+
+.blue {
+    background: #009ad7;
+}
+
+.red {
+    background: #c22439;
+}
+
+.select-dm {
+    width: 250px;
+    padding: 5px 10px;
+    margin: 15px 40px 0px 0px;
+}
+
+.buttonpage {
+    color: #017c01;
+    padding: 2px 10px;
+    line-height: 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+    .buttonpage:hover {
+        color: #017c01;
+        border: 1px solid #017c01;
+    }
+
+.pagenaviselect {
+    color: #f5f5f5;
+    border: 1px solid #017c01;
+    background: #017c01;
+}
+
+.bg-login {
+    width: 650px;
+    margin: 50px auto;
+    background: url(/Areas/Admin/images/bg-login.jpg) no-repeat left top;
+    height: 400px;
+}
+
+.form-login {
+    padding: 150px 0px 20px 350px;
+}
+
+    .form-login li {
+        display: block;
+        clear: both;
+    }
+
+        .form-login li label {
+            display: block;
+            margin: 10px 0px 5px 0px;
+            font-size: 14px;
+        }
+
+        .form-login li input[type="text"], .form-login li input[type="password"] {
+            width: 250px;
+            color: #333;
+        }
+
+        .form-login li input[type="button"], .form-login li input[type="submit"] {
+            padding: 5px 10px;
+            background: #060;
+            color: white;
+            margin-top: 10px;
+        }
+
+.formselect select {
+    padding: 4px;
+}
+
+.formselect input[type="submit"] {
+    border: none;
+    padding: 4px;
+    background: #060;
+    color: white;
+    cursor: pointer;
+}
+
+.button_sm {
+    border: 1px solid #ccc;
+    height: 40px;
+    padding: 10px;
+}
+
+option {
+    padding: 5px;
+}
+
+span.gi {
+    color: #D7D7D7;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.bg-buton {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid silver;
+    font-size: 0.909em;
+}
+
+.reply {
+    color: #000000;
+}
+
+.marginL {
+    margin-left: 25PX;
+}
+
+.commentColor {
+    color: #0000ff;
+    word-break: break-all;
+}
+
+.replyname {
+    margin-left: 25px;
+}
+
+.validate {
+    color: red;
+}
+
+.validate_sumary {
+    color: red;
+    display: block;
+    margin: 10px 0 10px 70px;
+}
+
+.nicEdit-panelContain {
+    width: 470px;
+}
+
+.textformat td {
+    color: #333 !important;
+}
+
+.iconReset {
+    background: url(/Areas/Admin/images/icon.png) no-repeat;
+}
+
+.resetall {
+    background: url(/Areas/Admin/images/Reset.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    border: none;
+    text-align: center;
+    margin-left: 10px;
+    padding-right: 44px;
+}
+
+.Shipclass li {
+    height: 48px;
+}
+
+.Shipclass span {
+    float: right;
+    width: 65%;
+    margin-top: -8px;
+}
+
+.Album li {
+    width: 17% !important;
+    float: left;
+}
+
+.hidden {
+    display: none;
+}
+
+ 
+ 
+
+.field-validation-error {
+    color: red;
+}
+
+  .gallery {
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+   .gallery img {
+        width: 200px;
+        margin: 10px;
+        box-shadow: 4px 7px 45px -10px rgba(0,0,0,0.4);
+        border-radius: 7px;
+    }
+
+ 
+img:not([src]) {
+			visibility: hidden;
+		}

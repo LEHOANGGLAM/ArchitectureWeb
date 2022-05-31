@@ -1,0 +1,20 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Product>
+@{
+     int count = 0;
+}
+<div class="box_wrapper_title">
+    <span class="color">Sản Phẩm Liên Quan</span>
+</div>
+<div class="product-grid">
+                @foreach(var item in Model)
+                {
+                    count++;
+                    Html.RenderPartial("ProductBox", item);
+                    if (count % 4 == 0)
+                    {
+                        <div class="clean margin_top20" > 
+                            </div>
+                    }
+                }
+
+ </div>  

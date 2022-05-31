@@ -1,0 +1,60 @@
+﻿@model List<BlueDataWeb.Models.Entites.About>
+@{
+    var dataGioithieu = Model[0];
+
+    ViewBag.SEO_DES = dataGioithieu.MetaDescription;
+    ViewBag.SEO_TITLE = dataGioithieu.MetaTitle;
+    ViewBag.SEO_IMG = dataGioithieu.ImagePath;
+}
+
+<div class="container">
+    <div class="row custom">
+        <div class="col s12 m12 l9 xl9">
+            <div class="box_vien">
+                <ul class="thanh_dieu_huong">
+                    <li><a href="">Trang chủ</a></li>
+                    <li><a href="~/">Trang chủ</a></li>
+                    <li><span>Giới thiệu</span></li>
+                </ul>
+                <div class="title_f detail">@dataGioithieu.Name</div>
+                <section class="clearfix noidungweb  detail">
+                    @Html.Raw(dataGioithieu.Description)
+                </section>
+                <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="100%" data-numposts="5"></div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+        @Html.Partial("_Right_Menu")
+    </div>
+</div>
+
+
+@*<div class="container">
+    <div class="row custom">
+        <div class="col s12 m12 l9 xl9">
+            <div class="box_vien">
+                <ul class="thanh_dieu_huong">
+                    <li><a href="~/">Trang chủ</a></li>
+                    <li><span>Giới thiệu</span></li>
+                </ul>
+                <div class="title_f detail">Giới thiệu</div>
+                <div class="row">
+                    <div class="col s12">
+                        <section class="pt-3 pb-3 clearfix">
+                            @Html.Raw(dataGioithieu.Description)
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     
+    </div>
+   
+</div>*@

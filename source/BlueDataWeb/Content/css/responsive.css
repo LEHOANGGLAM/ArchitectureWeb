@@ -1,0 +1,189 @@
+@media (max-width: 1280px) {
+	
+}
+@media (max-width: 1200px){
+	
+}
+@media (max-width: 1024px) {
+	
+}
+@media (max-width: 1023px) {
+	ul#output{height:311px}
+	ul#tabs li a{padding-top:9px}	
+	
+	.wrapService2 .divService2.row{margin:0px -5px}
+	.divService2 .outsizeSer{border:none;padding:5px}
+	.wrapService2, .divPartner{margin-top:10px}
+	.divSupport ul li{wwidth:82%}
+	
+	.logofooter{width:24%}
+	.divAdress{width:46%}
+	.divSupport{width:30%}
+	.divHotline{width:100%;padding:10px 0px 0px 0px;display:block;}
+	.divHotline .hotline{float:left;padding-top:15px;text-align:left}
+	.divHotline .phone{border:none;padding:5px 0px 0px}
+	.divHotline .websseo{float:right}
+	
+	/* NEWS */
+	.titleLTitle{margin:0px}
+	.liNews{padding:5px 0px 0px}
+	.divNews .divNewsR{padding:0px 10px 10px}
+	.listNews .testNews .divCtrl{padding-top:10px}
+}
+@media (max-width: 977px) {
+	.imgfeature{height:52px}
+	ul#output{height:286px}
+	.imgfeature.bgColor8{height:51px}
+	
+	.divServiceM{padding:11px 5px}
+	.divService .divSearch .search{width:93%}
+	.divServiceR{padding-left:5px}
+	.divServiceR .btnGo{ background-position:0px -125px}
+	
+	.divNav ul.divMenu li a{padding-right:5px;padding-left:5px}
+	.divNav ul.divMenu li a:hover{padding-right:4px;padding-left:5px}
+}
+@media (max-width: 899px) {
+	.slideLeft{display:none}
+	.slideRight{display:block;float:none;width:100%;padding:10px}
+	.imgfeature{height:44px;padding-top:7px}
+	.imgfeature.bgColor8{height:42px;padding-top:6px}
+	ul#output{height:253px}
+	
+	.ic1{background-image:url(../images/issets/ic11.png)}
+	.ic2{background-image:url(../images/issets/ic21.png)}
+	.ic3{background-image:url(../images/issets/ic31.png)}
+	.ic4{background-image:url(../images/issets/ic41.png)}
+	.divService2 .itemSer{min-height:76px;padding:14px 2px 10px 56px;font-size:16px}
+}
+@media (max-width: 799px) {
+	.warperSildeShow{display:none}
+	.wrapService2{margin-top:0px}
+	
+	.divNav{display:none}
+	.icNavMobile{display:block}
+	.bgAir{left:0px; background-position:-120px -40px}
+	.wrapService2{margin-top:15px}
+	
+	.divBeacrum .divSearch{display:none}
+	.divBeacrumR{width:100%;float:none;padding:10px}
+	
+	/**/
+	.divTracking{width:90%}
+	
+	/* NEWS */
+	.line14{display:none}
+	.divNews .divNewsL{display:none}
+	.divNews .divNewsR{width:100%;float:none}
+
+}
+@media (max-width: 767px) {
+	.icRegisMobile, .icLoginMobile{display:block}
+	.divServiceM{display:none}
+	.icLogin{ background-position:-38px -49px}
+	.divServiceM a{padding-right:30px;width:auto;float:none;display:inline-block;text-indent:-1000px}
+	.icRegis{ background-position:-38px -87px}
+	.divServiceR, .divService .divSearch{width:50%;padding-right:10px;padding-left:10px}
+	.divService .divSearch .search{width:100%}
+	
+	.divSupport{display:none}
+	.logofooter{width:37%}
+	.divAdress{width:63%;border:none;padding-right:0px}
+	
+	/* CONTACT */
+	.testTitle{padding-left:10px; text-align:center}
+	.line13{right:50%}
+	.divContact .liFormC .lbel.visp{display:none}
+	.divContact .liFormC .lbel{width:100%;float:none;padding:0px 0px 10px;text-align:left}
+	.divContact .liFormC .divForm{width:100%;float:none;}
+	.divContact .divContactL, .divContact .divContactR{width:50%;}
+	.divContact .divContactR{padding-left:15px}
+	.divBtnCtrl{padding-left:0px}
+	
+	/**/
+	.divComboxMb{display:block}
+	.divSideBar{display:none}
+	.divDesContentL{width:100%;float:none}
+}
+
+@media (max-width: 679px) {
+	
+}
+@media (max-width: 639px) {
+	.divPartner{margin-top:5px}
+	.wrapService{margin-top:10px}
+	.wrapService2{margin-top:5px}
+	.divService2 .outsizeSer{width:50%;border:none;padding:5px}
+	.wrapService2 .divService2.row{margin:0px -5px}
+	.ic1{background-image:url(../images/issets/ic1.png)}
+	.ic2{background-image:url(../images/issets/ic2.png)}
+	.ic3{background-image:url(../images/issets/ic3.png)}
+	.ic4{background-image:url(../images/issets/ic4.png)}
+	.divService2 .itemSer{min-height:112px;padding:28px 2px 10px 135px;font-size:18px; background-position:28px center; text-align:left}
+	
+	.h1moblie{display:block;width:100%;clear:both;padding-bottom:5px}
+	.listNews .testNews h4{display:none}
+	.listNews .testNews p{padding:0px}
+	.listNews .testNews .divCtrl{padding-top:5px;margin-top:-10px}
+	
+	.ulcUS{padding:20px;min-height:0px;}
+	.ulcUS li{width:50%}
+	.ulcUS li.last{border-right:1px solid #003366}
+}
+
+@media (max-width: 599px) {	
+	.divLogo{width:220px}
+	.icNavMobile, .icLoginMobile, .icRegisMobile{top:35px}
+	
+	/* CONTACT */
+	.line13{display:none}
+	.divContact .divContactL, .divContact .divContactR{width:100%;float:none;padding:0px 10px}
+	.divContact .divContactR{padding-top:20px;border-top:1px dotted #003366;margin-top:20px}
+	
+	/**/
+	.imgSum img{max-width:100%;float:none}
+	.imgSum .sPan{width:100%;padding:10px 0px 0px;float:none;display:block}
+	
+	/* NEWS */
+	.listNews .testNews{margin-left:150px}
+	.listNews .imgLiNews{width:140px;background:url(../images/issets/bgFilter1.png) no-repeat center bottom;padding-bottom:8px}
+	
+}
+
+@media (max-width: 479px) {
+	.divServiceR, .divService .divSearch{width:100%;padding-right:0px;padding-left:0px;float:none; border:none}
+	.divServiceR{padding-top:0px}
+	.divService2 .outsizeSer{width:100%;float:none}
+	
+	.logofooter, .divAdress, .divHotline{width:100%;padding:5px 0px;border:none;float:none;display:block;min-height:0px}
+	.iclogoft, .logofooter a{text-align:left}
+	.warpFooter{margin-top:10px}
+	.logofooter a, .divAdress{font-size:12px}
+	.divHotline{border-top:1px dotted #ddd;margin-top:5px}
+	
+	/**/
+	.divTracking .divFormTrL, .divTracking .divFormTrR{width:100%;float:none}
+	.divTracking .divFormTrR{padding:10px 0px 0px}
+	.divTracking .divFormTrR .bgGd{width:120px}
+	.divTracking .desTracking{padding:0px}
+	
+	.divNews .divNewsL{display:block;width:100%;float:none;border-top:1px dotted #ccc}
+	.liNews .imgLiNews{width:100px}
+	.liNews .testNews{margin-left:110px}	
+	.listNews .imgLiNews{width:100px;background:none}
+	.listNews .testNews{margin-left:110px}
+	.listNews{padding-top:5px}
+	.liNews li{border-bottom:1px dotted #ccc}
+	.titleLTitle{border-bottom:1px solid #ccc}
+}
+
+@media (max-width: 359px) {
+	.divLogo{width:55%}
+	
+	.iclogoft, .logofooter a{text-align:center}
+	.divHotline .hotline{display:none}
+	.divHotline .websseo{float:none;text-align:center}
+}
+@media (max-width: 319px) {
+	
+}

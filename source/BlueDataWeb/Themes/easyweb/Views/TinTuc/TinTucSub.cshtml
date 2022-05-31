@@ -1,0 +1,88 @@
+﻿@model List<BlueDataWeb.Models.Entites.spNewsPaging_Result>
+@{
+    ViewBag.Title = ViewBag.CateName;
+}
+@{Html.RenderAction("ViewSider", "Sider", new { typleSider = "E_TinTuc" });}
+
+
+
+<div class="view_white">
+    <div class="container">
+
+        <div class="row">
+            <h1 class="title_new">  @ViewBag.CateName </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9 border-right">
+
+
+                <div id="bookListDiv">
+                    @{Html.RenderPartial("TinTucList", Model);}
+                </div>
+
+
+                @if (Model != null && Model.Count > 0 && ViewBag.NoMoreData == false)
+                {
+                    <a id="morelist" class="viewmore" onclick="LoadMore();">
+                        Xem thêm
+                        <b></b>
+                    </a>
+                }
+
+                <div id="loadingDiv" style="text-align: center; display: none; margin-bottom: 20px; clear:both" onclick="LoadMore();">
+
+                    <img src="~/Content/images/loading.gif" />
+                </div>
+
+
+
+            </div>
+
+            <div class="col-md-3">
+                @Html.Partial("_SiderBar_TinTuc")
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+ 
+@section scripts{
+
+    <script type="text/javascript">
+    var BlockNumber = 2;  //Infinate Scroll starts from second block
+    var NoMoreData = false;
+    var inProgress = false;
+
+    function LoadMore() {
+        inProgress = true;
+        $("#loadingDiv").show();
+        $("#morelist").hide();
+        CategoryId = '@ViewBag.lstCate';
+
+        $.post("@Url.Action("InfinateScroll", "TinTuc")", { "BlockNumber": BlockNumber, "CategoryId": CategoryId},
+            function (data) {
+                BlockNumber = BlockNumber + 1;
+                NoMoreData = data.NoMoreData;
+                $("#bookListDiv").append(data.HTMLString);
+                $("#loadingDiv").hide();
+
+                inProgress = false;
+
+                if (NoMoreData == true) {
+                    $("#morelist").remove();
+                }
+                else {
+                    $("#morelist").show();
+
+                }
+
+            });
+    }
+    </script>
+}

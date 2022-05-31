@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Description = "Nơi mua hàng giảm giá cùng các đợt khuyến mãi đặc biết giá cực rẻ cực shock, deal giảm giá hot mỗi ngày với những sản phẩm mới lạ, dealtop 1 kênh shopping giá rẻ  dành cho bạn";
+    ViewBag.Keywords = "BlueDataWeb,mua hàng theo nhóm,mua chung, nhóm mua, cùng mua, deal, deals, giá tốt, giá rẻ, giảm giá, khuyến mại, ưu đãi, Group Buy, daily deals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "dealtop 1, deal, mua hang giam gia, khuyen mai, deal giam gia, deal hot";
+}
+ 
+<div class="content-main">
+<div class="container">
+    	<div class="left-colum">
+        	 <h3 style="margin-bottom:10px">
+                Đơn Hàng Của Bạn
+            </h3>
+            @{Html.RenderAction("OrderUser", "ShoppingCart");}
+        </div>
+        <div class="right-column">
+        	<div class="sidebox-wrapper ">
+<h3 class="sidebox-title">SG-Hỗ trợ trực tuyến</h3>
+<div class="sidebox-body">
+<div class="wysiwyg-content">
+<div class="phone">
+<span>08.73055707</span> <br> <span>T2 - T7: <br>+ Sáng: 8g - 12g<br>+ Chiều: 13g - 20g</span></div>
+<div class="support"><a href="#"><img width="125" border="0" height="25" alt="" src="http://opi.yahoo.com/online?u=hotro_hotdeal_sg&amp;m=g&amp;t=2"></a> <br> <br> <a href="#"><img width="125" border="0" height="25" alt="" src="http://opi.yahoo.com/online?u=hotro_hotdeal_sg&amp;m=g&amp;t=2"></a></div>
+</div></div>
+</div>
+<div class="sidebox-nobox"> <a href="#"><img src="~/Content/images/phukien.jpg" width="230" /></a>
+</div>
+<div class="sidebox-nobox"> <a href="#"><img src="~/Content/images/Hotdeal-Tang-ao-mua-2.jpg" width="230" /></a>
+</div>
+      </div><!--end right-column-->
+    </div><!--end contaner-->
+</div>

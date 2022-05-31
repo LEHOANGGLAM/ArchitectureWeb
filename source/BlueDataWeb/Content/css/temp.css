@@ -1,0 +1,119 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+}
+.activesss {
+    background:none;
+}
+.cartbottom {
+  margin: -1px 0 0 30px;
+}
+.cartbottom:hover {
+    margin: -1px 0 0 30px;
+    }
+
+.remain-time1 .time {
+  height: 29px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-align: center;
+}
+.remain-time1 .time p {
+  float: left;
+  font-family: "OpenSans";
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 14px;
+}
+.remain-time1 .time p span {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+}
+.remain-time1 .time div.space {
+  color: black;
+  display: block;
+  float: left;
+  font-size: 15px;
+  height: 88px;
+  line-height: 1.7em;
+  width: 25px;
+  font-weight: normal;
+}
+.remain-time1 {
+    padding:0px;
+}
+.buy-number {
+    padding:4px 15px 5px 15px !important;
+    background:url("/Content/images/isset/bgdamua.png") no-repeat scroll 0 0 transparent #E2F2CF;
+    color:#70BD0F;
+    text-align:center; 
+    font-size:10px !important;
+    line-height:15px !important;
+    font-weight:normal !important;
+}
+.buy-number span{display:block; font-size:18px; font-weight:bold}
+
+.readdcart {
+  margin-left: 204px;
+  margin-top: -13px;
+}
+.notvalid {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -353px transparent !important;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 10px 0 0 20px;
+  text-align: center;
+}
+.notvalid:hover {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -353px transparent !important;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 10px 0 0 20px;
+  text-align: center;
+}
+.deadLine {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 0px transparent !important;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 10px 0 0 20px;
+  text-align: center;
+}
+.deadLine:hover {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 0px transparent !important;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 10px 0 0 20px;
+  text-align: center;
+}
+
+.bgsoldout {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -288px transparent !important;
+  height: 60px;
+  width: 246px;
+}
+.bgsoldout:hover {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -288px transparent !important;
+  height: 60px;
+  width: 246px;
+}
+.bgpament {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -216px transparent !important;
+  height: 60px;
+  width: 246px;
+}
+.bgpament:hover {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -77px transparent !important;
+  height: 60px;
+  width: 246px;
+}
+.bgbtn {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -216px transparent !important;
+  height: 60px;
+  width: 246px;
+}
+.bgbtn:hover {
+  background: url("/Content/images/isset/btn-order-collection.png") no-repeat scroll 0 -77px transparent !important;
+  height: 60px;
+  width: 246px;
+}

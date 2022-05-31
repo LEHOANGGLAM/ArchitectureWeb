@@ -1,0 +1,169 @@
+﻿@model  BlueDataWeb.Models.Entites.NewCategory
+
+@{
+    if (Model.NewCategoriesID > 0)
+    {
+        ViewBag.Title = "Danh mục blog - Cập nhật ";
+
+    }
+    else
+    {
+        ViewBag.Title = "Danh mục blog - Tạo mới ";
+
+    }
+}
+
+<div class="title_page">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4> @ViewBag.Title </h4>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Create", "NewsCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.HiddenFor(m => m.NewCategoriesID )
+    @Html.HiddenFor(m => m.AppID)
+    @Html.HiddenFor(m => m.Image)
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-12 txtCenter">
+            <p>
+
+                @if (TempData["Status"] == "Cập nhật lỗi")
+                {
+
+                    <div class="alert alert-success" role="alert">
+                        @TempData["Status"]
+                    </div>
+
+                }
+                else
+                {
+                    <span style="color:green; font-weight:bold; font-size:14px">
+                        @TempData["Status"]
+                    </span>
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 txtCenter">
+
+            <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Lưu</button>
+
+            <a class="btn btn-primary " href="~/admin/NewsCategory/Index">
+                <i class="fa fa-list">
+                </i>
+                Về danh sách
+            </a>
+        </div>
+    </div>
+
+    <br />
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Tiêu đề:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control required", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Name, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Danh mục cha:</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownList("ParentCategoryID", null, new { @class = " form-control" })
+                        @Html.ValidationMessageFor(model => model.ParentCategoryID, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">KeyName:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextBoxFor(model => model.KeyName, new { @class = "form-control required", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.KeyName, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Thứ tự hiển thị:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextBoxFor(model => model.DisplayOrder, new { @class = "form-control required", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.DisplayOrder, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Mô tả:</label>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.Description, new { @id = "summernote1", @class = "form-control  " })
+                        @Html.ValidationMessageFor(model => model.Description, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Meta Title:</label>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.MetaTitle, new { @class = "form-control  required", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.MetaTitle, null, new { @class = "validate" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Meta Description:</label>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.MetaDescription, new { @class = "form-control  required", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.MetaDescription, null, new { @class = "validate" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Meta Keywords:</label>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.MetaKeywords, new { @class = "form-control  required", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.MetaKeywords, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Hình đại diện:</label>
+                    <div class="col-sm-9">
+                        <label class="red" style="float: left;">Hình ảnh  (Tỉ lệ  5 x 3) </label>
+                        <input name="img" id="img" style="float: left; margin: 0px 4px;" type="file">
+
+                        @Html.HiddenFor(m => m.Image)
+
+                        <img src="/Images/News/@(Model.Image)" width="85" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Nội dung:</label>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.DescriptionContent, new { @id = "summernote2", @class = "form-control  " })
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Lưu</button>
+
+                    <a class="btn btn-primary " href="~/admin/NewsCategory/Index">
+                        <i class="fa fa-list">
+                        </i>
+                        Về danh sách
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

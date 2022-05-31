@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+@{
+    ViewBag.Title = "Sản phẩm - xanhsachdep.com";
+}
+
+<div class="clearfix"></div>
+
+@{Html.RenderAction("ViewSider", "Sider", new { typleSider = "E_ChucNang" });}
+
+<div class="container body-content">
+
+    <div class="row" style="margin-top:0px!important">
+
+        <div class="col-md-8 main-content padding0">
+
+            <div class="panel ">
+
+                <div class="panel-heading">
+                    <div class="tilte_green">
+                        <span> <i class="icon_sanpham"></i>  Sản phẩm</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-12 col col_right">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-sm-6 col-xs-6  ">
+                                <a title="@item.Title" href="@Url.RouteUrl("chucnangdetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })" class="img-hover thumbnail">
+
+                                    <img class="  img-responsive" src="~/Images/News/@item.ImagePath">
+                                </a>
+
+                                <a title="@item.Title" href="@Url.RouteUrl("chucnangdetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+
+                                    <h3 class="hongha   dot_title dot_Des title_big">
+                                        @item.Title
+                                    </h3>
+                                </a>
+
+                                <p class="ShortDescription_content_fix dot_Des">
+                                    @item.ShortDescription
+                                </p>
+
+                                <p class="pull-right datetime_post">
+                                    @*(@item.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture))*@
+
+                                    @{
+                            if (item.CreatedDate.Value.AddDays(7) > DateTime.Now && item.IsNew == true)
+                            {
+                                <span style="color:red">New</span>
+
+                            }
+
+                                    }
+                                </p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 sidebar">
+            @Html.Partial("_A_SideBar")
+        </div>
+    </div>
+</div>

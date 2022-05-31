@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+@{
+    ViewBag.Title = "NewsKhac";
+}
+
+<<div class="col-sm-6 col-xs-12">
+    <div class="panel-heading panel_inside">   Hoạt động đoàn thể</div>
+     <a class="thumbnail img-hover" href="@Url.RouteUrl("news", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(news.Title), id = news.NewsID })">
+         <img src="~/Images/News/@news.ImagePath" class=" img-responsive">
+
+         <h3 class="  hongha">
+             @news.Title
+         </h3>
+     </a>
+
+    <p style="text-align:justify">
+        @news.ShortDescription
+    </p>
+    @foreach (var item in Model.Where(m=>m..Skip(1))
+    {
+    <div class="col-sm-12 col-xs-12 paddingleft0">
+
+        <div class="item_new_left">
+            <a class="thumbnail img-hover" href="@Url.RouteUrl("news", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+                <img src="~/Images/News/@item.ImagePath" class=" img-responsive">
+            </a>
+        </div>
+
+        <div class="margin_bottom_20 item_new_right">
+            <p>
+                <a href="@Url.RouteUrl("news", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+                    @item.Title
+                </a>
+            </p>
+        </div>
+    </div>
+    }
+</div>

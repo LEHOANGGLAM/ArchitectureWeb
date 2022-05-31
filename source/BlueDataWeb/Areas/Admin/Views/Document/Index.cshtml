@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Document>
+
+@{
+    ViewBag.Title = "Văn bản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Văn bản</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/Document/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <table class="formtable">
+        <tbody>
+            <tr>
+
+                <th>
+                    Tên văn bản
+                </th>
+
+                <th>
+                    Ngày tạo
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width:30%">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+
+                    <td>@string.Format("{0:dd/MM/yyyy}", item.DateCreate)</td>
+                    <td width="10%">
+                        <a class="button blue" title="Sửa" href="/admin/Document/Edit/@item.DocID">
+                            <div class="icon">
+                                <p class="ic-edit"></p>
+                            </div>
+                        </a>
+                        <a class="button red" href="/admin/Document/Delete/@item.DocID" title="Xóa">
+                            <div class="icon">
+                                <p class="ic-delete"></p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            }
+        <tbody>
+    </table>
+    <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+</div>

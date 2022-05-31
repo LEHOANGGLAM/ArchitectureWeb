@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ExpressBD.Models.Order>
+@using ExpressBD.Models;
+@{
+    List<OrderDetail> lstOrderdetail = ViewBag.lstOrderDetail as List<OrderDetail>;
+    }
+<table border="0" class="shop-cart orderuser" style="font-weight:normal">
+	<tbody>
+		<tr>
+			<th>
+				Mã Đơn Hàng</th>
+			<th>
+				Trạng Thái</th>
+			<th>
+				Deal</th>
+			<th >
+				Ngày</th>
+            <th >
+				Phí vận chuyển</th>
+			<th>
+				Tổng Cộng</th>
+			
+		</tr>
+        @foreach(var item in Model)
+        {
+		<tr>
+			<td align="center"  width="100px">
+				<a href="#"> #@(item.OrderId.ToString("#00000000"))</a></td>
+			<td align="center" style="font-weight:normal"  width="100px">
+                   @if (item.IsOrderChecked != null)
+                     {
+                                    if (item.IsOrderChecked == 1)
+                                    {
+                                          @:Đơn hàng mới
+                                     }
+                                    else if (item.IsOrderChecked == 2)
+                                        { 
+                                             @:Đã xác nhận
+                                        }                                    
+                                        else if (item.IsOrderChecked == 3)
+                                         { 
+                                            @:Chuyển Fax
+                                          }
+                                          else if (item.IsOrderChecked == 4)
+                                            { 
+                                                   @:Đang giao hàng 
+                                            }
+                                            else if (item.IsOrderChecked == 5)
+                                                { 
+                                                 @:Hoàn tất
+                                                 }
+                                            else if(item.IsOrderChecked == 6)
+                                                { 
+                                                 @:Hoãn đơn hàng
+                                                 }
+                                        else if (item.IsOrderChecked == 7)
+                                                { 
+                                                  @:Hủy
+                                                }
+                                    }
+	         </td>
+			<td style="font-weight:normal">
+			
+                      @if(lstOrderdetail !=null)
+                      {
+                          var lstdetai =  lstOrderdetail.Where(m => m.OrderId == item.OrderId).ToList();
+                            foreach(var detail in lstdetai)
+                            {
+                                if(detail.ColorId==null)
+                                {
+                                <text>
+                                      <a href="@Url.RouteUrl("product", new { titlecate = ExpressBD.Utility.HelperSEO.ToSeoUrl(detail.Product.Category.CategoryName), title = ExpressBD.Utility.HelperSEO.ToSeoUrl(detail.Product.ProductName), id = detail.ProductId })">@detail.Product.ProductName)
+                                        [@detail.Quantity]
+                                       </a> <br />
+                                </text>
+                                 }
+                                 else
+                                 {
+                                    <a href="@Url.RouteUrl("product", new { titlecate = ExpressBD.Utility.HelperSEO.ToSeoUrl(detail.Product.Category.CategoryName), title = ExpressBD.Utility.HelperSEO.ToSeoUrl(detail.Product.ProductName), id = detail.ProductId })">@detail.Product.ProductName - @(detail.Color.ProductColor.Name)
+                                        [@detail.Quantity]
+                                       </a> <br />
+                                }
+                            }
+                       }
+         
+			<td align="center" width="70px" >
+                @string.Format("{0:dd/MM/yyy HH:mm:ss}", item.OrderDate)
+			</td>
+			<td align="right"  width="80px">
+				@string.Format("{0:0,0}",item.Ship)</td>
+			<td align="right"  width="80px">
+				@string.Format("{0:0,0}",item.Total + item.Ship)</td>
+		</tr>
+        }
+		
+	</tbody>
+</table>

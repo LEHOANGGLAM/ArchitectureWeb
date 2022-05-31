@@ -1,0 +1,152 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.spNewsPaging_Result>
+
+@using BlueDataWeb.Models.Entites
+
+@{
+    ViewBag.Title = "Danh sách ứng dụng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<NewCategory> lstCate = new List<NewCategory>();
+
+    if(ViewBag.lstCate != null)
+    {
+        lstCate = (List<NewCategory>)ViewBag.lstCate;
+
+    }
+
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">@ViewBag.Title</span>
+    </div>
+
+    <div class="floatl">
+        @{
+            <span class="linkCate">
+                <a href="/Admin/UngDung/Index">
+                    Tất cả
+                </a>
+            </span>
+            foreach (NewCategory item in lstCate)
+            {
+                var class_active = "";
+                if (ViewBag.idCate != null && (item.NewCategoriesID == long.Parse(ViewBag.idCate)))
+                {
+                    class_active = "linkCateActive";
+                }
+                <span class="linkCate @class_active">
+                    <a href="/Admin/UngDung/Index?idCate=@item.NewCategoriesID">
+                        @item.Name
+                    </a>
+                </span>
+            }
+        }
+    </div>
+
+    <ul class="floatr toolbar-list">
+
+        <li class="button">
+            <a class="toolbar" href="/admin/UngDung/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Tên
+                </th>
+                <th>
+                    View
+                </th>
+                <th>
+                    Vị trí
+                </th>
+                <th>
+                    Hình
+                </th>
+
+                <th>
+                    Ngày tạo
+                </th>
+
+                <th width="100px"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                int num = 0;
+            }
+            @foreach (var item in Model)
+            {
+                num++;
+                <tr>
+                    <td style="width:5%">
+                        @num
+                    </td>
+                    <td style="width:40%">
+                        <a class="button " title="Sửa" href="/admin/UngDung/Edit/@item.NewsID">
+
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </a>
+
+
+                     
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        @item.OrderBY
+                    </td>
+                    <td>
+                        <img src="/Images/News/@(item.ImagePath)" width="70px" height="40px" />
+                    </td>
+
+                    <td>@string.Format("{0:dd/MM/yyyy}", item.CreatedDate)</td>
+                    <td class="text-right">
+                        <div>
+
+
+                            <a class="button " title="Sửa" href="/admin/UngDung/Edit/@item.NewsID">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_edit.png" />
+                            </a>
+
+
+
+                            <a class="button " href="/admin/UngDung/Delete/@item.NewsID" title="Xóa">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_delete.png" />
+                            </a>
+
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<!--end borall-->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+        $("#NewCategoriesID").change(function () {
+            alert("Handler for .change() called.");
+        });
+    </script>
+
+}

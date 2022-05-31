@@ -1,0 +1,95 @@
+﻿@{
+    string AppName = System.Configuration.ConfigurationManager.AppSettings["AppName"].ToString();
+    string AppID = System.Configuration.ConfigurationManager.AppSettings["AppID"].ToString();
+
+}
+ <div id="header">
+     <ul class="menumain">
+         <li>
+             <a href="~/" target="_blank">
+                 @AppName
+             </a>
+         </li>
+         <li><a href="/admin/Home/Index">admin</a></li>
+         <li><a href="/admin/ArchitectureCategories/Index">Danh mục bài viết</a></li>
+
+         <li><a href="/admin/ArchitectureNews/Index">Bài viết</a></li>
+
+         <li><a href="/admin/Setting/ClearCache">Clear  </a></li>
+
+         @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+         {
+             <li>
+                 <a href="/admin/Image/Index">
+
+                     <span>Slider</span>
+                 </a>
+             </li>
+
+         }
+         @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+         {
+             <li>
+                 <a href="/admin/About/Index">
+
+                     <span>Giới thiệu</span>
+                 </a>
+             </li>
+
+         }
+
+
+         @if (User.IsInRole("Admin"))
+         {
+             <li>
+                 <a href="/admin/NewsCategory/Index">
+
+                     <span>Danh mục tin tức</span>
+                 </a>
+             </li>
+         }
+         @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+         {
+             <li>
+                 <a href="/admin/TinTuc/Index">
+
+                     <span>Tin tức</span>
+                 </a>
+             </li>
+
+         }
+
+         @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+         {
+             <li>
+                 <a href="/admin/Contact/Index">
+
+                     <span>Liên hệ</span>
+                 </a>
+             </li>
+
+         }
+
+          
+
+         @if (User.IsInRole("Admin"))
+         {
+             <li>
+                 <a href="/admin/SettingABC/Index">
+
+                     <span>Cài đặt</span>
+                 </a>
+             </li>
+         }
+
+
+     </ul>
+    <ul class="floatr menumain">
+        <li>
+            <a class="admin-ic" href="#">Hello ! @User.Identity.Name</a>
+            <ul class="subnav">
+                <li><a href="/admin/Membership/Profile">Profile</a></li>
+                <li><a href="/admin/Account/LogOff">Đăng Xuất</a></li>
+            </ul>
+    </ul>
+</div>

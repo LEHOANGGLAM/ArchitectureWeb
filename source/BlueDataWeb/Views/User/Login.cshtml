@@ -1,0 +1,98 @@
+﻿@model BlueDataWeb.Models.User
+@{
+    //ViewBag.Description = "Nơi mua hàng giảm giá cùng các đợt khuyến mãi đặc biết giá cực rẻ cực shock, deal giảm giá hot mỗi ngày với những sản phẩm mới lạ, dealtop 1 kênh shopping giá rẻ  dành cho bạn";
+    //ViewBag.Keywords = "BlueDataWeb,mua hàng theo nhóm,mua chung, nhóm mua, cùng mua, deal, deals, giá tốt, giá rẻ, giảm giá, khuyến mại, ưu đãi, Group Buy, daily deals";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.Title = "Mua hàng giảm giá, Deal khuyến mãi giá rẻ | dealtop1.com";
+}
+
+@*<section class="clearfix">
+        <div class="container">
+            <div class="clear15"></div>
+            <div class="div100 bgw" style="min-height: 300px">
+                <div class="clear10"></div>
+                <div class="span7 bor2">
+                    <h1 class="sec-title">Đăng nhập</h1>
+                    @using (Html.BeginForm("Login", "User", new { returnUrl = ViewBag.ReturnURL }, FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true)
+                        <div class="login-1">
+                            <fieldset>
+                                <ol>
+                                    <li>
+                                        <label>Email<span class="star">&nbsp;*</span></label>
+
+                                        <input class="inputbox" type="text" name="Email" id="Email" />
+                                    </li>
+                                    <li>
+                                        <label>Mật Khẩu<span class="star">&nbsp;*</span></label>
+                                        @Html.PasswordFor(m => m.Password)
+                                    </li>
+                                </ol>
+                                <p style="color:red">@ViewBag.error</p>
+                                <div class="clear10"></div>
+                                <div class="floatl">
+                                    <input class="btn floatl" type="submit" name="" value="Đăng Nhập" onclick="">
+                                    <a class=" floatl" style="margin: 20px 5px 0px 0px" href="@Url.Content("~/User/PassRestore")">Quên Mật Khẩu của Bạn ?</a>
+                                </div>
+                            </fieldset>
+                        </div>
+                    }
+                </div>
+
+                <div class="pad50 floatl">
+                    <h1 class="sec-title">Bạn chưa là thành viên</h1>
+                    <div class="floatl">
+                        <a href="@Url.Content("~/User/Register")"><input class="btn" type="submit" name="" value="Đăng ký" onclick=""></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear10"></div>
+        </div>
+    </section>*@
+
+<div class="container body-content" style="margin-top: 87px;margin-bottom: 0 !important">
+
+    <div class="col-md-10 col-md-offset-1">
+
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="well">
+                    <h4 class="modal-title" id="myModalLabel">Đăng nhập</h4>
+                    <br />
+                    @using (Html.BeginForm("Login", "User", new { returnUrl = ViewBag.ReturnURL }, FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            <label for="username" class="control-label">Email</label>
+                            <input type="text" class="form-control" id="Email" name="Email" value="" required="" title="Vui lòng nhập email của bạn." placeholder="">
+                            @Html.ValidationMessageFor(m => m.Email)
+                            <span class="help-block"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="control-label">Mật Khẩu</label>
+                            <input type="password" class="form-control" id="Password" name="Password" value="" required="" title="Vui lòng nhập mật khẩu.">
+                            @Html.ValidationMessageFor(m => m.Password)
+
+                            <span class="help-block"></span>
+                        </div>
+                        <div id="loginErrorMsg" class="alert alert-error hide">@ViewBag.error</div>
+
+                        <button type="submit" class="btn btn-success btn-block">Đăng Nhập</button>
+
+                        <a href="@Url.Content("~/User/PassRestore")" class="btn btn-default btn-block">Quên Mật Khẩu ?</a>
+
+                    }
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <p class="lead">Đăng ký tài khoản ngay bay giờ <span class="text-success">FREE</span></p>
+                <ul class="list-unstyled" style="line-height: 2">
+                    @*<li><span class="fa fa-check text-success"></span> See all your orders</li>*@
+                </ul>
+                <p><a href="@Url.Content("~/User/Register")" class="btn btn-info btn-block">Bạn chưa là thành viên!</a></p>
+            </div>
+        </div>
+    </div>
+</div>

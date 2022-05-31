@@ -1,0 +1,186 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.SubEmail>
+@using BlueDataWeb.Models.Entites;
+@{
+    List<User> lstuser = ViewBag.lstuser as List<User>;
+    ViewBag.Title = "Index";
+    List<string> subemail = lstuser.Select(m => m.Email).ToList();
+    
+}
+@using (Html.BeginForm("SendMail", "SubEmail", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" /></span>
+            <span class="title-name">Thông tin Email</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li class="button">
+
+                <a>
+                    @Html.ActionLink(" ", "Reset", "SubEmail", new { @class = "resetall" })
+
+                </a>
+
+                <a title="Gửi mail">
+
+                    <input type="submit" value="" style="background: url(/Areas/Admin/images/arrow2.png) no-repeat; width: 40px; height: 40px; border: none; text-align: center; margin-left: 10px; padding-right: 44px" /><br />
+                </a>
+
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+ 
+  
+    <div class="clear0"></div>
+    <div id="result">
+        <div class="mar10 borall">
+
+            <table class="formtable">
+                <tbody>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="checkall" />
+                            Check All </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>Trạng thái
+                        </th>
+
+                        <th>Action</th>
+                    </tr>
+
+                    @foreach (var item in Model.Reverse())
+                    {
+                        <tr>
+                            @if (!subemail.Contains(item.Email))
+                            {
+                                if (item.IsActive == true)
+                                {
+                                <td>
+                                    <input type="checkbox" class="checkboxmail" name="checkSub@(item.ID)"   />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @if (item.Status == false)
+                                    {
+                                        <p>Chưa gửi</p>
+                                    }
+                                    @if (item.Status == true)
+                                    {
+                                        <p style="color: blue">Đã gửi</p>
+                                    }
+                                </td>
+                                <td>
+                                    <a class="button red" href="/admin/SubEmail/Delete?id=@item.ID" title="Xóa">
+                                        <div class="icon">
+                                            <p class="ic-delete"></p>
+                                        </div>
+                                    </a>
+                                </td>
+                                }
+                            }
+
+                        </tr>
+                    }
+                    @foreach (var user in lstuser)
+                    {
+                        <tr>
+                            @if (user.IsActive == true)
+                            {
+                                <td>
+                                    <input type="checkbox" class="checkboxmail" name="checkUser@(user.Id)"   />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => user.Email)
+                                </td>
+                                <td>
+                                    @if (user.Status == false)
+                                    {
+                                        <p>Chưa gửi</p>
+                                    }
+                                    @if (user.Status == true)
+                                    {
+                                        <p style="color: blue">Đã gửi</p>
+                                    }
+                                </td>
+        
+                                <td>
+                                    <a class="button red" href="/admin/SubEmail/DeleteConfirmedUser?id=@user.Id" title="Xóa">
+                                        <div class="icon">
+                                            <p class="ic-delete"></p>
+                                        </div>
+                                    </a>
+                                </td>
+        
+                            }
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>    
+                     
+}
+<div class="mar10">
+
+
+    @using (Ajax.BeginForm(new AjaxOptions
+        {
+            UpdateTargetId = "result",
+            InsertionMode = InsertionMode.Replace
+        }))
+    {
+        var pi = BlueDataWeb.Utility.PagerInfo.Get("SubEmail", 5);
+       
+        <input class="buttonpage" type="submit" value="<< " name="PageNo:0" />
+        <input class="buttonpage"  title="Previous" type="submit" value="<" name="PageNo:@(pi.PageNo - 1)" />
+        for (var i = pi.PageNo - 3; i < pi.PageNo; i++)
+        {
+            if (i >= 0)
+            {
+        <input class="buttonpage"  title="Next" type="submit" value="@i" name="PageNo:@i" />
+            }
+        }
+        <input class="buttonpage pagenaviselect" title="Next" type="submit" value="@pi.PageNo" name="PageNo:@(pi.PageNo)" />
+        for (var i = pi.PageNo + 1; i < pi.PageNo + 3; i++)
+        {
+            if (i < pi.PageCount)
+            {
+        <input class="buttonpage"  title="Next" type="submit" value="@i" name="PageNo:@i" />
+            }
+        }
+        <input class="buttonpage"  title="Next" type="submit" value=">" name="PageNo:@(pi.PageNo + 1)" />
+        <input class="buttonpage"  type="submit" value=" >>" name="PageNo:@(pi.LastPageNo)" />
+      
+    }
+    <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    $('#checkall').change(function () {
+        if (document.getElementById("checkall").checked) {
+
+            $(".checkboxmail").attr("checked", "true");
+
+        }
+        if (!document.getElementById("checkall").checked) {
+
+            $(".checkboxmail").attr("checked", false);
+
+        }
+    });
+
+</script>
+

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.About>
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = "Giới thiệu";
+
+}
+
+<div class="title_page">
+
+    <div class="row">
+        <div class="col-md-10">
+            <h4> Giới thiệu</h4>
+        </div>
+
+        <div class="col-md-2  txtRight">
+
+            <a class="btn btn-primary " href="~/admin/About/Create">
+                <i class="fa fa-plus">
+                </i>
+                Thêm mới
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        @if (System.Configuration.ConfigurationManager.AppSettings["AppID"] == "FU")
+        {
+            <a href="~/admin/Zalo/index">Login zalo</a>
+            <a href="~/admin/Product/ZaloUp">Update tất cả sp lên Zalo</a>
+        }
+
+
+
+
+        <table   id="example" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+
+
+                    <th>
+                        STT
+                    </th>
+                    <th>
+                        Tên
+                    </th>
+
+                    <th>
+                        Hình
+                    </th>
+
+                    <th style="width: 200px">Action</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                @{
+                    int num = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    num++;
+                    <tr>
+                        <td style="width:5%">
+                            @num
+                        </td>
+                        <td style="width:40%">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                        <td>
+                            <img src="/Images/News/@(item.ImagePath)" width="70" />
+                        </td>
+
+                        <td>
+                            <div>
+                                <a class="btn btn-success" title="Sửa" href="/admin/About/Create/@item.ID">
+
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a class="btn btn-danger" title="Sửa" href="/admin/About/Delete/@item.ID">
+
+                                    <i class="fa fa-recycle"></i>
+                                </a>
+
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+ 
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

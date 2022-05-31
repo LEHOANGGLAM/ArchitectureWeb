@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+<div class="panel ">
+
+    <div class="panel-heading">
+
+        <h3 class="title_left">
+            <a title="Sản phẩm" href="~/san-pham">
+                <span>
+
+                    <i class="icon_sanpham"></i>
+                    Sản phẩm
+                </span>
+            </a>
+        </h3>
+    </div>
+
+    <div class="panel-body">
+        <div class="col-sm-12 ">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4 col-xs-12">
+                    <a title="@item.Title" class="img-hover thumbnail" href="@Url.RouteUrl("chucnangdetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+                        <img class=" img-responsive" src="~/Images/News/@item.ImagePath">
+                    </a>
+
+                    <a class=" " title="@item.Title" href="@Url.RouteUrl("chucnangdetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+
+                        <p class="name_pro">
+                            @item.Title
+                        </p>
+                    </a>
+
+                    <p class="ShortDescription_content dot_Des" style="word-wrap: break-word; height:80px">
+                        @item.ShortDescription
+                    </p>
+
+                    <p class="pull-right datetime_post">
+                       @* (@item.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture))*@
+
+                        @{
+                if (item.CreatedDate.Value.AddDays(7) > DateTime.Now && item.IsNew == true)
+                {
+
+                    <span style="color:red">New</span>
+                }
+
+                        }
+                    </p>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>

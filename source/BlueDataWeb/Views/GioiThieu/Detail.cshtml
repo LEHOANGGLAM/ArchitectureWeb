@@ -1,0 +1,80 @@
+﻿@model BlueDataWeb.Models.Entites.About
+
+@using System.Configuration
+
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = Model.Name;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+
+    var NewsList = ViewBag.NewsList as List<BlueDataWeb.Models.Entites.About>;
+}
+
+<div class="container body-content">
+
+    <div class="row">
+        <div class="col-md-8 main-content">
+
+            <div class="col-md-12 padding0">
+                <div class="col-md-12 padding0 ">
+                    <div class="tilte_green">
+                        <span> <i class="icon_sanpham"></i> @Model.Name</span>
+                    </div>
+                  
+                    <div class="clearfix"></div>
+                    <div class="social">
+                        <div class="fb-like" data-href="@HttpContext.Current.Request.Url" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                        <div class="g-plusone" data-href="@HttpContext.Current.Request.Url" data-size="medium"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="shoft_des">
+                    @Model.ShortDescription
+                </div>
+            </div>
+
+            <div class="col-md-12 padding0">
+                @Html.Raw(Model.values)
+            </div>
+            <div class="col-md-12 padding0 ">
+                <div class="more-news">
+                    <div class="tilte_green">
+                        <span> <i class="icon_sanpham"></i>Các tin khác</span>
+                    </div>
+
+
+                 
+                    <div class="clearfix"></div>
+                    <ul class="list">
+                        @foreach (var item in NewsList)
+                        {
+                            <li>
+                                <a href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.SettingId })">
+                                    @item.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 sidebar">
+            @Html.Partial("_A_SideBar")
+        </div>
+    </div>
+</div>
+
+<script src="https://apis.google.com/js/platform.js" async defer>
+    { lang: 'vi' }
+</script>
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.3";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>

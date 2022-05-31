@@ -1,0 +1,13 @@
+﻿@model List<BlueDataWeb.Models.Entites.Image>
+
+<div class="slider-wrapper theme-default">
+    <div id="slider" class="nivoSlider">
+
+        @foreach (var item in Model)
+        {
+            <a href="@item.ImagePath">
+                <img src="../Images/Sliders/@item.ImgName" />
+            </a>
+        }
+    </div>
+</div>

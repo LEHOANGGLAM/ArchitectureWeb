@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ExpressBD.Models.Category>
+@using ExpressBD.Models
+@{
+
+    var CateRoot = ViewBag.Category as List<AboutCategory>;
+
+
+}
+
+<div class="sidebar-menu">
+    <ul>
+        @foreach (var level1 in Model.Where(m => m.ParentCategoryID == 0).Skip(1))
+        {
+            <li class="level1">
+                <a class="@level1.CategoryName menu_item" href="@Url.RouteUrl("indexgiaiphap", new { ten = ExpressBD.Utility.HelperSEO.ToSeoUrl(level1.CategoryName), id = level1.CategoryID })">@level1.CategoryName</a>
+                @*<ul class="level2">
+                    @if (CateRoot !=null && CateRoot.Count() > 0)
+                    {
+                        foreach (var level2 in CateRoot.Where(m => m.TinhTrang == level1.CategoryID))
+                        {
+
+                            <li><a class="@level2.Name" href="@Url.RouteUrl("giaiphap", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(level2.Name), id = level2.AboutID })">@level2.Name</a></li>
+                        }
+                    }
+
+                </ul>*@
+            </li>
+        }
+
+    </ul>
+</div>
+

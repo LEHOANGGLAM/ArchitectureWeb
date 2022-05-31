@@ -1,0 +1,239 @@
+﻿@model BlueDataWeb.Models.ExportBill
+
+@{
+    ViewBag.Title = "Create";
+}
+@using (Html.BeginForm("Create", "ExportBill", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" /></span>
+            <span class="title-name">Nhập thông tin xuất bill</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/ExportBill/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Xuất Bill" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+ 
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100 cssexport">
+            <div>
+                <fieldset class="fromlist">
+                    <div class="divContentInR">
+                        <div class="divContentIn">
+                            <!---->
+                            <div class="divItem">
+
+                                <div class="autosize">
+                                    <h4 class="bgtitle">1.Shipper</h4>
+                                    <div class="divCreate">
+                                        <ul>
+                                            <li>
+                                                 @Html.HiddenFor(m => m.ID)
+                                                <label>Name</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.ShipperName, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Tel</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.ShipperTel, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Company</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.ShipperCompany, new { @class = "textbox validation-failed" })
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Address</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.ShipperAddress, new { @class = "textbox validation-failed" })
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+
+                                            <li>
+                                                <label>Country</label>
+                                                <div class="divForm">
+                                                    @Html.DropDownList("ShipperCountry")
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <h4 class="bgtitle">2. Reciever</h4>
+                                    <div class="divCreate">
+                                        <ul>
+                                            <li>
+                                                <label>Name</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.RecieverName, new { @class = "textbox validation-failed" })
+
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Tel</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.RecieverTel, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Company</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.RecieverCompany, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+
+                                            <li>
+                                                <label>Address</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.RecieverAddress, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Country</label>
+                                                <div class="divForm">
+                                                    @Html.DropDownList("RecieverCountry")
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Post Code</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.RecieverPostCode, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="autosize1">
+                                    <h4 class="bgtitle">3. Service</h4>
+                                    <div class="divCreate">
+                                        <ul>
+                                            <li>
+                                                <label>Service</label>
+                                                <div class="divForm">
+                                                    <select name="Service" id="Service" class="combobox validation-failed">
+                                                        <option selected value="">-- Chọn service --</option>
+                                                        <option value="Express">Express</option>
+                                                        <option value="express saver">express saver</option>
+                                                        <option value="expedited">expedited</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <h4 class="bgtitle">4. Description</h4>
+                                    <div class="divCreate">
+                                        <ul>
+                                            <li>
+                                                <label>No</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.DescriptionNo, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Actual Weight</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.DescriptionActualWeight, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Dim Weight</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.DescriptionDimWeight, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Value</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.DescriptionValue, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Description of Contents</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.DescriptionContents, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+                                            <li>
+                                                <label>Reason for Export</label>
+                                                <div class="divForm">
+                                                    @Html.TextBoxFor(m => m.DescriptionExport, new { @class = "textbox validation-failed" })
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <!---->
+                            </div>
+                            <!---->
+
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    
+}
+
+
+
+
+
+

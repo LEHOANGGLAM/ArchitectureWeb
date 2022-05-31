@@ -1,0 +1,15 @@
+var lang_nhaptukhoatimkiem = 'Nhập từ khóa tìm kiếm...';
+var lang_chuanhaptukhoa = 'Chưa nhập từ khóa';
+var lang_chonsize = 'Chọn size';
+var lang_chonmau = 'Chọn màu';
+var lang_hethongloi = 'Hệ thống lỗi';
+var lang_chonsoluong = 'Chọn số lượng';
+var lang_cart1 = 'Đã thêm sản phẩm ';
+var lang_cart2 = ' vào giỏ hàng.';
+var lang_nhaphoten = 'Nhập họ tên';
+var lang_nhapemail = 'Nhập email';
+var lang_nhapnoidung = 'Nhập nội dung';
+var lang_nhapcaptcha = 'Nhập mã bảo vệ';
+var lang_thongbao = 'Thông báo';
+var lang_xemgiohang = 'Xem giỏ hàng';
+var lang_xoathanhcong = 'Sản phẩm đã được xóa khỏi giỏ hàng!';

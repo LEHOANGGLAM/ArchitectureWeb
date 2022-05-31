@@ -1,0 +1,58 @@
+﻿@model  IEnumerable<BlueDataWeb.Models.Entites.ArchitectureNew>
+
+
+<div class="group_duandahoanthanh">
+    <div class="container">
+        <div class="title_f custom"><a href="/kien-truc/du-an-da-hoan-thanh-11">dự án đã hoàn thành</a></div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.slick_duandahoanthanh').slick({
+                    infinite: true,
+                    accessibility: false,
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    speed: 1000,
+                    arrows: false,
+                    centerMode: false,
+                    dots: false,
+                    draggable: true,
+                    pauseOnHover: true,
+                    responsive: [
+                        {
+                            breakpoint: 995,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                            }
+                        },
+                        {
+                            breakpoint: 520,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                            }
+                        }
+                    ]
+                });
+            });
+        </script>
+        <div class="slick_duandahoanthanh">
+
+            @foreach (var item in Model)
+            {
+                string link_detail = Url.RouteUrl("KienTrucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.ArchitectureCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.ID });
+
+                <div class="item_duandahoanthanh">
+                    <a href="@link_detail">
+                        <img src="~/Images/News/@item.ImagePath" alt="@item.ShortDescription">
+                        <h3 class="m-0">@item.Title</h3>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

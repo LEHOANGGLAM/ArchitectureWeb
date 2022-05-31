@@ -1,0 +1,115 @@
+﻿@{
+    var Setting = (List<BlueDataWeb.Models.Entites.SettingDB>)ViewBag.lstSetting;
+
+    var DiaChi = Setting.Where(x => x.Ma == "DiaChi").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "DiaChi").FirstOrDefault().Value : "";
+    var Hotline = Setting.Where(x => x.Ma == "Hotline").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "Hotline").FirstOrDefault().Value : "";
+    var Email = Setting.Where(x => x.Ma == "Email").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "Email").FirstOrDefault().Value : "";
+    var Website = Setting.Where(x => x.Ma == "Website").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "Website").FirstOrDefault().Value : "";
+    var TenCongTy = Setting.Where(x => x.Ma == "TenCongTy").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "TenCongTy").FirstOrDefault().Value : "";
+    var MaSoThue = Setting.Where(x => x.Ma == "MaSoThue").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "MaSoThue").FirstOrDefault().Value : "";
+    var GoogleMap = Setting.Where(x => x.Ma == "GoogleMap").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "GoogleMap").FirstOrDefault().Value : "";
+
+    var lstCate = (List<BlueDataWeb.Models.Entites.ArchitectureCategory>)ViewBag.KienTrucCategory;
+
+}
+
+<footer class="footer_wrap">
+    <div class="container">
+        <div class="row custom row_footer">
+            <div class="col s12 m12 l5 xl5">
+                <div class="desc_footer clearfix">
+                    <div class="tenCoty">@TenCongTy </div>
+
+                    <div class="desc_footer_item">
+                        <img height="31" src="~/Themes/easyweb/icon/f1.png">
+                        <span>
+                            Địa chỉ:  @DiaChi
+
+                            MST : @MaSoThue
+                        </span>
+                    </div>
+
+                    <div class="desc_footer_item">
+                        <img src="~/Themes/easyweb/icon/f2.png" />
+                        <span>
+                            Hotline: @Hotline
+                        </span>
+                    </div>
+
+                    <div class="desc_footer_item">
+                        <img src="~/Themes/easyweb/icon/f3.png" />
+
+                        <span>
+                            Email: @Email
+                        </span>
+                    </div>
+
+                    <div class="desc_footer_item">
+                        <img src="~/Themes/easyweb/icon/f4.png" />
+                        <span>
+                            Website: @Website
+                        </span>
+                    </div>
+                </div>
+
+                @*<div class="bocongthuong_logo">
+                        <a href="https://www.moit.gov.vn/">
+                            <img src="~/Themes/easyweb/images/dathongbao-1024x3888174_130x49.png" onerror="this.style.display='none'" />
+                        </a>
+                    </div>*@
+            </div>
+            <div class="col s12 m12 l3 xl3">
+                <div class="title_footer">Chính sách- quy Định</div>
+                <div class="tin_chinhsach">
+                    <ul>
+                        <li>
+                            <a href="#">Cung cấp dịch vụ</a>
+                        </li>
+                        <li>
+                            <a href="#">Bảo mật thông tin</a>
+                        </li>
+                        <li>
+                            <a href="#">Tiến độ thanh toán</a>
+                        </li>
+                        <li>
+                            <a href="#">Chính sách bảo hành</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s12 m12 l4 xl4">
+                <div class="getmap_footer">
+                    <div class="get_map clearfix">
+                        @Html.Raw(GoogleMap)
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                @*<ul class="group_tags">
+                        <li>Tags từ khóa:</li>
+                        <li><a href="https://kientrucxaydungviet.net/dich-vu-sua-chua-nha/dich-vu-sua-nha-tron-goi-279.html">Dịch vụ sửa nhà trọn gói</a></li>
+                        <li><a href="https://kientrucxaydungviet.net/bang-bao-gia/don-gia-thiet-ke-nha-153.html">Đơn giá thiết kế nhà</a></li>
+                        <li><a href="https://kientrucxaydungviet.net/bang-bao-gia/bao-gia-xay-nha-tron-goi-151.html">Báo giá xây nhà trọn gói</a></li>
+                        <li><a href="https://kientrucxaydungviet.net/bang-bao-gia/bao-gia-xay-dung-phan-tho-152.html">Báo giá xây dựng phần thô</a></li>
+                        <li><a href="https://kientrucxaydungviet.net/bang-bao-gia/don-gia-sua-chua-nha-tron-goi-154.html">Đơn giá sửa chữa nhà</a></li>
+                        <li><a href="https://kientrucxaydungviet.net/dich-vu-sua-chua-nha.html">Dịch vụ sửa chữa nhà</a></li>
+                        <li><a href="https://kientrucxaydungviet.net/dich-vu-xay-dung/xay-nha-biet-thu-dep-196.html">Xây nhà biệt thự đẹp</a></li>
+                        <li><a href="https://kientrucxaydungviet.net/thiet-ke-kien-truc/dich-vu-thiet-ke-nha-dep-150.html">Dịch vụ thiết kế nhà đẹp</a></li>
+                    </ul>*@
+            </div>
+        </div>
+    </div>
+    @*<div class="footer_copyright">
+            <div class="container">
+                <div class="row custom">
+                    <div class="col s12 m12 l6 xl6 copy_l">Copyright © 2019 GIALONG CONSTRUCTION. All rights reserved.</div>
+                    <div class="col s12 m12 l6 xl6 copy_r">Online: <span>3</span> | Tháng: <span>2335</span> | Tổng: <span>197153</span></div>
+                </div>
+            </div>
+        </div>*@
+</footer>
+
+<div class="box_fixpanel">
+
+    <p><i class="material-icons">phone_in_talk</i> Hotline: @Hotline</p>
+</div>

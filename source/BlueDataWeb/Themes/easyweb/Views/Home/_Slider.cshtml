@@ -1,0 +1,31 @@
+﻿@*@Model List<string>*@
+
+<div class="main-slider">
+
+    @for (int i = 1; i < 3; i++)
+    {
+        var imagename = i.ToString() + ".jpg";
+        <div class="item-slider">
+            <a href="#">
+
+                <img src="~/Themes/easyweb/images/@imagename" />
+            </a>
+        </div>
+    }
+</div>
+
+<div class="contact_below">
+    <div class="title">
+        <strong>bạn đang muốn thi công một dự án</strong>
+        <p>Hãy liên hệ ngay với chúng tôi để được tư vấn miễn phí</p>
+    </div>
+    <div class="hotline">
+        <div class="hotline_box">
+            <p class="m-0">Hotline:</p>
+            <strong>0902469379 - 0931289389</strong>
+        </div>
+    </div>
+</div>
+<div class="banner_quangcao hien_linkchay_mobile">
+    <img class="lazy" data-src="upload/hinhanh/a11-0771.jpg" alt="CÔNG TY TNHH TM TK ĐẦU TƯ XÂY DỰNG GIA LONG">
+</div>

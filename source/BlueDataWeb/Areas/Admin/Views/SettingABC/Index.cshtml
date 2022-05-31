@@ -1,0 +1,97 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.SettingDB>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .listbtt .btn.btn-default {
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin: 0 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Cài đặt</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/Admin/SettingABC/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+<div id="result">
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <table class="formtable">
+            <thead style="margin-bottom:20px">
+                <tr>
+                    <td colspan="3" class="listbtt">
+                        <a style="float:left;display:inline-block" href="/Admin/SettingABC/Uplogo" class="btn btn-default">Cập nhật Logo</a>
+                        <a style="float:left;display:inline-block" href="/Admin/SettingABC/UpFavianIcon" class="btn btn-default">Cập nhật FavianIcon</a>
+                        <a style="float:left;display:inline-block" href="/Admin/SettingABC/UpRobotFile" class="btn btn-default">Cập nhật Robot File</a>
+                        <a style="float:left;display:inline-block" href="/Admin/SettingABC/UpSiteMapFile" class="btn btn-default">Cập nhật SiteMap</a>
+                        <br />
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ma)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Value)
+                    </th>
+                    <th>
+                        Mô tả
+                    </th>
+                    <th style="width: 140px">Xử lý</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="" title="Sửa" href="/Admin/SettingABC/Edit?id=@item.ID">
+                                @Html.DisplayFor(modelItem => item.Ma)
+                            </a>
+                        </td>
+                        <td>
+
+                            @Html.Raw(item.Value)
+                        </td>
+                        <td>
+
+                            @Html.Raw(item.Mota)
+                        </td>
+                        <td>
+
+                            <a class="button blue" title="Sửa" href="/Admin/SettingABC/Edit?id=@item.ID">
+                                <div class="icon">
+                                    <p class="ic-edit"></p>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+    </div>
+</div>

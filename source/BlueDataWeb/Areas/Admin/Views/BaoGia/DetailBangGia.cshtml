@@ -1,0 +1,205 @@
+﻿@using BlueDataWeb.Models.Entites;
+@model List<BaoGia_GiaTri>
+@{
+    BaoGia _BaoGia = (BaoGia)ViewBag.BaoGia;
+}
+
+<h2>
+    Chi tiết bảng giá giá  - <b class="red"> @_BaoGia.Ten  </b>
+</h2>
+
+@using (Html.BeginForm("DetailBangGia", "BaoGia", FormMethod.Post, htmlAttributes: new { @class = "form-add", @id = "formDoanhNghiep" }))
+{
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover" id="tab_logic_ThuocTinh_1">
+            <tr style="background: #ccc">
+
+                <th class="col-md-1">STT</th>
+                <th class="hidden">Id</th>
+                <th class="hidden ">AppID</th>
+                <th class="hidden ">LoaiBaoGiaID</th>
+                <th class="hidden ">BaoGiaID</th>
+                <th class="col-md-5">TenThuocTinh</th>
+                <th class="col-md-6">GiaTriThuocTinh</th>
+                <th class="hidden">IsDefault</th>
+                <th class="hidden hidden">OrderBy</th>
+
+                <th class="col-md-1 hidden ">Xóa</th>
+            </tr>
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var thuoctinh = Model[i];
+
+            <tr class="rowData">
+
+                <td class="text-center index">@(i + 1)</td>
+
+                <td class="hidden ">
+                    <input type="text" class="form-control input-md " value="@thuoctinh.Id">
+                </td>
+                <td class="hidden ">
+                    <input type="text" class="form-control input-md " value="@thuoctinh.AppID">
+                </td>
+
+                <td class="hidden ">
+                    <input type="text" class="form-control input-md " value="@thuoctinh.LoaiBaoGiaID">
+                </td>
+
+                <td class="hidden ">
+                    <input type="text" class="form-control input-md " value="@thuoctinh.BaoGiaID">
+                </td>
+
+                <td class=" ">
+                    <input type="text" class="form-control input-md " value="@thuoctinh.TenThuocTinh">
+                </td>
+
+                <td>
+                    <input type="text" class="form-control input-md    " value="@thuoctinh.GiaTriThuocTinh">
+                </td>
+                <td class="hidden">
+                    @if (thuoctinh.IsDefault.Value)
+                        {
+                        <input type="text" class="form-control input-md   " disabled value="true">
+
+                        }
+                        else
+                        {
+                        <input type="text" class="form-control input-md   " disabled value="false">
+
+                        }
+                </td>
+
+                <td class="hidden">
+                    <input type="text" class="form-control input-md   " value="@thuoctinh.OrderBy">
+                </td>
+
+                <td class="hidden ">
+                    @if (!thuoctinh.IsDefault.Value)
+                        {
+                        <button class="btn btn-danger " onclick="XoaItemFile(this)"> Xóa </button>
+
+                        }
+                </td>
+            </tr>
+
+            }
+        </table>
+    </div>
+
+    <input id="JsonThuocTinh_1" class="hidden " name="JsonThuocTinh" />
+    <input id="baogiaID" class="hidden " name="baogiaID" value="@ViewBag.baogiaID" />
+    <br />
+    <div>
+        <a id="add_row_file_1" class="btn btn_w pull-left   btn-success   ">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Thêm
+        </a>
+
+       
+    </div>
+
+    <div class="col-md-12 text-center">
+        <button type="button" onclick="submitForm_Form()" class="btn btn_w btn-success "> Lưu   </button>
+
+        <a class="btn btn_w btn-default" href="/admin/BaoGia/Index">
+             Trở về
+        </a>
+    </div>
+
+}
+
+@section scripts{
+
+    <script>
+
+        //////////////////////////////////////////// Table dong thuoc tính /////
+
+        function ReIndexTableFile_1() {
+            $('#tab_logic_ThuocTinh_1 .rowData').each(function () {
+                var index = this.rowIndex;
+
+                $(this).find(".index").each(function () {
+                    $(this).html(index);
+                });
+
+                $(this).find(".filestyle").each(function () {
+                    var _name = 'file_' + index;
+                    $(this).attr('name', _name);
+                });
+            });
+        }
+
+        function XoaItemFile(element) {
+            showOverlay();
+            document.getElementById("tab_logic_ThuocTinh_1").deleteRow(element.parentNode.parentNode.rowIndex);
+            ReIndexTableFile_1();
+            hideOverlay();
+        }
+
+        $(document).ready(function () {
+            ReIndexTableFile_1();
+            $("#add_row_file_1").click(function () {
+                showOverlay();
+                $('#tab_logic_ThuocTinh_1').append(
+                     "<tr class='rowData'>" +
+                        "<td class='index text-center '>" + "</td>" +
+                        "<td class=' '> <input type='text' class='form-control input-md'  placeholder='ID' value='0' ></td> " +
+                        "<td class='  '> <input type='text' class='form-control input-md' placeholder='AppID' value='0'></td> " +
+                        "<td class=' '> <input type='text' class='form-control input-md'  placeholder='LoaiBaoGiaID' value='0'></td> " +
+                        "<td class=' '> <input type='text' class='form-control input-md'  placeholder='BaoGiaID' value='0'></td> " +
+
+                        "<td class=''> <input type='text' class='form-control input-md' placeholder='TenThuocTinh' /></td> " +
+                        "<td class=''> <input type='text' class='form-control input-md' placeholder='GiaTriThuocTinh'></td> " +
+                        "<td class=''> <input type='text' class='form-control input-md' disabled placeholder='Default' value='false'></td> " +
+                        "<td class=''> <input type='text' class='form-control input-md' disabled placeholder='OrderBy' value='false'></td> " +
+
+                        "<td class=''> <button class='btn btn-danger' onclick='XoaItemFile(this)'> Xóa </button>  </td>" +
+                    "</tr>"
+                );
+
+                ReIndexTableFile_1();
+
+                hideOverlay();
+            });
+        });
+
+        function GetDataFile_1() {
+            //alert("get");
+
+            var formData = "";
+            jsonObj = [];
+            $('#tab_logic_ThuocTinh_1 .rowData').each(function () {
+                item = {}
+                item["ID"] = $(this).find("td input:text,select")[0].value;
+                item["AppID"] = $(this).find("td input:text,select")[1].value;
+                item["LoaiBaoGiaID"] = $(this).find("td input:text,select")[2].value;
+                item["BaoGiaID"] = $(this).find("td input:text,select")[3].value;
+                item["TenThuocTinh"] = $(this).find("td input:text,select")[4].value;
+                item["GiaTriThuocTinh"] = $(this).find("td input:text,select")[5].value;
+                item["Default"] = $(this).find("td input:text,select")[6].value;
+                item["OrderBy"] = $(this).find("td input:text,select")[7].value;
+
+                jsonObj.push(item);
+            });
+
+            var JSonDoDaiViTriString = JSON.stringify(jsonObj);
+            $('#JsonThuocTinh_1').val(JSonDoDaiViTriString);
+
+            console.log(JSON.stringify(jsonObj));
+            console.log(JSonDoDaiViTriString);
+
+        }
+
+        function submitForm_Form() {
+           
+            GetDataFile_1();
+
+            $("#formDoanhNghiep").submit();
+        }
+
+        ////////////////////////////////////////////end  Table dong thuoc tính /////
+ 
+    </script>
+}

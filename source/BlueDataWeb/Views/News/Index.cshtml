@@ -1,0 +1,10 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+@using BlueDataWeb.Paging;
+@using BlueDataWeb.Models
+@{
+  
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+@{Html.RenderPartial("_IndexBox", Model);}
+ 

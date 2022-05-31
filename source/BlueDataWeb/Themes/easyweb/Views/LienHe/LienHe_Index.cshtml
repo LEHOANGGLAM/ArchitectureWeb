@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Themes/easyweb/Views/Shared/_Layout_New.cshtml";
+}
+
+<div class="container">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf6ZcAUAAAAADN5HGWkSaTBE66PQD8lkDnHaLPJ"></script>
+    <script>grecaptcha.ready(function () {
+        grecaptcha.execute('6Lf6ZcAUAAAAADN5HGWkSaTBE66PQD8lkDnHaLPJ', { action: 'contact' }).then(function (token) {
+            var recaptchaResponse = document.getElementById('recaptchaResponse');
+            recaptchaResponse.value = token;
+        });
+    });</script>
+
+    <ul class="thanh_dieu_huong">
+        <li>@Html.ActionLink("Trang chủ", "Home_Index", "Home")</li>
+        <li><span>Liên hệ</span></li>
+    </ul>
+
+    <div class="row">
+        <div class="col s12 m12 l6 xl6">
+            <section class="clearfix">
+                <p><span style="font-size:18px"><span style="font-family:Times New Roman,Times,serif"><strong>CÔNG TY&nbsp;TNHH TM THIẾT KẾ ĐẦU TƯ&nbsp;XÂY DỰNG</strong></span></span><span style="font-size:24px"><span style="font-family:Times New Roman,Times,serif"><strong><span style="color:#2980b9"> GIA LONG</span></strong></span></span></p>
+
+                <p><strong><span style="font-size:16px"><span style="font-family:Times New Roman,Times,serif"><span style="background-color:#ffffff">Địa chỉ:<span style="background-color:#ffffff"> </span>Số 77/5A Đường Bờ Bao Tân Thắng, Phường Sơn Kỳ Quận Tân Phú Tp HCM</span></span></span></strong></p>
+
+                <p><strong><span style="font-size:16px"><span style="font-family:Times New Roman,Times,serif"><span style="background-color:#ffffff">VPGD: Số 341A Lê Trọng Tấn, Phường Sơn Kỳ, Quận Tân Phú, Tp HCM</span></span></span></strong></p>
+
+                <p><strong><span style="font-size:16px"><span style="font-family:Times New Roman,Times,serif"><span style="background-color:#ffffff">Hotline: 0902 469 379</span></span></span></strong></p>
+
+                <p><strong><span style="font-size:16px"><span style="font-family:Times New Roman,Times,serif"><span style="background-color:#ffffff">Email:<span style="background-color:#ffffff"> </span>xaydunggialong.vn@gmail.com</span></span></span></strong></p>
+
+                <p><strong><span style="font-size:16px"><span style="font-family:Times New Roman,Times,serif"><span style="background-color:#ffffff">Website:</span><span style="background-color:#ffffff"> </span><a href="https://kientrucxaydungviet.net/"><span style="background-color:#ffffff">https://kientrucxaydungviet.net/</span></a></span></span></strong></p>
+            </section>
+            <div>
+                <form method="POST" enctype="multipart/form-data">
+
+                    <div class="d-block">
+                        <div class="input-field">
+                            <input type="text" id="ten" name="ten" class="validate" required="">
+                            <label for="ten">Họ và tên</label>
+                        </div>
+                    </div>
+                    <div class="d-block">
+                        <div class="input-field">
+                            <input type="email" id="email" name="email" class="validate" required="">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="d-block">
+                        <div class="input-field">
+                            <input type="text" id="dienthoai" name="dienthoai" class="validate" required="">
+                            <label for="dienthoai">Điện thoại</label>
+                        </div>
+                    </div>
+                    <div class="d-block">
+                        <div class="input-field">
+                            <input type="text" id="diachi" name="diachi" class="validate" required="">
+                            <label for="diachi">Địa chỉ</label>
+                        </div>
+                    </div>
+                    <div class="d-block">
+                        <div class="input-field">
+                            <textarea id="noidung" name="noidung" rows="6" class="materialize-textarea validate" required="" style="height: 45px;"></textarea>
+                            <label for="noidung">Nội dung</label>
+                        </div>
+                    </div>
+                    <div class="d-block">
+                        <div class="input-field">
+                            <button type="submit" class="btn waves-effect waves-light green darken-4">Gửi<i class="material-icons right">send</i></button>
+                            <button type="reset" class="btn waves-effect waves-light green darken-4">Nhập lại</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse" value="03AGdBq24SbTIGUw-dl-Zyo4urmebCAfzGvxa5w9LxJYZprRYNQ_8mR3JzoyNSK1GBWXUgHSb2S0wvi7zx4p8vleolTggcdWO8FqVPj27Z2x3trhqGAq9hnuuPdiKh8Wjc7jpYkz5o3kH-tFuzP3cD1v45EbRbh5iiWtHd8YRP5CN456NvYmV2yvSUUZVhdlXw7bgjkW_NsEF3CRFFDgShvUnf5Z0sswPz6kwNAfUSgMgy0kgfs8hkKtWZnqithLLVjH_3f-m_zlXkpHsh0pCP88-tGIuqbrku_Obovli2inWtvLUJHy0zvSnle8pgyY2HLmykFgy4CNjTdQe7jZmecz61o-8kYXZv2t-4cjC_QFRCUa87Dm3EB6NkUtl63CwsXQoRq9f2rXtsJ_usff-2m4JXHrx4FgeFPMVFJUqPnHQ-9O-XnHuwPd4Kc4FC0Ko-jRse4-37jqpugiKzErZCrTpjsNl2df1y1LlIUvmDss0-bjcyugTuI9HJyfx009nuA7GrIewmGx0W1XObL86l2S-BeQwxdjB8Xg">
+                </form>
+            </div>
+        </div>
+        <div class="col s12 m12 l6 xl6">
+            <div class="video-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4937306440656!2d106.62624916516539!3d10.773446312193798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752dddf75db62b%3A0x58290ccc3827ae1b!2zVsSDbiBQaMOybmcgQ8O0bmcgVHkgVGhp4bq_dCBL4bq_IMSQ4bqndSBUxrAgWMOieSBE4buxbmcgR2lhIExvbmc!5e0!3m2!1svi!2s!4v1538789321029" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </div>
+</div>

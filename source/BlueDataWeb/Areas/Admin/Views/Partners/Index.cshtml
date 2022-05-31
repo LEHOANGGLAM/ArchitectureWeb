@@ -1,0 +1,106 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Ảnh Đối tác của công ty</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/Partners/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+<div class="clear0"></div>
+<div class="mar10 borall">
+
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Hình
+                </th>
+
+                <th>
+                    Tên Đối tác
+                </th>
+
+                <th>
+                    Hiện trạng chủ
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+         
+
+        <tbody>
+            @{
+                int num = 0;
+            }
+
+            @foreach (var item in Model)
+            {
+                num++;
+                <tr>
+                    <td style="width:5%">
+                        @num
+                    </td>
+
+                    <td>
+                        <img src="/Images/Partners/@item.ImgName" width="140px" height="70px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageTile)
+                    </td>
+
+                    <td>
+                        @if (@item.IsShow == true)
+                        {
+                            <a href="#"><p class="frue-on state"></p></a>
+                        }
+                        else
+                        {
+                            <a href="#"><p class="frue-of state"></p></a>
+                        }
+                    </td>
+
+                    <td class="text-right">
+                        <div>
+                            <a class="button " title="Sửa" href="/admin/Partners/Edit/@item.ImageId">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_edit.png" />
+                            </a>
+                            <a class="button " href="/admin/Partners/Delete/@item.ImageId" title="Xóa">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_delete.png" />
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

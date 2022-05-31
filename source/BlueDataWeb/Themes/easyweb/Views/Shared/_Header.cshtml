@@ -1,0 +1,94 @@
+﻿@{
+    var Setting = (List<BlueDataWeb.Models.Entites.SettingDB>)ViewBag.lstSetting;
+
+    var DiaChi = Setting.Where(x => x.Ma == "DiaChi").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "DiaChi").FirstOrDefault().Value : "";
+    var Hotline = Setting.Where(x => x.Ma == "Hotline").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "Hotline").FirstOrDefault().Value : "";
+
+    var lstCate = (List<BlueDataWeb.Models.Entites.ArchitectureCategory>)ViewBag.KienTrucCategory;
+
+}
+<header>
+    <div class="info_wrap">
+        <div class="container">
+            <div class="informate">
+
+                <p class="slogan_l">Cùng bạn kiến tạo tương lai</p>
+                <div class="mxh">
+                    <a href="#" target="_blank">
+                        <img src="~/Themes/easyweb/images/mxh5-5549.png" alt="Mạng xã hội" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img class="lazy" src="~/Themes/easyweb/images/mxh4-8722.png" alt="Mạng xã hội" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="~/Themes/easyweb/images/mxh3-2846.png" alt="Mạng xã hội" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="~/Themes/easyweb/images/mxh2-2085.png" alt="Mạng xã hội" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="~/Themes/easyweb/images/mxh1-5141.png" alt="Mạng xã hội" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header_wrap9">
+        <div class="container">
+            <div class="header_wrap">
+
+                <a href="~/" class="logo_wrap"><img src="~/Themes/easyweb/images/logo.jpg"></a>
+                @*<p class="slogan_l slogan_header">Cùng bạn kiến tạo tương lai</p>*@
+                @*<a href="" class="banner_wrap"><img src="~/Themes/easyweb/images/banner-2-7538.jpg"></a>*@
+                <div class="address_banner">
+                    Địa chỉ: @DiaChi
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<button id="uk-menu-mobile" data-target="slide-out" class="btn waves-effect waves-light sidenav-trigger green darken-4"><i class="material-icons">menu</i></button>
+
+<ul id="slide-out" class="sidenav green darken-4">
+    <li><a class="" href="~/trang-chu">Trang chủ</a></li>
+
+    <li><a class="" href="~/gioi-thieu">Giới thiệu</a></li>
+
+    @foreach (var item in lstCate.Where(x => x.ParentCategoryID == 0).ToList())
+    {
+        string link = Url.RouteUrl("KienTrucList", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID });
+        var lstSubmenu = lstCate.Where(x => x.ParentCategoryID == item.ID).ToList();
+
+        if (lstSubmenu != null && lstSubmenu.Count > 0)
+        {
+            <li>
+                <a class="" href="@link">@item.Name</a>
+                <ul>
+                    @foreach (var submenu in lstCate.Where(x => x.ParentCategoryID == item.ID).ToList())
+                    {
+                        string linkSub = Url.RouteUrl("KienTrucList", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(submenu.Name), id = submenu.ID });
+
+                        <li><a href="@linkSub">@submenu.Name</a></li>
+
+                    }
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a class="" href="@link">@item.Name</a>
+            </li>
+
+        }
+
+    }
+
+    <li><a class="" href="~/lien-he">Liên hệ</a></li>
+</ul>
+
+<script>
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+</script>

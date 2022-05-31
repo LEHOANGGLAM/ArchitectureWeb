@@ -1,0 +1,9 @@
+﻿@model  IEnumerable<BlueDataWeb.Models.Entites.Product>
+<div class="list_new_product_right_bar box_shadow">
+    @foreach(var item in Model)
+    {
+        Html.RenderPartial("ProductBox", item);
+        <div class="clean margin_top20" ></div>
+    }
+
+</div>

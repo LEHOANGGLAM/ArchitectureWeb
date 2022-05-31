@@ -1,0 +1,29 @@
+﻿@model BlueDataWeb.Models.Product
+@using BlueDataWeb.Models.Entites;
+@{
+    List<Provice> lstprovince = ViewBag.lstprovince as List<Provice>;
+    string tentinhthanh = lstprovince.Where(m => m.ID == Model.ProvinceID).Select(m => m.TenTinhThanh).FirstOrDefault();
+    }
+<div class="col-md-4 col-sm-4 OutosizeAdv">
+   <a class="picture_product" href="@Url.RouteUrl("product", new { titlecate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.Category.CategoryName), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.ProductName), id = Model.ProductID })">
+        <img class="img-responsive lazyloadimg" src="/Images/Products/@Model.ImagePath"></a>
+    <div class="product-shop">
+        <h3 class="product_name">
+            <a class="picture_product" href="@Url.RouteUrl("product", new { titlecate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.Category.CategoryName), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.ProductName), id = Model.ProductID })">
+                 @Model.ProductName
+            </a>
+        </h3>
+        @if(Model.DienTich !=null)
+        {
+             <div class="bb">Diện tích:@Model.DienTich m<sup>2</sup></div>
+        }
+        @if(Model.DienTich !=null)
+        {
+          <div class="bb">Giá :@Model.Gia</div>
+        }
+              <span class="tileprovince">@tentinhthanh</span>
+                   <span class="readmore" ><a class="picture_product" href="@Url.RouteUrl("product", new { titlecate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.Category.CategoryName), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.ProductName), id = Model.ProductID })">Xem thêm</a></span>
+
+    </div>
+</div>
+

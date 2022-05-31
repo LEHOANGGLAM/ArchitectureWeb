@@ -1,1 +1,1 @@
-# ArchitectureWeb
+# easyWeb

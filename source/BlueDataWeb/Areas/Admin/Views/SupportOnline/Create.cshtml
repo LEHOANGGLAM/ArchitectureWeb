@@ -1,0 +1,57 @@
+﻿@model Sebox.Models.SupportOnline
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SupportOnline</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.yahoo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.yahoo)
+            @Html.ValidationMessageFor(model => model.yahoo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.skype)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.skype)
+            @Html.ValidationMessageFor(model => model.skype)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</div>

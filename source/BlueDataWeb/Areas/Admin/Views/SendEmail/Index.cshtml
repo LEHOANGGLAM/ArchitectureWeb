@@ -1,0 +1,92 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.SendEmail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" /></span> 
+        <span class="title-name">Thông tin Email</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" >
+                @*<span class="icon-32-new"></span>*@
+                @*@Html.ActionLink("Gửi Email", "SendMail", "SendEmail")*@
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+       @* <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+        <table class="formtable">
+            <tbody>
+            <tr>          
+                <th>                   
+                    Loại Email
+                </th>
+                <th>
+                    Email gửi đi
+                </th>
+                
+                <th>
+                    Tiêu đề
+                </th>
+               
+                 <th>
+                    Mật khẩu Email
+                </th>       
+                <th>
+                    @Html.DisplayNameFor(model => model.Servermail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Port)
+                </th>
+                
+                <th style="width: 80px">Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Emailfrom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Passmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Servermail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Port)
+                    </td>
+                    <td>
+                            <a class="button blue" title="Sửa" href="/admin/SendEmail/Edit?id=@item.ID">
+                                <div class="icon">
+                                    <p class="ic-edit"></p>
+                                </div>
+                            </a>
+                           
+                        </td>
+                </tr>
+            }
+                <tbody>
+        </table>
+         <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+    </div>

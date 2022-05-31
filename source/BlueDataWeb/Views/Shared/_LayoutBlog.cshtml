@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Language" content="vn" />
+    <title>
+        @if (ViewBag.Title != null)
+        {
+            @ViewBag.Title
+        }
+        else
+        { 
+            @Html.Raw("SEBOX FASHION - seboxfashion.com") 
+        }
+    </title>
+
+    @if (ViewBag.Description != null)
+    {
+        <meta name="description" content="@Html.Raw(Html.Encode(ViewBag.Description))" />
+    }
+    else
+    {
+        <meta name="description" content="Thoi trang SEBOX Fashion.com kinh doanh thời trang nam nữ, với giá cả hợp lý, uy tín trong giao dịch." />            
+    }
+
+    @if (ViewBag.Keywords != null)
+    {
+        <meta name="keywords" content="@ViewBag.Keywords" />
+    }
+    else
+    {
+        <meta name="keywords" content="seboxfashion, thoi trang, mua bán thời trang, shop thời trang, mua sắm trực tuyến" />                        
+    }
+
+    <link href="~/Content/css/general.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="/Scripts/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.detail_product.js"></script>
+    <script type="text/javascript" src="/Scripts/js/jquery.elevatezoom.js"></script>
+
+
+    <script type="text/javascript" src="~/Scripts/js/menu/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/menu/jquery-ui.js"></script>
+    <script src="~/Scripts/js/jquery.lazyload.min.js"></script>
+
+    <!--js banner-->
+    <script type="text/javascript" src="~/Scripts/js/Jssor_Slider/jssor.core.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/Jssor_Slider/jssor.utils.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/Jssor_Slider/jssor.slider.js"></script>
+    <link rel="stylesheet" href="~/Content/css/Jssor_Slider/css_slider_banner.css" type="text/css" />
+</head>
+
+<body>
+    <header class="clearfix">
+
+        @Html.Partial("_Top")
+
+    </header>
+    <div id="body">
+        <div class="content_wapper">
+            @Html.Partial("_Header")
+            @{Html.RenderAction("ViewCategory", "Category");}
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+    @Html.Partial("_Footer")
+
+
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        jQuery("img").lazyload({
+            placeholder: "http://seboxfashion.com/Content/images/isset/grey.gif",
+            effect: "fadeIn",
+            threshhold: 200
+        });
+    });
+</script>

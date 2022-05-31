@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Complete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="clear10"></div>
+<div class="div100 bgw">
+       		<div class="thanks">
+            <img src="~/Content/images/isset/thanks.png" />
+            <p>Sản phẩm của bạn mua thành công</p>
+            <p style="margin-top:20px; text-align:center; font-size:15px; margin:20px">Cám ơn bạn đã đặt hàng. Sẽ có nhân viên của BlueDataWeb liên hệ và giao sản phẩm tận nơi cho bạn trong vòng 24 đến 72 giờ.</p>
+           <div id="dCountDown"></div>
+                   
+        </div>        
+ </div><!--end div100-->
+    </div>
+<script type="text/javascript">
+var countDownVal = 5;
+$('#dCountDown').html(countDownVal);
+var timer1 = setInterval(function(){myTimer()},1000);
+function myTimer()
+{
+   countDownVal--;
+   $('#dCountDown').html(countDownVal);
+   if (countDownVal == 0)
+   {
+      clearInterval(timer1); // this thing can be here, or not, it's OK
+      window.location.replace("/"); // or whatever address you want
+   }
+}
+</script>

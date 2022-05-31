@@ -1,0 +1,20 @@
+﻿@model  BlueDataWeb.Models.Entites.About
+ 
+<div class="about_below">
+    <div class="container">
+        <div class="about_group">
+            <div class="about_group1">
+                <img src="~/Images/News/@Model.ImagePath" alt="Giới thiệu">
+            </div>
+            <div class="about_group2">
+                <div class="title">@Model.Name</div>
+                <section class="desc_about clearfix">
+                    <p>
+                       @Html.Raw(Model.ShortDescription)
+                    </p>
+                </section>
+                <a href="~/gioi-thieu" class="xemthem">Xem thêm </a>
+            </div>
+        </div>
+    </div>
+</div>

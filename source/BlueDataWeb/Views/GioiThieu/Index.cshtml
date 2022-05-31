@@ -1,0 +1,69 @@
+﻿@model List<BlueDataWeb.Models.Entites.About>
+
+@{
+    ViewBag.Title = "Giới thiệu";
+
+}
+<div class="container body-content">
+
+    <div class="row">
+        <div class="col-md-8 main-content" id="gridcontainer">
+            <div class="col-md-12 padding0">
+                <div class="tilte_green">
+                    <span> <i class="icon_sanpham"></i> Giới thiệu</span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            @foreach (var item in Model)
+            {
+
+                <div class="real-item col-md-12  ">
+
+                    <div class=" col-md-3  col-xs-12">
+
+                        <a class="thumbnail img-hover" href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID })">
+
+                            @if (string.IsNullOrWhiteSpace(item.ImagePath))
+                            {
+                                <img class="  img-responsive" src="~/Content/images/no-image-news.gif" />
+                            }
+                            else
+                            {
+                                <img class="  img-responsive" src="~/Images/GioiThieu/@item.ImagePath" />
+                            }
+                        </a>
+                    </div>
+
+                    <div class="col-md-9 col-xs-12 ">
+
+                        <div class="hongha tile_blog">
+                            <a href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID })">
+                                @item.Name
+                            </a>
+                        </div>
+
+                        <div class="ShortDescription_content dot_Des">
+                            @Html.Raw(@item.ShortDescription)
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                       
+                        <div class="clearfix"></div>
+
+                        <div class="readmore">
+                            <a href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID })">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-4 sidebar">
+            @Html.Partial("_A_SideBar")
+        </div>
+    </div>
+</div>

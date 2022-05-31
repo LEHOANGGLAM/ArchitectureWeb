@@ -1,0 +1,111 @@
+﻿@model BlueDataWeb.Models.QuangCaoModels
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script src="~/nicEditor/nicEdit.js"></script>
+<script>
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area1');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area2');
+
+    });
+</script>
+
+@using (Html.BeginForm("Edit", "QuangCao", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Chỉnh sửa quảng cáo</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/QuangCao/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <fieldset class="fromlist">
+                <legend>Edit</legend>
+                <ul>
+
+                    <li>
+
+                        @Html.HiddenFor(model => model.QuangCaoID)
+                        @Html.LabelFor(model => model.Image, "Hình")
+                        <input type="file" name="img" id="img" />
+                        <img src="/Images/QuangCao/@Model.Image" width="140px" height="70px" />
+
+                        @Html.HiddenFor(model => model.Image)
+                        @Html.ValidationMessageFor(model => model.Image, null, new { @class = "validate" })
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.Name, "Tên")
+                        @Html.TextBoxFor(model => model.Name, new { size = "70" })
+
+                        @Html.ValidationMessageFor(model => model.Name, null, new { @class = "validate" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.Link, "Đường dẫn")
+                        @Html.TextBoxFor(model => model.Link, new { size = "70" })
+
+                        @Html.ValidationMessageFor(model => model.Link, null, new { @class = "validate" })
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.IsShow, "Show")
+                        @Html.CheckBox("IsShow")
+                        @Html.ValidationMessageFor(model => model.IsShow, null, new { @class = "validate" })
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.PositionID, "Vị trí hiển thị")
+
+                        @Html.DropDownListFor(model => model.PositionID, Model.ViTriQuangCaoList)
+
+                        @Html.ValidationMessageFor(model => model.PositionID, null, new { @class = "validate" })
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.Width, "Width")
+                        @Html.TextBoxFor(model => model.Width, new { size = "70" })
+
+                        @Html.ValidationMessageFor(model => model.Width, null, new { @class = "validate" })
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.Height, "Height")
+                        @Html.TextBoxFor(model => model.Height, new { size = "70" })
+
+                        @Html.ValidationMessageFor(model => model.Height, null, new { @class = "validate" })
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+    </div>
+}

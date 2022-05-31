@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ExpressBD.Models.Category>
+<div class="divMenu">
+                <div class="visible-md visible-lg">
+                    <div class="container headerDr"">
+                        <div class="divMenuInner">
+                            <ul class="myMenu">
+                                <li class="current"><a href="@Url.Content("~/")"><span class="iconhome"></span>Trang Chủ </a></li>
+                                <li><a href="@Url.Content("~/topic/gioi-thieu-1")"><span class="icongioithieu"></span>Giới Thiệu</a>
+                                </li>
+                                 @foreach (var level1 in Model.Where(m => m.ParentCategoryID == 0))
+                                 {
+                                     var lstcatelv2 = Model.Where(m => m.ParentCategoryID == level1.CategoryID).ToList();
+	                                        <li>
+		                                        <a href="@Url.RouteUrl("category", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(level1.CategoryName) })"><span class="@level1.Class"></span>@level1.CategoryName</a>
+                                                 @if (lstcatelv2.Count() > 0)
+                                                 {
+		                                            <ul>
+                                                         @foreach (var level2 in lstcatelv2)
+                                                         {
+                                                             var lstcatelv3 = Model.Where(m => m.ParentCategoryID == level2.CategoryID).ToList();
+                                                                 <li>
+				                                                   <a href="@Url.RouteUrl("category", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(level2.CategoryName) })">
+                                                                       @level2.CategoryName</a>
+                                                                    @if(lstcatelv3.Count() > 0)
+                                                                    {
+				                                                        <ul>
+                                                                             @foreach (var level3 in lstcatelv3)
+                                                                             {
+					                                                             <li>
+                                                                                     <a href="@Url.RouteUrl("category", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(level3.CategoryName) })">
+                                                                                     @level3.CategoryName</a>
+
+					                                                             </li>
+                                                                             }
+				                                                        </ul>
+                                                                    }
+			                                                    </li>
+			           
+                                                         }
+			           
+		                                            </ul>
+                                                 }
+	                                        </li>
+                                                             }
+                                <li><a href="/News/Index"><span class="icontintuc"></span>Tin Tức</a>
+                                <li><a href="/Contact/Index"><span class="iconlienhe"></span>Liên Hệ</a>
+                                </li>
+                         </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Main menu -->
+                <!-- Nav mobile -->
+                <div class="navbar navbar-default visible-xs visible-sm" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                          
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Nav mobile -->
+            </div>

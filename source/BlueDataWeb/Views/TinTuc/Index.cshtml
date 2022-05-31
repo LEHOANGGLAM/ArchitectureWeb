@@ -1,0 +1,111 @@
+﻿@model List<BlueDataWeb.Models.Entites.Customs.NewCateModel>
+
+@{
+    ViewBag.Title = "Tin tức";
+}
+
+<div class="clearfix"></div>
+
+@{Html.RenderAction("ViewSider", "Sider", new { typleSider = "E_DichVu" });}
+
+<div class="container body-content">
+
+    <div class="row" style="margin-top:0px!important">
+
+        <div class="col-md-8 main-content padding0">
+            @foreach (var item in Model)
+            {
+                string link_Sub = Url.RouteUrl("tintucsub", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.NewCate.Name), id = item.NewCate.NewCategoriesID });
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <div class="tilte_green">
+                            <span>
+                                <i class="icon_sanpham"></i>
+                                <a href="@link_Sub">@item.NewCate.Name</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        @if (item.ListNews.Count > 0)
+                        {
+                            var newTop = item.ListNews[0];
+
+                            string link_detail = Url.RouteUrl("TinTucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.NewCate.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(newTop.Title), id = newTop.NewsID });
+
+                            <div class="col-sm-6 col-xs-12">
+
+                                <a class="thumbnail img-hover" href="@link_detail">
+                                    <img class="  img-responsive" src="~/Images/News/@newTop.ImagePath">
+                                </a>
+                            </div>
+
+                            <div class="col-sm-6 col-xs-12">
+                                <a href="@link_detail">
+
+                                    <h3 class="hongha   dot_title dot_Des title_big" style="word-wrap: break-word;">
+                                        @Html.Raw(newTop.Title)
+                                    </h3>
+                                </a>
+                                <p class="ShortDescription_content_big dot_Des">
+                                    @Html.Raw(newTop.ShortDescription)
+                                </p>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                            for (int i = 1; i < item.ListNews.Count; i++)
+                            {
+                                var itemNews = item.ListNews[i];
+                                link_detail = Url.RouteUrl("TinTucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.NewCate.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(itemNews.Title), id = itemNews.NewsID });
+
+                                <div class="col-sm-6 col-xs-12">
+
+                                    <div class="col-sm-6  col-xs-12">
+                                        <a class="thumbnail img-hover" href="@link_detail">
+                                            <img class=" img-responsive" src="~/Images/News/@itemNews.ImagePath">
+                                        </a>
+                                    </div>
+
+                                    <div class="col-sm-6  col-xs-12">
+                                        <p>
+                                            <a href="@link_detail" class="text_gt ShortDescription_content dot_Des">
+                                                @itemNews.Title
+                                            </a>
+                                        </p>
+                                        <div class="clearfix"></div>
+
+                                        <p class="pull-right datetime_post">
+                                            @*(@itemNews.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture))*@
+
+                                            @{
+                                if (itemNews.CreatedDate.Value.AddDays(7) > DateTime.Now)
+                                {
+
+                                    <span style="color:red">New</span>
+                                }
+
+                                            }
+                                        </p>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật dữ liệu</p>
+                        }
+                    </div>
+                </div>
+            }
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-4 sidebar">
+            @Html.Partial("_A_SideBar")
+        </div>
+    </div>
+</div>

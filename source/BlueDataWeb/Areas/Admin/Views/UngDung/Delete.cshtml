@@ -1,0 +1,50 @@
+﻿@model BlueDataWeb.Models.Entites.News
+
+@{
+    ViewBag.Title = "Xóa Ứng dụng";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">@ViewBag.Title </span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li id="toolbar-cancel" class="button">
+            <a class="toolbar" href="/admin/UngDung/Index">
+                <span class="icon-32-cancel"></span>
+                Hủy bỏ
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <div class="div100">
+
+        <div>
+
+            <fieldset class="fromlist">
+                <legend>News</legend>
+
+                <div class="display-label">
+                    Tên sản phẩm: <b>@Html.DisplayFor(model => model.Title)</b>  <br /> <br />
+                </div>
+                <div class="display-label">
+                    Mô tả ngắn: <b>@Html.DisplayFor(model => model.ShortDescription)</b>  <br />
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Delete" class="button_sm" /> |
+        @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "button_sm" })
+    </p>
+}

@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Hình ảnh hoạt động";
+}
+@model IEnumerable<BlueDataWeb.Models.Entites.Image>
+
+<div class="container body-content">
+
+    <div class="row" style="margin-top:0px!important">
+
+        <div class="col-md-12 main-content ">
+
+            <div class="panel ">
+                <div class="panel-heading">
+                    <div class="tilte_green">
+                        <span> <i class="icon_sanpham"></i> Hình ảnh hoạt động</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-sm-6 col-xs-12  ">
+                            <a href="#" class="img-hover thumbnail">
+                                <img class=" img-responsive" src="/Images/AnhHoatDong/@item.ImgName">
+
+                                <h3 class="hongha   dot_title dot_Des title_big">
+                                    @item.ImageTile
+                                </h3>
+                            </a>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

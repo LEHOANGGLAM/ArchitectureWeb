@@ -1,0 +1,27 @@
+﻿@model  BlueDataWeb.Models.QuangCao
+@{
+    var showPoupFirst = false;
+
+    if (Model != null && Model.IsShow.Value == true)
+    {
+        showPoupFirst = true;
+
+    }
+
+    if (showPoupFirst)
+    {
+        <text> <div id="my-welcome-message">
+                <a href="@Model.Link">
+                    <img src="~/Images/QuangCao/@Model.Image" />
+                </a>
+            </div>
+
+            <script>
+                $('#my-welcome-message').firstVisitPopup({
+                    cookieName: 'homepage',
+                    showAgainSelector: '#show-message'
+                });
+            </script>
+        </text>
+    }
+}

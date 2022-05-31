@@ -1,0 +1,46 @@
+﻿@model ExpressBD.Models.Setting
+@{
+    Setting abouten = ViewBag.AboutEn;
+}
+@using ExpressBD.Models;
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Tuyển dụng</span>
+    </div>
+</div>
+
+<!--end borall-->
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <table class="formtable">
+        <tbody>
+            <tr>
+                <th style="width:40%">Thông tin tuyển dụng</th>
+                <th style="text-align:right"></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Raw(Model.values)
+                </td>
+
+                <td style="text-align:right">
+                    <a class="button blue" style="float:right" title="Sửa" href="/@ExpressBD.Models.GlobalVariables.PathFolderName/TuyenDung/Edit?id=@Model.SettingId">
+                        <div class="icon">
+                            <p class="ic-edit"></p>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<script>$("tr:even").css("background-color", "#f2f2f2");</script>

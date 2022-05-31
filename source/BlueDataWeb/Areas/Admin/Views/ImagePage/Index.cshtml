@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.ImagePage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">ImagePage</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/ImagePage/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <table class="formtable">
+        <tr>
+            <th>
+                Hình
+            </th>
+            <th>
+                KeyName
+            </th>
+            <th>
+                MetaKeywords
+            </th>
+            <th>
+                MetaDescription
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="/Images/ImagePage/@item.Image" width="140px" height="70px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KeyName)
+                </td>
+                <td style="width:600px">
+
+                    @Html.Raw(item.MetaKeywords)
+                </td>
+
+                <td style="width:600px">
+
+                    @Html.Raw(item.MetaDescription)
+                </td>
+                <td>
+                    <a class="button blue" title="Sửa" href="/admin/ImagePage/Edit/@item.ID">
+                        <div class="icon">
+                            <p class="ic-edit"></p>
+                        </div>
+                    </a>
+                    
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

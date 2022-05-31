@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Language" content="vn" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <title>
+        @if (ViewBag.Title != null)
+        {
+            @ViewBag.Title
+        }
+        else
+        {
+            @Html.Raw("Công ty BlueData")
+        }
+    </title>
+
+    @if (ViewBag.Description != null)
+    {
+        <meta name="description" content="@Html.Raw(Html.Encode(ViewBag.Description))" />
+    }
+    else
+    {
+        <meta name="description" content="Công ty TNHH Xây dựng Môi Trường Xanh - Sản xuất, Thi công, Duy tu và Bảo quản thường xuyên hệ thống Công viên cây xanh, thi công cơ giới, san lấp mặt bằng, xây dựng công trình dân dụng, công nghiệp, công viên, cầu đường, giao thông, thủy lợi, cho thuê cây kiểng trang trí nội ngoại thất" />
+    }
+
+    @if (ViewBag.Keywords != null)
+    {
+        <meta name="keywords" content="@ViewBag.Keywords" />
+    }
+    else
+    {
+        <meta name="keywords" content="Môi Trường Xanh - Sản xuất, Thi công, Duy tu và Bảo quản thường xuyên hệ thống Công viên cây xanh" />
+    }
+    <link rel="stylesheet" href="~/Scripts/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="~/Scripts/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+
+    <link href="/Content/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/Content/site.css" rel="stylesheet" media="screen">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body class="bg">
+
+    <div class="wapper container">
+        @Html.Partial("_Header")
+
+        @RenderBody()
+
+        @Html.Partial("_Footer")
+
+        <span id="top-link-block" class="hidden gotop">
+            <a href="#top" class="well well-sm" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+                <i class="glyphicon glyphicon-chevron-up "></i>
+            </a>
+        </span>
+    </div>
+
+
+    @*<aside id="sticky-social">
+        <ul>
+            <li><a href="#" class="entypo-facebook" target="_blank"><span>Facebook</span></a></li>
+             
+        </ul>
+    </aside>*@
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="/signalr/hubs" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/nivo-slider/jquery.nivo.slider.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $(window).load(function () {
+        $('#slider').nivoSlider({
+            effect: 'random',                 // Specify sets like: 'fold,fade,sliceDown'
+            slices: 15,                     // For slice animations
+            boxCols: 8,                     // For box animations
+            boxRows: 4,                     // For box animations
+            animSpeed: 500,                 // Slide transition speed
+            pauseTime: 3000,                 // How long each slide will show
+            startSlide: 0,                     // Set starting Slide (0 index)
+            directionNav: true,             // Next & Prev navigation
+            controlNav: true,                 // 1,2,3... navigation
+            controlNavThumbs: false,         // Use thumbnails for Control Nav
+            pauseOnHover: true,             // Stop animation while hovering
+            manualAdvance: false,             // Force manual transitions
+            prevText: 'Prev',                 // Prev directionNav text
+            nextText: 'Next',                 // Next directionNav text
+            randomStart: false,             // Start on a random slide
+            beforeChange: function () { },     // Triggers before a slide transition
+            afterChange: function () { },         // Triggers after a slide transition
+            slideshowEnd: function () { },     // Triggers after all slides have been shown
+            lastSlide: function () { },         // Triggers when last slide is shown
+            afterLoad: function () { }         // Triggers when slider has loaded
+        });
+    });
+
+    $(document).ready(function () {
+        $('.dot_Des').dotdotdot({
+        });
+
+        var queryString = document.location.href.toLowerCase();
+        //alert(queryString);
+        $(".menu_item").removeClass('menu_active');
+
+        $(".menu_item").each(function () {
+
+            var href = $(this).attr('href').toLowerCase();
+
+            if (queryString == href && queryString.indexOf(href) == 0) {
+                $(this).addClass('menu_active');
+            }
+            else if (queryString.indexOf(href) > 0 && queryString != href) {
+                $(this).addClass('menu_active');
+            }
+
+        });
+
+        if (($(window).height() + 100) < $(document).height()) {
+            $('#top-link-block').removeClass('hidden').affix({
+                // how far to scroll down before link "slides" into view
+                offset: { top: 100 }
+            });
+        }
+
+    });
+
+
+    $(function () {
+        // Reference the auto-generated proxy for the hub.
+        var userActivity = $.connection.userActivityHub;
+        // Create a function that the hub can call back to display messages.
+        userActivity.client.updateUsersOnlineCount = function (count, total) {
+            // Add the message to the page.
+            $('#usersCount').text(count);
+            $('#userTotal').text(total);
+
+
+        };
+        $.connection.hub.start();
+    });
+
+</script>

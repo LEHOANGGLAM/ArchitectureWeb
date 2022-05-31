@@ -1,0 +1,55 @@
+﻿//author: https://github.com/martijnboland/MvcPaging
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
+using System.Web.Routing;
+
+namespace BlueDataWeb.Paging
+{
+    public static class PagingExtensions
+    {
+        #region HtmlHelper extensions
+
+        public static Pager Pager(this HtmlHelper htmlHelper, int pageSize, int currentPage, int totalItemCount, RouteValueDictionary valuesDictionary)
+        {
+            return new Pager(htmlHelper, pageSize, currentPage, totalItemCount, valuesDictionary);
+        }
+
+        public static Pager Pager(this HtmlHelper htmlHelper, int pageSize, int currentPage, int totalItemCount, RouteValueDictionary valuesDictionary, AjaxOptions ajaxOptions)
+        {
+            return new Pager(htmlHelper, pageSize, currentPage, totalItemCount, valuesDictionary).Options(o => o.AjaxOptions(ajaxOptions));
+        }
+
+        public static Pager<TModel> Pager<TModel>(this HtmlHelper<TModel> htmlHelper, int pageSize, int currentPage, RouteValueDictionary valuesDictionary, int totalItemCount)
+        {
+            return new Pager<TModel>(htmlHelper, pageSize, currentPage, totalItemCount, valuesDictionary);
+        }
+
+        public static Pager<TModel> Pager<TModel>(this HtmlHelper<TModel> htmlHelper, int pageSize, int currentPage, int totalItemCount, RouteValueDictionary valuesDictionary, AjaxOptions ajaxOptions)
+        {
+            return new Pager<TModel>(htmlHelper, pageSize, currentPage, totalItemCount, valuesDictionary).Options(o => o.AjaxOptions(ajaxOptions));
+        }
+        #endregion
+
+        #region IQueryable<T> extensions
+
+        public static IPagedList<T> ToPagedList<T>(this IQueryable<T> source, int pageIndex, int pageSize, int? totalCount = null)
+        {
+            return new PagedList<T>(source, pageIndex, pageSize, totalCount);
+        }
+
+        #endregion
+
+        #region IEnumerable<T> extensions
+
+        public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> source, int pageIndex, int pageSize, int? totalCount = null)
+        {
+            return new PagedList<T>(source, pageIndex, pageSize, totalCount);
+        }
+
+        #endregion
+    }
+}

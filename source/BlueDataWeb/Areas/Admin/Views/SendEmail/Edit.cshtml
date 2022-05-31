@@ -1,0 +1,107 @@
+﻿@model BlueDataWeb.Models.SendEmail
+<script src="~/nicEditor/nicEdit.js"></script>
+<script>
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area1');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/admin/Home/nicUpload' }).panelInstance('area2');
+
+    });
+</script>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Cập nhật Email</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/SendEmail/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <div>
+
+                <fieldset class="fromlist">
+                    <ul>
+                        @Html.HiddenFor(model => model.ID)
+                        <li>
+                            @Html.LabelFor(model => model.Name, "Loại Email")
+                            @Html.TextBoxFor(model => model.Name, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.Emailfrom, "Email gửi đi")
+                            @Html.TextBoxFor(model => model.Emailfrom, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Emailfrom, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Passmail, "Mật khẩu")
+                            @Html.TextBoxFor(model => model.Passmail, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Passmail, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Servermail, "Server Email")
+                            @Html.TextBoxFor(model => model.Servermail, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Servermail, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.Port, "Port")
+                            @Html.TextBoxFor(model => model.Port, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Port, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Subject, "Mail admin")
+                            @Html.TextBoxFor(model => model.Subject, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Subject, null, new { @class = "validate" })
+                        </li>
+
+                        <li style="display:none">
+                            <div style="width: 470px">
+                                @Html.ValidationMessageFor(model => model.Body, null, new { @class = "validate" })
+                                @Html.LabelFor(model => model.Body, "Nội dung")
+                                <div style="margin-left: 245px">
+                                    @Html.TextAreaFor(model => model.Body, new { id = "area", rows = 20, clos = 55, style = "Width:800px;" })
+                                </div>
+                                @*   <br />*@
+                            </div>
+                        </li>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "button_sm" })
+</div>

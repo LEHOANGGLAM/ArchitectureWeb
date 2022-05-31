@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Membership>
+@using BlueDataWeb.Models.Entites;
+@{
+    List<UsersInRole> lstRole = ViewBag.lstRole as List<UsersInRole>;
+    }
+<div class="cpanel floatr">
+        <div class="waper-ic">
+            <h3>Thành viên đăng nhập gần đây</h3>
+            <div class="div100">
+                <table class="adminlist">
+                    <thead>
+                        <tr>
+                            <th>Tên	</th>
+                            <th>Quyền</th>
+                            <th>Hoạt động cuối</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var member in Model)
+                        {
+                            <tr>
+                                <th scope="row"><a href="/admin/Membership/Details?id=@member.UserId">@member.Username</a></th>
+                                <td class="center">
+                                    @if (lstRole.Count() > 0)
+                                    {
+                                        var lstroles = lstRole.Where(m => m.UserId == member.UserId).ToList();
+                                        if (lstroles.Count() > 0)
+                                        {
+                                            foreach (var role in lstroles)
+                                            {
+                                                <text>
+                                                     @role.Role.Description<br />
+                                                </text>
+                                            }
+                                        }
+                                    }
+                                </td>
+                                <td class="center">@string.Format("{0:dd/MM/yyyy hh:mm:ss tt}", member.LastLoginDate)</td>
+
+                            </tr>
+                          
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!--end div100-->
+        </div>
+    </div>

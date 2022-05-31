@@ -1,0 +1,64 @@
+﻿@model  IEnumerable<BlueDataWeb.Models.Entites.ArchitectureNew>
+@{
+    var cate = (BlueDataWeb.Models.Entites.ArchitectureCategory)ViewBag.cate;
+    var cateChild = (List<BlueDataWeb.Models.Entites.ArchitectureCategory>)ViewBag.cateChild;
+    ViewBag.cateChild = cateChild;
+
+    var cateBietThu = cateChild.Where(x => x.KeyName == "thiet-ke-nha-biet-thu" && x.IsDeleted != true).First();
+    var catePho = cateChild.Where(x => x.KeyName == "thiet-ke-nha-pho" && x.IsDeleted != true).First();
+
+    var dsBietThu = Model.Where(x => x.CategoriesID == cateBietThu.ID).ToList().OrderByDescending(x => x.ID).Take(6);
+    var dsPho = Model.Where(x => x.CategoriesID == catePho.ID).ToList().OrderByDescending(x => x.ID).Take(6);
+}
+
+<div class="banner_quangcao">
+    <img src="~/Themes/easyweb/images/a11-0771.jpg">
+</div>
+<div class="group_thietke">
+    <div class="container">
+        <div class="title_thietke"><a href="/kien-truc/thiet-ke-kien-truc-1">thiết kế <span>kiến trúc</span></a></div>
+        <div class="group_kientruc_danhmuc">
+            <a class="active" id="btViewBT" onclick="LoadDataKT(1)">THIẾT KẾ NHÀ BIỆT THỰ</a>
+            <a class=""  id="btViewNhaPho" onclick="LoadDataKT(2)">THIẾT KẾ NHÀ PHỐ</a>
+        </div>
+        <div class="dsBietThu">
+            <div>
+                <div class="group_kientruc list">
+                    @foreach (var item in dsBietThu)
+                    {
+                        string link_detail = Url.RouteUrl("KienTrucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.ArchitectureCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.ID });
+                        <div class="item_kientruc">
+                            <a href="@link_detail">
+                                <img src="~/Images/News/@item.ImagePath" alt="@item.ShortDescription">
+                                <section>
+                                    <h3>@item.Title</h3>
+                                    <p>@item.ShortDescription</p>
+                                </section>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="dsPho" style="display:none">
+            <div>
+                <div class="group_kientruc list">
+                    @foreach (var item in dsPho)
+                    {
+                        string link_detail = Url.RouteUrl("KienTrucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.ArchitectureCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.ID });
+                        <div class="item_kientruc">
+                            <a href="@link_detail">
+                                <img src="~/Images/News/@item.ImagePath" alt="@item.ShortDescription">
+                                <section>
+                                    <h3>@item.Title</h3>
+                                    <p>@item.ShortDescription</p>
+                                </section>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿<div class="sidebar">
+
+    @Html.Partial("_A_Search")
+    @Html.Partial("_A_ContacOnline")
+    @{Html.RenderAction("NewHomeSideBar", "TinTuc", new { view = "_A_TinTucTop", page = 10 });}
+    @{Html.RenderAction("HinhAnhHome", "Home");}
+    @{Html.RenderAction("DoiTacHome", "Home");}
+    @Html.Partial("_A_FaceBook")
+    @Html.Partial("_A_ThongKe")
+</div>

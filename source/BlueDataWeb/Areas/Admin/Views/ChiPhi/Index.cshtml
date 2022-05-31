@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Price>
+@using BlueDataWeb.Models
+
+@{
+    ViewBag.Title = "Chi phi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+   
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Chi phí</span>
+    </div>
+
+    
+
+
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/ChiPhi/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Tên
+                </th>
+               
+                <th>
+                    Tổng giá
+                </th>
+              
+
+                <th width="100px"></th>
+            </tr>
+        </thead>
+
+       
+
+        <tbody>
+            @{
+                int num = 0;
+            }
+            @foreach (var item in Model)
+            {
+                num++;
+                <tr>
+                    <td style="width:5%">
+                        @num
+                    </td>
+                    <td style="width:40%">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @item.PriceChucNang
+                    </td>
+                    
+ 
+                    <td class="text-right">
+                        <div>
+                            <a class="button " title="Sửa" href="/admin/ChiPhi/Edit/@item.Id">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_edit.png" />
+                            </a>
+                            <a class="button " href="/admin/ChiPhi/Delete/@item.Id" title="Xóa">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_delete.png" />
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<!--end borall-->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

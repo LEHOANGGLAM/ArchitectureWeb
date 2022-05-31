@@ -1,0 +1,153 @@
+﻿@{
+    string AppName = System.Configuration.ConfigurationManager.AppSettings["AppName"].ToString();
+    string AppID = System.Configuration.ConfigurationManager.AppSettings["AppID"].ToString();
+
+}
+
+<div id="header">
+    <ul class="menumain">
+        <li>
+            <a href="~/" target="_blank">
+                @AppName
+            </a>
+        </li>
+        <li><a href="/admin/Setting/ClearCache">ClearCache </a></li>
+
+        <li><a href="/admin/Home/Index">Trang admin</a></li>
+        @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+        {
+            <li>
+                <a href="/admin/Image/Index">
+
+                    <span>Slider</span>
+                </a>
+            </li>
+
+        }
+        @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+        {
+            <li>
+                <a href="/admin/About/Index">
+
+                    <span>Giới thiệu</span>
+                </a>
+            </li>
+
+        }
+
+        @*@if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+        {
+            <li>
+                <a href="/admin/HuongDan/Index">
+
+                    <span>Hướng dẫn sử dụng</span>
+                </a>
+            </li>
+
+        }*@
+
+        @*@if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+            {
+                <li>
+                    <a href="/admin/ChucNang/Index">
+
+                        <span>Chức năng</span>
+                    </a>
+                </li>
+
+            }*@
+
+        @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+        {
+            <li>
+                <a href="/admin/TinTuc/Index">
+
+                    <span>Tin tức</span>
+                </a>
+            </li>
+
+        }
+
+        @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+        {
+            <li>
+                <a href="/admin/Contact/Index">
+
+                    <span>Liên hệ</span>
+                </a>
+            </li>
+
+        }
+
+        @*@if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+            {
+                <li>
+                    <a href="/admin/Partners/Index">
+
+                        <span>Khách hàng</span>
+                    </a>
+                </li>
+
+            }*@
+
+        @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+            {
+                <li>
+                    <a href="/admin/GiaiPhap/Index">
+
+                        <span>Giải pháp</span>
+                    </a>
+                </li>
+
+            }
+        @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+            {
+                <li>
+                    <a href="/admin/DichVu/Index">
+
+                        <span>DichVu</span>
+                    </a>
+                </li>
+
+            }
+
+        @if (User.IsInRole("Admin") || User.IsInRole("AdminAbout"))
+            {
+                <li>
+                    <a href="/admin/Outsourcing/Index">
+
+                        <span>Outsourcing</span>
+                    </a>
+                </li>
+
+            }
+
+        @*@if (User.IsInRole("Admin"))
+        {
+            <li>
+                <a href="/admin/BaoGia/Index">
+
+                    <span>Bảng giá</span>
+                </a>
+            </li>
+        }*@
+
+        @if (User.IsInRole("Admin"))
+        {
+            <li>
+                <a href="/admin/NewsCategory/Index">
+
+                    <span>Danh mục</span>
+                </a>
+            </li>
+        }
+    </ul>
+    <ul class="floatr menumain">
+        <li>
+            <a class="admin-ic" href="#">Hello ! @User.Identity.Name</a>
+            <ul class="subnav">
+                <li><a href="/admin/Membership/Profile">Profile</a></li>
+                <li><a href="/admin/Account/LogOff">Đăng Xuất</a></li>
+            </ul>
+    </ul>
+</div>

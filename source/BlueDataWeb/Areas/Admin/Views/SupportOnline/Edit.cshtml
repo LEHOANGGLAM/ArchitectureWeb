@@ -1,0 +1,72 @@
+﻿@model Sebox.Models.SupportOnline
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "SupportOnline", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Cập nhật Support</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/@Sebox.Models.GlobalVariables.PathFolderName/Support/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall mar10-->
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <div>
+                <fieldset class="fromlist">
+                    <ul>
+                        @Html.HiddenFor(model => model.SupportOnlineId)
+                    <li>
+                        @Html.LabelFor(model => model.Name, "Tên")
+                        @Html.TextBoxFor(model => model.Name, new { size = "70" })
+                        @Html.ValidationMessageFor(model => model.Name, null, new { @class = "validate" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.Phone, "Phone")
+                        @Html.TextBoxFor(model => model.Phone, new { size = "70" })
+                        @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "validate" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.yahoo, "Yahoo")
+                        @Html.TextBoxFor(model => model.yahoo, new { size = "70" })
+                        @Html.ValidationMessageFor(model => model.yahoo, null, new { @class = "validate" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.skype, "Skype")
+                        @Html.TextBoxFor(model => model.skype, new { size = "70" })
+                        @Html.ValidationMessageFor(model => model.skype, null, new { @class = "validate" })
+                    </li>
+                    <li class="toolbar">
+                        <label></label>
+                        @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "button_sm" })
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+        <!--end idTrangChuTren1-->
+    </div>
+</div>
+    <!--end mar10-->
+}

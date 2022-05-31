@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ExpressBD.Models.Image>
+@{
+    var img = Model.FirstOrDefault();
+}
+<!-- wrapSlide -->
+<div class="wrapSilde">
+    <div class="container">
+        <div class="divSlide">
+            <div class="bgFilBottom"></div>
+            <div class="slideLeft">
+                <div class="bgFilTop"></div>
+                <h3 class="nameCompany">
+                    CÔNG TY TNHH DỊCH VỤ CHUYỂN PHÁT NHANH
+                    <br>
+                    <span>BÌNH DƯƠNG MỚI</span>
+                </h3>
+                <p class="desCompany">
+                    Với đội ngũ cán bộ, nhân viên có kinh
+                    nghiệm nhiều năm trong ngành chuyển
+                    phát và cơ sở vật chất hùng hậu,New
+                    Binhduong hân hạnh đem đến cho Quý khách
+                    hàng dịch vụ chuyển phát nhanh Quốc tế tốt
+                    nhất tại Việt Nam thông qua 4 hãng chuyển
+                    phát nhanh lớn nhất trên thế giới: UPS,
+                    FedEx, TNT, DHL.
+                </p>
+            </div>
+            <div class="slideRight">
+                <div data-ride="carousel" class="carousel slide" id="myCarousel1">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <a href="@img.ImagePath">
+                                <img src="/Images/Sliders/@img.ImgName" class="img-responsive">
+                            </a>
+                        </div>
+                        @foreach (var item in Model.Where(m => m.ImageId != img.ImageId))
+                        {
+                            <div class="item">
+                                <a href="@item.ImagePath">
+                                    <img src="/Images/Sliders/@item.ImgName" class="img-responsive">
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    <a href="#myCarousel1" data-slide="prev"><span class="bx-prev"></span></a>
+                    <a href="#myCarousel1" data-slide="next"><span class="bx-next"></span></a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- End wrapSlide -->

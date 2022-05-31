@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+
+
+@if (Model.Count() > 0)
+{
+    <div class="row margin_Top_0">
+
+        <div class="col-md-12">
+            <div class="intro-comp">
+                <img src="/Content/images/bullter_red.gif" style="float: left; padding: 0px 5px;">
+
+                <h3 class="title-intro hongha">Tin khuyến mãi</h3>
+                @foreach (var item in Model)
+                {
+                    <p>
+                        <a href="@Url.RouteUrl("news", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })" class="descriptin_tinkhuyenmai">
+                            <span class="color_red">@string.Format("{0:dd/MM/yyyy}", item.CreatedDate)</span>
+                            @item.Description
+                        </a>
+                    </p>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+<br />

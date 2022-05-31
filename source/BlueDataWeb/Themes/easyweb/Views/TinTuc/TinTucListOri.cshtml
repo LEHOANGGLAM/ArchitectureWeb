@@ -1,0 +1,44 @@
+﻿@model List<BlueDataWeb.Models.Entites.News>
+
+@foreach (var item in Model)
+{
+    
+    string link_detail = Url.RouteUrl("TinTucDetail", new
+    {
+        cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.NewCategory.Name),
+        title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title),
+        id = item.NewsID
+    });
+
+    <div class="row item_tintuc">
+      
+            <div class="col-md-4">
+                <div>
+                    <a href="@link_detail" title="@item.Title">
+                        @if (string.IsNullOrWhiteSpace(item.ImagePath))
+                {
+                            <img class="img-thumbnail" src="~/Content/images/no-image-news.gif" alt="baohanhdientu" />
+                        }
+                        else
+                        {
+                            <img class="img-thumbnail" src="~/Images/News/@item.ImagePath" alt="@item.Title" />
+                        }
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-8">
+
+                <a href="@link_detail" class="title_sub" title="@item.Title">
+
+                    @item.Title
+                </a>
+                <p class="ellipsis ellipsis_75_pc">
+                    @Html.Raw(item.ShortDescription)
+                </p>
+            </div>
+       
+    </div>
+
+     
+
+}

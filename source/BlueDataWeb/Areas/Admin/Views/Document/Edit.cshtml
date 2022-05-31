@@ -1,0 +1,65 @@
+﻿@model BlueDataWeb.Models.Document
+
+@{
+    ViewBag.Title = "Sửa văn bản";
+}
+
+@using (Html.BeginForm("Edit", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Cập nhật văn bản</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/Document/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <div>
+                <fieldset class="fromlist">
+                    <ul>
+
+                        @Html.HiddenFor(model => model.DocID)
+                        @Html.HiddenFor(model => model.DateCreate)
+
+                        <li>
+                            @Html.LabelFor(model => model.Description, "Tên văn bản")
+                            @Html.TextBoxFor(model => model.Description, new { size = "150", maxlength = 500 })
+                            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "validate" })
+                        </li>
+
+                        <li>
+                            @Html.LabelFor(model => model.DocFileName, "File văn bản")
+                            <input type="file" name="img" id="img" />
+                            @Html.HiddenFor(m => m.DocFileName)
+                            @Html.ValidationMessageFor(model => model.DocFileName, null, new { @class = "validate" })
+                            @Model.DocFileName
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</div>

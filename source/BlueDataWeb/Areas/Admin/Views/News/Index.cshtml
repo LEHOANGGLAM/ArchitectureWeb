@@ -1,0 +1,113 @@
+﻿@model List<BlueDataWeb.Models.Entites.News>
+
+@{
+    ViewBag.Title = "Blog";
+
+}
+<div class="title_page">
+
+    <div class="row">
+        <div class="col-md-10">
+            <h4> @ViewBag.Title</h4>
+        </div>
+
+        <div class="col-md-2  txtRight">
+
+            <a class="btn btn-primary " href="~/admin/News/Create">
+                <i class="fa fa-plus">
+                </i>
+                Thêm mới
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            STT
+                        </th>
+                        <th>
+                            Tên
+                        </th>
+                        <th>
+                            Loại blog
+                        </th>
+                        <th>
+                            Vị trí
+                        </th>
+                        <th>
+                            Hình
+                        </th>
+
+                        <th>
+                            Ngày tạo
+                        </th>
+
+                        <th width="100px"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{
+                        int num = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        num++;
+                        <tr>
+                            <td style="width:5%">
+                                @num
+                            </td>
+                            <td style="width:40%">
+                                <a class="button " title="Sửa" href="/admin/News/Edit/@item.NewsID">
+
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </a>
+                            </td>
+                            <td>
+                                @item.NewCategory.Name
+                            </td>
+                            <td>
+                                @item.OrderBY
+                            </td>
+                            <td>
+                                <img src="/Images/News/@(item.ImagePath)" height="80" class="img-bordered" />
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", item.CreatedDate)</td>
+                            <td class="text-right">
+
+                                <a class="btn btn-success" title="Sửa" href="/admin/News/Create/@item.NewsID">
+
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+                                <a class="btn btn-danger" title="Sửa" href="/admin/News/Delete/@item.NewsID">
+
+                                    <i class="fa fa-recycle"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--end borall-->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+        $("#NewCategoriesID").change(function () {
+            alert("Handler for .change() called.");
+        });
+    </script>
+
+}

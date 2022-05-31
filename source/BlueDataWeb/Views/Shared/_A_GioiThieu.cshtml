@@ -1,0 +1,49 @@
+﻿@model List<BlueDataWeb.Models.Entites.About>
+<div class="panel ">
+    <div class="panel-heading">
+
+        <h3 class="title_left">
+            <a title="Giới thiệu" href="~/gioi-thieu">
+                <span>
+                    <i class="icon_sanpham"></i>
+
+                    Giới thiệu
+                </span>
+            </a>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="col-sm-6  ">
+            @foreach (var item in Model)
+            {
+
+                <div class="item_new">
+                    <div class="item_gt">
+
+                        <a class="img-hover thumbnail" title="@item.Name" href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID })">
+                            <img class="  img-responsive" src="~/Images/GioiThieu/@item.ImagePath" />
+                        </a>
+                    </div>
+                    <div class="item_new_right  ">
+                        <p>
+                            <a title="@item.Name" href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID })" class="text_gt">@item.Name</a>
+                        </p>
+                    </div>
+                </div>
+                <div class=" clearfix">
+                </div>
+            }
+            <p>
+                <a href="~/gioi-thieu" class="pull-right btn btn-success">Xem thêm</a>
+                <br />
+            </p>
+        </div>
+        <div class="col-sm-6    ">
+            <div class="map">
+ 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>

@@ -1,0 +1,103 @@
+﻿@model List<BlueDataWeb.Models.Entites.AboutCategory>
+@using BlueDataWeb.Models
+@{Layout = null;}
+
+@{
+    var CateRoot = ViewBag.Category as List<Category>;
+    int count = 0;
+}
+
+@for (int i = 0; i < CateRoot.Count(); i++)
+{
+    count++;
+    <div class="col-md-6">
+        @if (count == 1)
+        {
+            <a style="text-decoration:none" href="~/dich-vu">
+
+                <div class="clearfix" style="margin-bottom:2px">
+                    <h2 class="texth3 danhmucduan title-prod hongha">@CateRoot[i].CategoryName</h2>
+                </div>
+            </a>
+
+            <p class="img-prod">
+
+                <a class="danhmucduan hongha" href="~/dich-vu">
+                    <img alt="" src="~/Images/Service/@CateRoot[i].Image">
+                </a>
+            </p>
+        }
+        else
+        {
+            <a style="text-decoration:none" href="@Url.RouteUrl("indexgiaiphap", new { ten = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(@CateRoot[i].CategoryName), id = @CateRoot[i].CategoryID })">
+                <div class="clearfix" style="margin-bottom:2px">
+                    <h2 class="texth3 danhmucduan title-prod hongha">@CateRoot[i].CategoryName</h2>
+                </div>
+            </a>
+
+            <p class="img-prod">
+
+                <a class="danhmucduan hongha" href="@Url.RouteUrl("indexgiaiphap", new { ten = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(@CateRoot[i].CategoryName), id = @CateRoot[i].CategoryID })">
+                    <img alt="" src="~/Images/Service/@CateRoot[i].Image">
+                </a>
+            </p>
+        }
+
+        <div class="note-prod">
+
+            @CateRoot[i].Description
+            @if (count != 1)
+            {
+
+                <div style="float: right; color: red; "><a class="danhmucduan hongha" href="@Url.RouteUrl("indexgiaiphap", new { ten = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(@CateRoot[i].CategoryName), id = @CateRoot[i].CategoryID })">&gt;&gt; Xem thêm</a></div>
+            }
+            <ul class="list_item">
+                <!--không gét danh sách tin tức lên nữa, mà link tới phần dịch vụ-->
+                @*@if (count == 1)
+                    {
+                        var listCateChirl = Model.Where(x => x.TinhTrang == CateRoot[i].CategoryID).ToList();
+                        for (int j = 0; j < listCateChirl.Count; j++)
+                        {
+                            <li>
+                                <a class="danhmucduan hongha" href="@Url.RouteUrl("giaiphap", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(@listCateChirl[j].Name), id = @listCateChirl[j].AboutID })">
+                                    @listCateChirl[j].Name
+                                </a>
+                            </li>
+                        }
+                    }*@
+                @if (count == 1)
+                {
+                    <li>
+                        <a href="~/dich-vu-sms-brandname">
+                            <i class="glyphicon glyphicon-hand-right " style="float: left; margin: 10px;"></i>
+                            <h2 class="danhmucduan hongha h2_text"> SMS BrandName</h2>
+                        </a>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <a href="~/dich-vu-sms-hosting">
+                            <i class="glyphicon glyphicon-hand-right " style="float: left; margin: 10px;"></i>
+                            <h2 class="danhmucduan hongha h2_text">SMS Hosting</h2>
+                        </a>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <a href="~/dich-vu-sms-2ways">
+                            <i class="glyphicon glyphicon-hand-right " style="float: left; margin: 10px;"></i>
+                            <h2 class="danhmucduan hongha h2_text">SMS 2ways</h2>
+                        </a>
+                        <div class="clearfix"></div>
+                    </li>
+
+                    <li>
+                        <a href="~/dich-vu-dau-so-sms">
+                            <i class="glyphicon glyphicon-hand-right " style="float: left; margin: 10px;"></i>
+                            <h2 class="danhmucduan hongha h2_text">Đầu số SMS</h2>
+                        </a>
+                        <div class="clearfix"></div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

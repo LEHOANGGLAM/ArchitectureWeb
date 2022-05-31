@@ -1,0 +1,44 @@
+﻿@model BlueDataWeb.Models.Entites.News
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+    var lstAllSanPham = (List<BlueDataWeb.Models.Entites.News>)ViewBag.lstAllSanPham;
+
+}
+
+<div>
+    <div class="container-fluid clearfix About">
+        <div class="container clearfix">
+            <div class="container clearfix TitleSection">
+                <header class="page-head">
+                    <h1>@Model.Title  </h1>
+                </header>
+            </div>
+            <div class="container clearfix">
+
+                <div class="row-fluid">
+                    <div class="span9">
+                        @Html.Raw(Model.Description)
+                    </div>
+
+                    <div class="span3 sibar">
+                        <ul class="menu_sibar">
+                            @foreach (var item in lstAllSanPham)
+                            {
+                                <li>
+                                    <a title="@item.Title" href="@Url.RouteUrl("chucnangdetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })" class="">
+
+                                        @item.Title
+                                    </a>
+                                </li>
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

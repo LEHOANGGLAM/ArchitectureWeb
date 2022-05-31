@@ -1,0 +1,106 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Image>
+
+@using BlueDataWeb.Models.Entites
+
+@{
+    ViewBag.Title = "Slider ";
+
+}
+<div class="title_page">
+
+    <div class="row">
+        <div class="col-md-10">
+            <h4> @ViewBag.Title</h4>
+        </div>
+
+        <div class="col-md-2  txtRight">
+
+            <a class="btn btn-primary " href="~/admin/Slider/Create">
+                <i class="fa fa-plus">
+                </i>
+                Thêm mới
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Hình
+                        </th>
+                        <th>
+                            Đường dẫn
+                        </th>
+                        <th>
+                            Loại
+                        </th>
+                       
+                        <th>
+                         Ẩn/hiện
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="/Images/Sliders/@item.ImgName" height="70" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ImagePath)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Type)
+                            </td>
+                          
+                            <td style="width: 81px;">
+
+                                @if (@item.IsShow == true)
+                                {
+                                    <i class="fa fa-check"></i>
+                                }
+                                else
+                                {
+                                    
+                                }
+                            </td>
+
+                            <td class="text-right">
+
+                                <a class="btn btn-success" title="Sửa" href="/admin/Slider/Create/@item.ImageId">
+
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+                                <a class="btn btn-danger" title="Sửa" href="/admin/Slider/Delete/@item.ImageId">
+
+                                    <i class="fa fa-recycle"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--end borall-->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+         
+    </script>
+
+}

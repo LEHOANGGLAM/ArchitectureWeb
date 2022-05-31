@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+@{
+    Layout = null;
+
+}
+<div class="wrap-customer">
+    <div><h3 class="title-side hongha">Đối tác, khách hàng</h3></div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="new-up">
+            <div class="img-new">
+                <a href="@Url.RouteUrl("news", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+                    <img src="~/Images/News/@item.ImagePath" />
+                </a>
+            </div>
+            <div class="new-des">
+                <p class="date">@string.Format("{0:dd/MM/yyyy}", item.CreatedDate)</p>
+
+                <a href="@Url.RouteUrl("news", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+                    <h2 class="content_new">
+
+
+                        @item.Title
+
+
+                    </h2>
+                </a>
+
+
+
+            </div>
+        </div>
+        <div class="clearfix"></div><!-- //NEWS -->
+                <!-- NEWS -->
+
+    }
+</div>

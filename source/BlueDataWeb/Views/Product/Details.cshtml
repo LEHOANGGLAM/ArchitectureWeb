@@ -1,0 +1,119 @@
+﻿@model BlueDataWeb.Models.Product
+@using BlueDataWeb.Models.Entites;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="warperSlideProd">
+                <div class="container">
+                   
+                                 <div id="w" class="clearfix">
+    <ul id="sidemenu">
+      <li>
+        <a href="#home-content" class="open"><i class="icon-home icon-large"></i><strong>Thông tin chung</strong></a>
+      </li>
+
+      <li>
+        <a href="#about-content"><i class="icon-info-sign icon-large"></i><strong>Vị trí</strong></a>
+      </li>
+      
+      <li>
+        <a href="#ideas-content"><i class="icon-lightbulb icon-large"></i><strong>Tiện ích</strong></a>
+      </li>
+      
+      <li>
+        <a href="#contact-content"><i class="icon-envelope icon-large"></i><strong>Mặt bằng thiết kế</strong></a>
+      </li>
+        <li>
+        <a href="#home-img"><i class="icon-envelope icon-large"></i><strong>Hình ảnh</strong></a>
+      </li>
+        <li>
+        <a href="#home-thanhtoan"><i class="icon-envelope icon-large"></i><strong>Phương thức thanh toán</strong></a>
+      </li>
+          <li>
+        <a href="#home-video"><i class="icon-envelope icon-large"></i><strong>Video Clip</strong></a>
+      </li>
+    </ul>
+    
+    <div id="content">
+        <div id="home-content" class="contentblock">
+            @Html.Raw(Model.ShortDecription)
+        </div><!-- #home-content -->
+        
+        
+        <div id="about-content" class="contentblock hidden">
+             @Html.Raw(Model.Description)
+        </div><!--  #about-content -->
+        
+        <div id="ideas-content" class="contentblock hidden">
+             @Html.Raw(Model.gadget)
+        </div><!--  #ideas-content -->
+        
+        <div id="contact-content" class="contentblock hidden">
+             @Html.Raw(Model.HighLight)
+        </div><!-- #contact-content -->
+
+         <div id="home-img" class="contentblock hidden">
+              @Html.Raw(Model.Codition)
+        </div><!-- #home-content -->
+          <div id="home-thanhtoan" class="contentblock hidden">
+              @Html.Raw(Model.payment)
+        </div><!-- #home-content -->
+          <div id="home-video" class="contentblock hidden">
+              @Html.Raw(Model.video)
+        </div><!-- #home-content -->
+    </div><!--  #content -->
+  </div><!-- #w -->
+
+                </div>	
+                </div>				
+            <!-- End Warper Sidle Product-->
+              <div class="clearfix"></div>
+<script type="text/javascript">
+   
+    $("a.open").parents('li').addClass("bgopen");
+    $(function () {
+        $('#sidemenu a').on('click', function (e) {
+            e.preventDefault();
+
+            if ($(this).hasClass('open')) {
+                // do nothing because the link is already open
+            } else {
+                var oldcontent = $('#sidemenu a.open').attr('href');
+                var newcontent = $(this).attr('href');
+
+                $(oldcontent).fadeOut('fast', function () {
+                    $(newcontent).fadeIn().removeClass('hidden');
+                    $(oldcontent).addClass('hidden');
+                });
+
+
+                $('#sidemenu a').removeClass('open');
+                $("#sidemenu li").removeClass("bgopen");
+                $(this).addClass('open');
+                $(this).parents('li').addClass('bgopen');
+            }
+        });
+    });
+
+    $(document).ready(function () {
+
+        $('#sidemenu').scrollToFixed({
+            marginTop: $('.divHead').outerHeight(true) + 10,
+            limit: function () {
+                var limit = $('.divFooter').offset().top - $('#sidemenu').outerHeight(true) - 10;
+                return limit;
+            }
+        });
+    });
+
+    $(function () {
+        jQuery("img").lazyload({
+            placeholder: "http://nhadatxanh.com.vn/Content/images/grey.gif",
+            effect: "fadeIn",
+            threshhold: 200
+        });
+    });
+
+
+</script>

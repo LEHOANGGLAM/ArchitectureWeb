@@ -1,0 +1,132 @@
+﻿@model BlueDataWeb.Models.CustomsModel.ContactModels
+ 
+@{
+
+    var NewsList = ViewBag.GioiThieu as List<BlueDataWeb.Models.Entites.About>;
+
+}
+ 
+
+
+<div class="view_xam">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="~/">Trang chủ</a> <i class="fa fa-angle-right"></i> </li>
+                        <li class="breadcrumb-item  "><a href="~/lien-he">Liên hệ  <i class="fa fa-angle-right"></i></a></li>
+                        <li class="breadcrumb-item  active"><a href="~/lien-he/Thanks">Cảm ơn </a></li>
+                        
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="view_white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 border-right">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" style=" font-weight:bold;font-family:arial,sans-serif;font-size:20px;word-break:break-word;color:#0046b9">Xác nhận thành công!</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:19px 7% 22px;font-family:arial,sans-serif;font-size:13px;line-height:21px;word-break:break-word;color:#515358">
+                                                Chào Anh/Chị!<br><br>
+                                                Chúng tôi xác nhận Anh/Chị đã thành công trong việc liên hệ đến chúng tôi để đăng ký dịch vụ hoăc yêu cầu cung cấp thông tin về các giải pháp công nghệ trên website <b>baohanhdientu.net</b><br>
+                                                Đồng thời, Anh/Chị cũng sẽ nhận được một email thông báo tự động.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" style="padding:0 7%">
+
+                                                <table cellpadding="0" cellspacing="0" border="0" height="42">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td bgcolor="#1e82ff" align="center" style="border-radius:3px;height:42px;padding:0 35px;text-align:center"><a href="http://xacthucdientu.com.vn/" style="color:#fff;text-decoration:none;display:block;padding:11px 0 10px;font-size:14px;word-break:break-word;font-family:arial,sens-serif" target="_blank">XÁC THỰC ĐIỆN TỬ</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="22"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:0 7%">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="border:1px solid #ebebeb;padding:18px;background:#f8f8f8;font-size:13px;word-break:break-all;font-family:arial,sens-serif;line-height:1.5;color:#515358">
+                                                                Ngoài ra, chúng tôi cũng đang triển khai các giải pháp công nghệ Xác thực điện tử, chống hàng giả, truy xuất nguồn gốc trên nền Web. Anh/Chị chỉ cần click link ở trên để tham khảo các thông tin.<br>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:21px 7% 0;font-family:arial,sans-serif;font-size:13px;line-height:21px;word-break:break-word;color:#515358">
+                                                Trân trọng,<br>
+                                                Công ty TNHH Công nghệ Blue Data.<br>
+                                                <a href="http://www.bluedata.vn/">www.bluedata.vn</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" style="padding:0 0 80px;font-family:arial,sans-serif;font-size:11px;line-height:18px;word-break:break-word;color:#a1a1a1">
+                                                <br>
+                                                This is a notification to let you know the important changes related to using our  online services.<br>
+                                                Have questions? We’re here to help! <a href="http://www.baohanhdientu.net/lien-he" style="color:#a1a1a1;text-decoration:underline" target="_blank">Contact us</a> anytime!
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="sidebar one_quarter">
+
+                    <div class="list-group rounded-top">
+
+                        <a href="#" class="list-group-item active waves-light">Giới thiệu</a>
+
+                        @foreach (var item in NewsList)
+                        {
+
+                            <a href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID })" class="list-group-item waves-effect">
+                                <i class="icon_list_blue">
+                                </i>
+                                @item.Name
+                            </a>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 

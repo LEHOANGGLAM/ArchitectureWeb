@@ -1,0 +1,32 @@
+﻿@model BlueDataWeb.Models.AboutCategory
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $('.topDuAn').dotdotdot();
+    });
+</script>
+
+<div class="col-md-5 paddingleft0">
+    @if (Model.LargeImage == null)
+    {
+        <img src="~/Content/images/no-image-news.gif" />
+    }
+    else
+    {
+        <img src="~/Images/Service/@Model.LargeImage" class="img-thumbnail">
+    }
+</div>
+
+<div class="col-md-7 paddingleft0 ">
+    <div>
+        <a style="font-size: 18px;"
+           href="@Url.RouteUrl("giaiphap", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.Name), id = Model.AboutID })" class=" hongha">
+            <h2 class="texth2 hongha">
+                @Model.Name
+            </h2>
+        </a>
+    </div>
+    <div style="text-align:justify">
+        @Html.Raw(@Model.ShortDescription)
+    </div>
+    <div class="clearfix"></div>
+</div>

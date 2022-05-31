@@ -1,0 +1,75 @@
+﻿@model ExpressBD.Models.AboutCategory
+@using ExpressBD.Models;
+
+@{
+     var ServiceList = (List<AboutCategory>)ViewBag.lstservice; 
+}
+
+<!-- wrapBeacrum -->
+    <div class="wrapBeacrum">
+        <div class="container">
+            <div class="divBeacrum">
+                <div class="divSearch">
+                    <div class="search">
+                        <input type="text" class="textbox" placeholder="Find a....">
+                        <button type="button" class="btnSearch"></button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="divBeacrumR">
+                    <a href="~/" class="icHome">Trang chủ</a>
+                    <span class="sep">/</span>
+                    <a href="@Url.RouteUrl("servicesexpress")">Services</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End wrapBeacrum -->
+    <div class="wrapContentPage">
+        <div class="container">
+            <div class="divContentPage">
+                <div class="divComboxMb bgGd">
+                    <select class="comboxMb">
+                         @foreach (var item in ServiceList)
+                         {
+                            <option>@item.Name</option>
+                         }
+                    </select>
+                </div>
+                <div class="divSideBar">
+                    <ul class="listSideBar">
+                       @foreach (var item in ServiceList)
+                       {
+                            <li><a href="@Url.RouteUrl("services", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.AboutID })">@item.Name</a></li> 
+                       }
+                    </ul>
+                    <div class="divLogoCus">
+                        <a href="http://www.ups.com/tracking/tracking.html">
+                            <img src="~/Content/data/logo1.png"></a>
+                        <a href="https://www.fedex.com/fedextrack/">
+                            <img src="~/Content/data/logo2-2.png"></a>
+                        <a href="http://www.dhl.com/en.html">
+                            <img src="~/Content/data/logo3-1.png"></a>
+                        <a href="http://www.tnt.com/webtracker/tracker.do?navigation=1&respLang=en&respCountry=au">
+                            <img src="~/Content/data/logo4-1.png"></a>
+                    </div>
+                </div>
+                <div class="divDesContentL">
+                    <div class="divDesContent">
+                        <div class="imgSum">
+                             <img src="~/Images/Service/@Model.LargeImage">
+                            <span class="sPan">@Html.Raw(Model.ShortDescription)</span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="des">
+                           @Html.Raw(Model.Contents)
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+

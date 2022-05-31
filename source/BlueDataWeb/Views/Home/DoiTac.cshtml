@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "Đối tác";
+}
+<style>
+
+    .modal-header {
+        background: #459810 none repeat scroll 0 0 !important;
+        border-bottom: 1px solid #e5e5e5;
+        color: white;
+        font-family: tahoma;
+        font-weight: bold;
+        min-height: 16.4286px;
+        padding: 15px;
+    }
+    .modal-footer {
+        background: #a1f46c none repeat scroll 0 0 !important;
+        border-top: 1px solid #e5e5e5;
+        margin-top: 15px;
+        padding: 8px 4px !important;
+        text-align: right;
+    }
+
+    .modal-dialog {
+        left: 50%;
+        margin-top: 5%;
+        padding-bottom: 30px;
+        right: auto;
+        width: 600px;
+    }
+</style>
+@model IEnumerable<BlueDataWeb.Models.Entites.Image>
+
+<div class="clearfix"></div>
+
+@{Html.RenderAction("ViewSider", "Sider", new { typleSider = "E_TinTuc" });}
+
+<div class="container body-content">
+
+    <div class="row">
+
+        <div class="col-md-12 main-content padding0">
+
+            <div class="panel ">
+                <div class="panel-heading">
+                    <div class="tilte_green">
+                        <span> <i class="icon_sanpham"></i> Đối tác</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-md-3 col-sm-4 col-xs-12   ">
+                 
+                            @*<a class=" " style="height:310px; display:block" href="#" data-image-id="@item.ImageId" data-toggle="modal"
+                               data-title="@item.ImageTile" data-link="@item.ImagePath" data-caption="@item.Description" data-image="/Images/Partners/@item.ImgName" data-target="#image-gallery">
+                                <div style="height:250px; display:block ;  " class="thumbnail">
+                                    <img class="img-responsive" src="/Images/Partners/@item.ImgName" alt="@item.ImageTile">
+                                </div>
+
+                                <div style="padding: 0px 5px;">
+                                    <h3 class="hongha dot_title dot_Des title_big">
+                                        @item.ImageTile
+                                    </h3>
+                                </div>
+                            </a>*@
+
+                            <a class="thumbnail" style="height:310px;"href=" #" data-image-id="" data-toggle="modal"
+                               data-title="@item.ImageTile" data-link="@item.ImagePath" data-caption="@item.Description" data-image="/Images/Partners/@item.ImgName" data-target="#image-gallery">
+                                <div style="height:250px; display:block ;  ">
+                                    <img class="img-responsive" src="/Images/Partners/@item.ImgName" alt="@item.ImageTile">
+                                </div>
+
+
+                                <div style="padding: 0px 5px;">
+                                    <h3 class="hongha dot_title dot_Des title_big">
+                                        @item.ImageTile
+                                    </h3>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="" src="" style="margin:0 auto; display:block">
+
+                <div class="col-md-8 text-justify">
+
+                    <span>
+                       <b> Website:</b>  <a href="#" target="_blank" id="image-gallery-link">
+                            <span id="image-gallery-linkText"></span>
+                        </a>
+                    </span>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary" id="show-previous-image">Trước</button>
+                </div>
+
+
+              
+
+                <div class="col-md-8 text-justify" id="image-gallery-caption">
+                    
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" id="show-next-image" class="btn btn-default">Sau</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            loadGallery(true, 'a.thumbnail');
+
+            //This function disables buttons when needed
+            function disableButtons(counter_max, counter_current) {
+                $('#show-previous-image, #show-next-image').show();
+                if (counter_max == counter_current) {
+                    $('#show-next-image').hide();
+                } else if (counter_current == 1) {
+                    $('#show-previous-image').hide();
+                }
+            }
+
+            @*/**
+             *
+             * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+             * @param setClickAttr  Sets the attribute for the click handler.
+             */*@
+
+            function loadGallery(setIDs, setClickAttr) {
+                var current_image,
+                    selector,
+                    counter = 0;
+
+                $('#show-next-image, #show-previous-image').click(function () {
+                    if ($(this).attr('id') == 'show-previous-image') {
+                        current_image--;
+                    } else {
+                        current_image++;
+                    }
+
+                    selector = $('[data-image-id="' + current_image + '"]');
+                    updateGallery(selector);
+                });
+
+                function updateGallery(selector) {
+                    var $sel = selector;
+                    current_image = $sel.data('image-id');
+                    $('#image-gallery-caption').text($sel.data('caption'));
+                    $('#image-gallery-title').text($sel.data('title'));
+                    $('#image-gallery-image').attr('src', $sel.data('image'));
+                    $('#image-gallery-link').attr('href', $sel.data('link'));
+                    $('#image-gallery-linkText').text($sel.data('link'));
+
+                    disableButtons(counter, $sel.data('image-id'));
+                }
+
+                if (setIDs == true) {
+                    $('[data-image-id]').each(function () {
+                        counter++;
+                        $(this).attr('data-image-id', counter);
+                    });
+                }
+                $(setClickAttr).on('click', function () {
+                    updateGallery($(this));
+                });
+            }
+        });
+    </script>
+}

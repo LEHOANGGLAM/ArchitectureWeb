@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ExpressBD.Models.Image>
+<div class="slider_dichvu">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            @{
+                var num = 0;
+            }
+            @foreach (var item in Model)
+            {
+                string class_active = "";
+                if (num == 0)
+                {
+                    class_active = "active";
+                }
+                else
+                {
+                    class_active = "";
+                }
+                <li data-target="#myCarousel" data-slide-to="@num" class="@class_active"></li>
+                num++;
+            }
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            @{
+                num = 0; string class_active1 = "";
+            }
+            @foreach (var item in Model)
+            {
+
+                if (num == 0)
+                {
+                    class_active1 = "active";
+                }
+                else
+                {
+                    class_active1 = "";
+                }
+                <div class="item @class_active1">
+                    <a href="@item.ImagePath">
+                        <img src="~/Images/Sliders/@item.ImgName" />
+
+                        @if (!string.IsNullOrWhiteSpace(item.Description))
+                        {
+                            <div class=" sliderCaption ">
+
+                                @Html.Raw(item.Description)
+                            </div>
+                        }
+                    </a>
+                </div>
+
+                        num++;
+            }
+        </div>
+
+        <!-- Left and right controls -->
+        <a href="#myCarousel" data-slide="prev"><span class="flex-prev"></span></a>
+        <a href="#myCarousel" data-slide="next"><span class="flex-next"></span></a>
+    </div>
+</div>

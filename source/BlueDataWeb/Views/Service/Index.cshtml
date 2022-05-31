@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ExpressBD.Models.AboutCategory>
+@using ExpressBD.Models;
+@{
+    ViewBag.Title = "Services";
+    ViewBag.Description = "Chuyển phát nhanh chuyên tuyến Việt Nam - Âu, mỹ, úc, canada, HongKong, Macao, Đài Loan (door to door) , Chau a, chau au, chau my, chau uc,Uy tín, giá rẻ nhất";
+    ViewBag.Keywords = "gui hang di nuoc ngoai, chuyen phat nhanh quoc te, chuyen phat nhanh viet nam quoc te, chuyen phat nhanh quoc te viet nam, chuyen phat nhanh di quoc te";
+    AboutCategory service = Model.FirstOrDefault();
+    int count = 0;
+}
+
+ <!-- wrapBeacrum -->
+    <div class="wrapBeacrum">
+        <div class="container">
+            <div class="divBeacrum">
+                <div class="divSearch">
+                    <div class="search">
+                        <input type="text" class="textbox" placeholder="Find a....">
+                        <button type="button" class="btnSearch"></button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="divBeacrumR">
+                    <a href="~/" class="icHome">Trang chủ</a>
+                    <span class="sep">/</span>
+                    <a href="@Url.RouteUrl("servicesexpress")">Services</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End wrapBeacrum -->
+    <div class="wrapContentPage">
+        <div class="container">
+            <div class="divContentPage">
+                <div class="divComboxMb bgGd">
+                    <select class="comboxMb">
+                         @foreach (var item in Model)
+                         {
+                            <option>@item.Name</option>
+                         }
+                    </select>
+                </div>
+                <div class="divSideBar">
+                    <ul class="listSideBar">
+                       @foreach (var item in Model)
+                       {
+                           if (Request.RawUrl == "/Service/Index" && count == 0)
+                           {
+                            <li class="acitve"><a href="@Url.RouteUrl("services", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.AboutID })">@item.Name</a></li> 
+                         }
+                         else
+                         {
+                            <li><a href="@Url.RouteUrl("services", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.AboutID })">@item.Name</a></li> 
+                               
+                           }
+                           count++;
+                       }
+                    </ul>
+                    <div class="divLogoCus">
+                        <a href="#">
+                            <img src="~/Content/data/logo1.png"></a>
+                        <a href="#">
+                            <img src="~/Content/data/logo2-2.png"></a>
+                        <a href="#">
+                            <img src="~/Content/data/logo3-1.png"></a>
+                        <a href="#">
+                            <img src="~/Content/data/logo4-1.png"></a>
+                    </div>
+                </div>
+                <div class="divDesContentL">
+                    <div class="divDesContent">
+                        <div class="imgSum">
+                            <img src="~/Images/Service/@service.LargeImage">
+                            <span class="sPan">@Html.Raw(service.ShortDescription)</span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="des">
+                           @Html.Raw(service.Contents)
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>

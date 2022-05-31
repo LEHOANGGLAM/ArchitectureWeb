@@ -1,0 +1,72 @@
+﻿@model BlueDataWeb.Models.ContactModels
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@using (Html.BeginForm("PartialContact", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="form_suppor_dichvu">
+        <div class="container body-content">
+            <div class="row margin_Top_0">
+                <div class="col-md-3 ">
+                    <span class="b-titile_suppor">THÔNG TIN LIÊN HỆ </span>
+
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Họ tên">
+                        @Html.ValidationMessageFor(m => m.Name)
+                        <input type="text" class="form-control" id="congty" placeholder="Công ty">
+                        @Html.ValidationMessageFor(m => m.Name)
+                        <input type="text" class="form-control" id="diachi" placeholder="Địa chỉ">
+                        <input type="text" class="form-control" id="Email" name="Email" placeholder="Email">
+                        @Html.ValidationMessageFor(m => m.Email)
+                        <input type="text" class="form-control" id="Phone" name="Phone" placeholder="Điện thoại">
+                        @Html.ValidationMessageFor(m => m.Phone)
+                    </div>
+                </div>
+
+                <div class="col-md-3 ">
+                    <span class="b-titile_suppor">DỊCH VỤ HỖ TRỢ</span>
+
+                    <div class="form-group">
+
+                        <label style="font-weight:bold">Gói dịch vụ:</label>
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="Brandname"> SMS Brandname</label><br />
+                            <label><input type="checkbox" id="Hosting">    SMS Hosting</label><br />
+                            <label><input type="checkbox" id="2ways">   SMS Hai Chiều</label><br />
+                            <label><input type="checkbox" id="DauSoSMS">  Đầu số SMS</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 ">
+
+                    <span class="b-titile_suppor">MÔ TẢ DỊCH VỤ</span>
+
+                    <label style="font-weight:bold">  Mô tả  dịch vụ:</label>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id=""> Chỉ dùng SMS để quảng cáo và chăm sóc khách hàng</label><br />
+
+                        <label><input type="checkbox" id=""> Tích hợp API SMS vào phầm mềm, website...</label>
+                    </div>
+                </div>
+
+                <div class="col-md-3 ">
+                    <span class="b-titile_suppor">GHI CHÚ </span>
+
+                    <textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
+                    @Html.ValidationMessageFor(m => m.contents)
+                </div>
+
+            </div>
+
+            <div class="row margin_Top_0" style="text-align: center; border-bottom:2px solid white; padding-bottom:4px">
+                <input type="submit" name="send" value="GỬI" class="btn btn-primary btn-warning">
+            </div>
+        </div>
+    </div>
+}
+
+
+

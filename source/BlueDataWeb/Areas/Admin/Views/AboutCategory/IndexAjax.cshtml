@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.AboutCategory> 
+ <div class="clear0"></div>
+    <div class="borall mar10">
+        <ul class="menumain">
+            <li><a href="#">Thể loại</a></li>
+            <li><a href="#">Sản phẩm</a></li>
+            <li><a href="#">Đặt Hàng</a></li>
+            <li><a href="#">Khách Hàng</a></li>
+        </ul>
+    </div>
+    <!--end borall mar10-->
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <table class="formtable textformat">
+            <tbody>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                   
+                    <th style="width: 80px">Action</th>
+                </tr>
+
+                 @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>|— |— <b><a href="#">
+                            @Html.DisplayFor(modelItem => item.Name)</a></b>
+                        </td>
+                        
+                        <td>
+                            <a class="button blue" title="Sửa" href="/admin/AboutCategory/Edit?id=@item.AboutID">
+                                <div class="icon">
+                                    <p class="ic-edit"></p>
+                                </div>
+                            </a>
+                            <a class="button red" href="/admin/AboutCategory/Delete?id=@item.AboutID" title="Xóa">
+                                <div class="icon">
+                                    <p class="ic-delete"></p>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    var lstcatelv2 = Model.Where(m => m.Parentcate == item.AboutID).ToList();
+                    foreach (var itemlv2 in lstcatelv2)
+                    {
+                         <tr>
+
+                        <td>|— |— |— <b><a href="#">
+                            @Html.DisplayFor(modelItem => itemlv2.Name)</a></b>
+                        </td>
+                        
+                        <td>
+                            <a class="button blue" title="Sửa" href="/admin/AboutCategory/Edit?id=@itemlv2.AboutID">
+                                <div class="icon">
+                                    <p class="ic-edit"></p>
+                                </div>
+                            </a>
+                            <a class="button red" href="/admin/AboutCategory/Delete?id=@itemlv2.AboutID" title="Xóa">
+                                <div class="icon">
+                                    <p class="ic-delete"></p>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+    </div>
+    <!--end mar10-->
+    <div class="clear"></div>
+    <div class="mar10">
+        @using (Ajax.BeginForm(new AjaxOptions
+            {
+                UpdateTargetId = "result",
+                InsertionMode = InsertionMode.Replace
+            }))
+        {
+            var pi = BlueDataWeb.Utility.PagerInfo.Get("AboutCategory", 10);
+       
+            <input class="buttonpage" type="submit" value="<< " name="PageNo:0" />
+            <input class="buttonpage"  title="Previous" type="submit" value="<" name="PageNo:@(pi.PageNo - 1)" />
+            for (var i = pi.PageNo - 3; i < pi.PageNo; i++)
+            {
+                if (i >= 0)
+                {
+            <input class="buttonpage"  title="Next" type="submit" value="@i" name="PageNo:@i" />
+                }
+            }
+            <input class="buttonpage pagenaviselect" title="Next" type="submit" value="@pi.PageNo" name="PageNo:@(pi.PageNo)" />
+            for (var i = pi.PageNo + 1; i < pi.PageNo + 3; i++)
+            {
+                if (i < pi.PageCount)
+                {
+            <input class="buttonpage"  title="Next" type="submit" value="@i" name="PageNo:@i" />
+                }
+            }
+            <input class="buttonpage"  title="Next" type="submit" value=">" name="PageNo:@(pi.PageNo + 1)" />
+            <input class="buttonpage"  type="submit" value=" >>" name="PageNo:@(pi.LastPageNo)" />
+      
+        }
+    </div>

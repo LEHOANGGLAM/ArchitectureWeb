@@ -1,0 +1,18 @@
+﻿@model  IEnumerable<BlueDataWeb.Models.Entites.ArchitectureNew>
+
+<div class="title_m"><a href="/kien-truc/phong-thuy-9">PHONG THUỶ NHÀ Ở</a> </div>
+<div class="group_phongthuynhadep">
+    @foreach (var item in Model)
+    {
+        string link_detail = Url.RouteUrl("KienTrucDetail", new {title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.ID });
+
+        <a class="clearfix d-block" href="@link_detail">
+            <img src="~/Images/News/@item.ImagePath" alt="@item.ShortDescription">
+            <h3 class="m-0">@item.Title</h3>
+            <p>@item.ShortDescription</p>
+        </a>
+    }
+
+
+</div>
+<a href="/kien-truc/phong-thuy-9" class="btn_xemthem">Xem thêm--</a>

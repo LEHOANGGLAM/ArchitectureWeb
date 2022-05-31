@@ -1,0 +1,32 @@
+[
+  {
+    "outputFileName": "Themes/easyweb/css/customcss.min.css",
+    "inputFiles": [
+      "Themes/easyweb/css/customcss.css"
+    ]
+  },
+  {
+    "outputFileName": "Themes/easyweb/css/js/global.min.js",
+    "inputFiles": [
+      "Themes/easyweb/css/js/global.js"
+    ]
+  },
+  {
+    "outputFileName": "Themes/easyweb/css/js/materialize.min.js",
+    "inputFiles": [
+      "Themes/easyweb/css/js/materialize.js"
+    ]
+  },
+  {
+    "outputFileName": "Themes/easyweb/css/js/lazyload.min.js",
+    "inputFiles": [
+      "Themes/easyweb/css/js/lazyload.js"
+    ]
+  },
+  {
+    "outputFileName": "Themes/easyweb/css/js/intersection-observer.min.js",
+    "inputFiles": [
+      "Themes/easyweb/css/js/intersection-observer.js"
+    ]
+  }
+]

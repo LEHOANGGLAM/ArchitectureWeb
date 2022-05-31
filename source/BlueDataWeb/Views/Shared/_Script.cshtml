@@ -1,0 +1,67 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $('.time').each(function () {
+            var $this = $(this).find('.cdown');
+            var count = parseInt($($this).text());
+            var $time = $(this).find('.multi_clockss');
+
+            var $seconds = $(this).find('#seconds')
+            var $minutes = $(this).find('#minutes')
+            var $hours = $(this).find('#hours')
+            var $daysLeft = $(this).find('#daysLeft')
+
+            var $secondss = $(this).find('#secondss')
+            var $minutess = $(this).find('#minutess')
+            var $hourss = $(this).find('#hourss')
+            var $daysLefts = $(this).find('#daysLefts')
+
+
+            if (count > 0) {
+                    countdown = setInterval(function () { 
+                        var h = Math.floor(count / 3600);
+                        var p = Math.floor((count - h * 3600) / 60);
+                        var g = count - h * 3600 - p * 60;
+
+                        var d = Math.floor(count / (3600 * 24));
+                        var h1 = Math.floor((count - (d * 3600 * 24)) /3600);
+                        var p1 = Math.floor((count - h * 3600) / 60);
+                        var g1 = count - h * 3600 - p * 60;
+
+                        $($time).html(h + " : " + p + " : " + g);
+                        $($seconds).html(g1);
+                        $($minutes).html(p1);
+                        $($hours).html(h1);
+                        $($daysLeft).html(d);
+
+                        $($secondss).html(g1);
+                        $($minutess).html(p1);
+                        $($hourss).html(h1);
+                        $($daysLefts).html(d);
+
+                        
+
+                        if (count-- == 0) {
+                            location.reload();
+                            $($time).html("Hết hạn");
+                        }
+                    }, 1000);
+            }
+            else {
+                $($time).html("Hết hạn");
+                $($seconds).html('0');
+                $($minutes).html('0');
+                $($hours).html('0');
+                $($daysLeft).html('0');
+
+                $($secondss).html('0');
+                $($minutess).html('0');
+                $($hourss).html('0');
+                $($daysLefts).html('0');
+            }
+        });
+
+    });
+</script>
+ 
+
+  

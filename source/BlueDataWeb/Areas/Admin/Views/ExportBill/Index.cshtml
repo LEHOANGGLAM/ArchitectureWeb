@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.ExportBill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" /></span> 
+        <span class="title-name">Danh sách khách hàng xuất bill</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/ExportBill/Create">
+                <span class="icon-32-new"></span>
+              Xuất Bill
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+   <div class="clear0"></div>
+    <div class="mar10 borall">
+        <table class="formtable">
+            <tbody>
+    <tr>
+        <th>
+            Shipper.Name
+        </th>
+
+        <th>
+           Shipper.Tel
+        </th>
+       <th>
+           Shipper.Country
+       </th>
+        <th>
+            Reciever.Name
+        </th>
+
+        <th>
+           Reciever.Tel
+        </th>
+       <th>
+           Reciever.Country
+       </th>
+     
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipperName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipperTel)
+        </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.Countrytemp)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.RecieverName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecieverTel)
+        </td>
+         <td>
+          @Html.DisplayFor(modelItem => item.RecieverCounTryTemp)
+        </td>
+        
+         <td>
+            <a class="button blue" title="Sửa" href="/admin/ExportBill/Create?id=@item.ID">
+                <div class="icon">
+                    <p class="ic-edit"></p>
+                </div>
+            </a>
+               <a class="button red" href="#" onclick="xoa(@item.ID);" title="Xóa">
+                            <div class="icon">
+                                <p class="ic-delete"></p>
+                            </div>
+                        </a>
+         </td>
+    </tr>
+}
+          <tbody>
+        </table>
+         <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+    </div>
+<script type="text/javascript">
+    function xoa(id) {
+        var agree = confirm("Bạn có thật sự muốn xóa người dùng này không?");
+        if (agree) {
+            $.post('/ExportBill/Delete/' + id, {}, function () {
+                location.reload();
+            })
+        }
+    };
+</script>
+

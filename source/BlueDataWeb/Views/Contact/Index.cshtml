@@ -1,0 +1,119 @@
+﻿@model BlueDataWeb.Models.ContactModels
+@using BlueDataWeb.Models.Entites;
+    @{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Liên hệ";
+    }
+
+    @{Html.RenderAction("GetByKeyName", "ImagePage", new { keyName = "lienhe" });}
+    @{
+    ViewBag.Description = TempData["Description"];
+    ViewBag.Keywords = TempData["Keywords"];
+    }
+
+    <div class="container body-content">
+
+        <div class="row">
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-12">
+                <div class="contact-title hongha   tilte_green">Liên hệ</div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 contact-intro size14">
+                Xin vui lòng gửi email qua địa chỉ hoặc điền vào mẫu dưới đây. Chúng tôi sẽ liên lạc lại trong thời gian sớm nhất. Xin cảm ơn!
+            </div>
+            <div class="col-md-6  ">
+               
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="form_suppor_dichvu">
+                        <div class="container body-content">
+                            <div class="row margin_Top_0">
+                                <div class="col-xs-12 ">
+                                    <span class="b-titile_suppor">THÔNG TIN LIÊN HỆ </span>
+
+                                    <div class="form-group">
+
+                                        <input type="text" class="required form-control" id="Name" name="Name" placeholder="Họ tên">
+                                        @Html.ValidationMessageFor(m => m.Name)
+                                        <input type="text" class="required form-control" id="CongTy" name="CongTy" placeholder="Công ty">
+                                        @Html.ValidationMessageFor(m => m.CongTy)
+                                        <input type="text" class="required form-control" id="Address" name="Address" placeholder="Địa chỉ">
+                                        <input type="text" class="required form-control" id="Email" name="Email" placeholder="Email">
+                                        @Html.ValidationMessageFor(m => m.Email)
+                                        <input type="text" class="required form-control" id="Phone" name="Phone" placeholder="Điện thoại">
+                                        @Html.ValidationMessageFor(m => m.Phone)
+
+
+                                        <span class="b-titile_suppor">GHI CHÚ </span>
+
+                                        <textarea class="required form-control" rows="5" id="contents" name="contents"></textarea>
+                                    </div>
+                                </div>
+
+                                @*<div class="col-xs-6 ">
+                                    <span class="b-titile_suppor">DỊCH VỤ HỖ TRỢ</span>
+
+                                    <div class="form-group">
+
+                                        
+                                        <div class="checkbox">
+                                            @foreach (ItemStatus item in Model.lstDichVu)
+                                            {
+                                                <label><input type="checkbox" name="@item.ID" id="@item.ID" checked="@item.IsSelected">@item.Value</label><br />
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-xs-6 ">
+
+                                    <span class="b-titile_suppor">MÔ TẢ DỊCH VỤ</span>
+
+                                  
+                                    <div class="checkbox">
+                                        @foreach (ItemStatus item in Model.lstMotaDichVu)
+                                        {
+                                            <label><input type="checkbox" name="@item.ID" id="@item.ID" checked="@item.IsSelected">@item.Value</label><br />
+                                        }
+                                    </div>
+                                </div>*@
+
+                                @*<div class="col-xs-6 ">
+                                    <span class="b-titile_suppor">GHI CHÚ </span>
+
+                                    <textarea class="required form-control" rows="5" id="contents" name="contents"></textarea>
+
+                                </div>*@
+
+                            </div>
+
+                            <div class="row margin_Top_0" style="text-align: center; border-bottom:2px solid white; padding-bottom:4px">
+                                <input type="submit" name="send" value="GỬI" class="btn btn-primary btn-warning">
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="col-md-6 contact-map">
+
+                <div class="contact-info">
+
+                    <div class="contact-info-footer-content">
+                        @*@{Html.RenderAction("GetContact", "Contact");}*@
+                        
+                       
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0691103470313!2d106.60348001411525!3d10.80601889230143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x8c808f74809c5e33!2zQ3R5IFROSEggWMOieSBk4buxbmcgTcO0aSBUcsaw4budbmcgWGFuaA!5e0!3m2!1svi!2s!4v1447900586948" width="100%" height="480" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

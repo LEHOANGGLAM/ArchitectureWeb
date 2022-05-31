@@ -1,0 +1,48 @@
+﻿@model BlueDataWeb.Models.Entites.Price
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Xóa  </span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li id="toolbar-cancel" class="button">
+            <a class="toolbar" href="/admin/DichVu/Index">
+                <span class="icon-32-cancel"></span>
+                Hủy bỏ
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <div class="div100">
+
+        <div>
+
+            <fieldset class="fromlist">
+                <legend>News</legend>
+
+                <div class="display-label">
+                    Tên: <b>@Html.DisplayFor(model => model.Name)</b>  <br /> <br />
+                </div>
+             
+            </fieldset>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Delete" class="button_sm" /> |
+        @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "button_sm" })
+    </p>
+}

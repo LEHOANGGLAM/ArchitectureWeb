@@ -1,0 +1,187 @@
+﻿@model BlueDataWeb.Models.CustomsModel.NewsModels
+
+@{
+    if (Model.NewsID > 0)
+    {
+        ViewBag.Title = "Blog - Cập nhật ";
+
+    }
+    else
+    {
+        ViewBag.Title = "Blog - Tạo mới ";
+
+    }
+}
+
+<div class="title_page">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4> @ViewBag.Title </h4>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="row">
+        <div class="col-md-12 txtCenter">
+            <p>
+
+                @if (TempData["Status"] == "Cập nhật lỗi")
+                {
+
+                    <div class="alert alert-success" role="alert">
+                        @TempData["Status"]
+                    </div>
+
+                }
+                else
+                {
+                    <span style="color:green; font-weight:bold; font-size:14px">
+                        @TempData["Status"]
+                    </span>
+                }
+            </p>
+        </div>
+    </div>
+
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-md-12 txtCenter">
+
+            <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Lưu</button>
+
+            <a class="btn btn-primary " href="~/admin/News/Index">
+                <i class="fa fa-list">
+                </i>
+                Về danh sách
+            </a>
+        </div>
+    </div>
+    <!--end borall-->
+
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+
+            <fieldset class="fromlist">
+
+                @Html.HiddenFor(model => model.NewsID)
+                @Html.HiddenFor(model => model.AppID)
+                @Html.HiddenFor(model => model.CreatedDate)
+
+           
+                @Html.HiddenFor(model => model.IsDelete)
+  
+                @Html.HiddenFor(model => model.IsNoiBat)
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">Loại:</label>
+                    <div class="col-sm-9">
+
+                        @Html.DropDownListFor(model => model.NewCategoriesID, Model.listCate, "--chọn--", new { @class = "form-control required" })
+                        @Html.ValidationMessageFor(model => model.NewCategoriesID, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">Tên:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control required" })
+                        @Html.ValidationMessageFor(model => model.Title, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">SEO Title:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextBoxFor(model => model.MetaTitle, new { @class = "form-control required", @maxlength = "65" })
+                        @Html.ValidationMessageFor(model => model.MetaTitle, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">SEO Keywords:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextBoxFor(model => model.MetaKeywords, new { @class = "form-control required", @maxlength = "100" })
+                        @Html.ValidationMessageFor(model => model.MetaKeywords, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">SEO Description:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextAreaFor(model => model.MetaDescription, new { @class = "form-control required", @maxlength = "160", @rows= 2 })
+                        @Html.ValidationMessageFor(model => model.MetaDescription, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">Mới:</label>
+                    <div class="col-sm-9">
+
+                        @Html.CheckBox("IsNew")
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">Mô tả ngắn:</label>
+                    <div class="col-sm-9">
+
+                        @Html.TextBoxFor(model => model.ShortDescription, new { @class = "form-control required", @maxlength = "400" })
+                        @Html.ValidationMessageFor(model => model.ShortDescription, null, new { @class = "validate" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">Hình ảnh  (Tỉ lệ  5 x 3):</label>
+
+                    <div class="col-sm-9">
+
+                        <input name="img" id="img" style="float: left; margin: 0px 4px;" type="file">
+
+                        @Html.HiddenFor(m => m.ImagePath)
+
+                        <img src="/Images/News/@(Model.ImagePath)" width="85" />
+                        <br />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label class="control-label col-sm-3">Nội dung:</label>
+
+                    <div class="col-sm-9">
+
+                        @Html.TextAreaFor(model => model.Description, new { @id = "summernote2", @class = "form-control  " })
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Lưu</button>
+
+                    <a class="btn btn-primary " href="~/admin/News/Index">
+                        <i class="fa fa-list">
+                        </i>
+                        Về danh sách
+                    </a>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+     
+
+}

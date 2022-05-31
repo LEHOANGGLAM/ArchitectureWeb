@@ -1,0 +1,115 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+
+@{
+    ViewBag.Title = "Outsourcing";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Outsourcing</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/Outsourcing/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Tên
+                </th>
+
+                <th>
+                    View
+                </th>
+
+                <th>
+                    Vị trí
+                </th>
+
+                <th>
+                    Hình
+                </th>
+
+               
+                <th>
+                    Ngày tạo
+                </th>
+
+                <th width="150px"></th>
+            </tr>
+        </thead>
+
+      
+
+        <tbody>
+            @{
+                int num = 0;
+            }
+            @foreach (var item in Model)
+            {
+                num++;
+                <tr>
+                    <td style="width:5%">
+                        @num
+                    </td>
+                    <td style="width:40%">
+
+                        <a class="button " title="Sửa" href="/admin/DichVu/Edit/@item.NewsID">
+
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </a>
+
+                      
+                    </td>
+                    <td>
+                        <a target="_blank" title="@item.Title" href="@Url.RouteUrl("Outsourcingdetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })" class="">
+                           View
+                        </a>
+                    </td>
+                    <td>
+                        @item.OrderBY
+                    </td>
+                    <td>
+                        <img src="/Images/News/@(item.ImagePath)" width="70px" height="40px" />
+                    </td>
+
+                    <td>@string.Format("{0:dd/MM/yyyy}", item.CreatedDate)</td>
+                    <td class="text-right">
+                        <div>
+                            <a class="button " href="/admin/Outsourcing/Delete/@item.NewsID" title="Xóa">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_delete.png" />
+                            </a>
+
+                            <a class="button " title="Sửa" href="/admin/Outsourcing/Edit/@item.NewsID">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_edit.png" />
+                            </a>
+                            
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<!--end borall-->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

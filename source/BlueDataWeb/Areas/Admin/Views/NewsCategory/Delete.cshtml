@@ -1,0 +1,28 @@
+﻿@model  BlueDataWeb.Models.Entites.NewCategory
+
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = "Xóa danh mục blog";
+
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <fieldset class="fromlist">
+            <legend>Bạn có chắc muốn xóa danh mục này? @Model.Name</legend>
+
+            @using (Html.BeginForm())
+            {
+                <p>
+                    <input type="submit" value="Chắc chắn xóa" class="btn btn-danger" />
+                    <a class="btn btn-default " href="~/admin/NewsCategory/Index">
+                        <i class="fa fa-backward">
+                        </i>
+                        Trở về danh sách
+                    </a>
+                </p>
+            }
+        </fieldset>
+    </div>
+</div>

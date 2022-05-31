@@ -1,0 +1,10 @@
+﻿.divBasket.floatr .cart{
+    float:left;
+}
+.inputbox.emailNews {
+  width: 190px !important;
+}
+.errorsendmail {
+    color:red;
+    text-align:center;
+}

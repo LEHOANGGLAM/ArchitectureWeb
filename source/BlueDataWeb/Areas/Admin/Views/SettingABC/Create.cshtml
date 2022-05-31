@@ -1,0 +1,100 @@
+﻿@model ExpressBD.Models.SettingDB
+
+ 
+<script src="~/nicEditor/nicEdit.js"></script>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<script>
+
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/Admin/Home/nicUpload' }).panelInstance('area');
+
+    });
+
+  
+</script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Tạo mới</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/Admin/SettingDB/Index">
+                    <span class="icon-32-cancel"></span>
+                    Bỏ qua
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+
+            <div>
+
+                <fieldset class="fromlist">
+                    <ul>
+
+                        <li>
+                            @Html.LabelFor(model => model.Ma, "Mã setting")
+                            @Html.TextBoxFor(model => model.Ma, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Ma, null, new { @class = "validate" })
+                            <span id="MaE" style="color: red"></span>
+                        </li>
+
+                        <li>
+                            <div style="width: 470px">
+                                @Html.ValidationMessageFor(model => model.Value, null, new { @class = "validate" })
+                                @Html.LabelFor(model => model.Value, "Nội dung")
+                                <div style="margin-left: 245px">
+                                    @Html.TextAreaFor(model => model.Value, new { id = "area", rows = 20, clos = 55, style = "Width:800px;" })
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="toolbar">
+                            <label></label>
+                            @Html.ActionLink("Trở về danh sách", "Index", null, new { @class = "button_sm" })
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+            <!--end idTrangChuTren1-->
+        </div>
+    </div>
+    <!--end mar10-->
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $('form').submit(function () {
+        if ($('#Ma').val() == '') {
+            $('#MaE').html('Vui lòng nhập Liệu');
+            return false;
+        }
+        else {
+            $('#MaE').html('');
+            return true;
+        }
+    });
+</script>

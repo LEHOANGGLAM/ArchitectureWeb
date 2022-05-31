@@ -1,0 +1,68 @@
+﻿@model BlueDataWeb.Models.SendEmail
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>SendEmail</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Emailfrom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Emailfrom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Subject)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Subject)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Body)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Body)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Passmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Passmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Servermail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Servermail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Port)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Port)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        <a class="toolbar back" href="#">Trở về danh sách</a>
+    </p>
+}

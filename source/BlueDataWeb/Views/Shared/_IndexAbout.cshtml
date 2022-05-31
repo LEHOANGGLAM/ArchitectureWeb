@@ -1,0 +1,20 @@
+﻿@model ExpressBD.Models.AboutCategory
+@{Layout = null;}
+
+<div class="col-md-8" style="padding-left: 0px;">
+    <div class="img-comp">
+        <a href="#">
+            <img src="@Model.SmallImage" />
+        </a>
+    </div>
+</div>
+
+<div class="col-md-4" style="padding-left: 0px; ">
+    @Html.Raw(@Model.ShortDescription)
+</div>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $('#dot1').dotdotdot();
+    });
+</script>

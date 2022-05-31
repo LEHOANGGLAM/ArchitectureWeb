@@ -1,0 +1,114 @@
+﻿@model BlueDataWeb.Models.Entites.Membership
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = "Create";
+    BlueDataWebEntities db = new BlueDataWebEntities();
+    var role = db.Roles.ToList();
+    int userid = ViewBag.userid2;
+    List<UsersInRole> lstrole = ViewBag.lstrole as List<UsersInRole>;
+}
+
+@{
+    ViewBag.Title = "Edit";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Cập nhật thành viên</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/Membership/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+
+            <div>
+
+                <fieldset class="fromlist">
+                    <legend>Thông tin thành viên</legend>
+
+                    <ul>
+                        <li>
+
+                            @Html.HiddenFor(model => model.UserId, new { size = "70" })
+                            @Html.LabelFor(model => model.UserId, "ID: ")
+                            <b>@Html.DisplayFor(model => model.UserId, new { size = "70" })</b>
+                            @Html.ValidationMessageFor(model => model.UserId, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Username, "Tên đăng nhập: ")
+                            @Html.HiddenFor(model => model.Username, new { size = "50" })
+                            <b>@Html.DisplayFor(model => model.Username, new { size = "50" })</b>
+                            @Html.ValidationMessageFor(model => model.Username, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Password, "Mật khẩu:")
+                            @Html.PasswordFor(model => model.Password, new { size = "50" })
+                            @* @Html.ValidationMessageFor(model => model.Email, null,new { @class="validate"})*@
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Email, "Email:")
+                            @Html.TextBoxFor(model => model.Email, new { size = "50" })
+                            @* @Html.ValidationMessageFor(model => model.Email, null,new { @class="validate"})*@
+                        </li>
+                    </ul>
+
+                    @* <p>
+                            <input type="submit" value="Save" />
+                        </p>*@
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+
+            <div>
+
+                <fieldset class="fromlist">
+                    <legend>Nhóm quyền</legend>
+                    @foreach (var r in role)
+                    {
+                        UsersInRole userinrole = lstrole.Where(m => m.RoleId == r.RoleId).FirstOrDefault();
+                        if (userinrole != null)
+                        {
+                            <input type="checkbox" name="check@(r.RoleId)" checked />
+                        }
+
+                        else
+                        {
+                            <input type="checkbox" name="check@(r.RoleId)" />
+                        }
+                        <span> @r.Description</span> <br />
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "button_sm" })
+</div>

@@ -1,0 +1,82 @@
+﻿@model List<BlueDataWeb.Models.Entites.spNewsPaging_Result>
+@{
+    ViewBag.Title =  ViewBag.CateName;
+}
+@{Html.RenderAction("ViewSider", "Sider", new { typleSider = "E_TinTuc" });}
+
+<div class="container body-content">
+
+    <div class="row">
+        <div class="col-md-8 main-content" id="gridcontainer">
+            <div class="col-md-12 padding0">
+
+                <div class="tilte_green">
+                    <span> <i class="icon_sanpham"></i> @ViewBag.CateName</span>
+                </div>
+                <div>
+                    @Html.Raw(ViewBag.CateDES)
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div id="bookListDiv">
+                @{Html.RenderPartial("TinTucList", Model);}
+            </div>
+
+
+            @if (Model != null && Model.Count > 0 && ViewBag.NoMoreData == false)
+            {
+                <a id="morelist" class="viewmore" onclick="LoadMore();">
+                    Xem thêm
+                    <b></b>
+                </a>
+            }
+
+            <div id="loadingDiv" style="text-align: center; display: none; margin-bottom: 20px; clear:both" onclick="LoadMore();">
+
+                <img src="~/Content/images/loading.gif" />
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4 sidebar">
+            @Html.Partial("_A_SideBar")
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script type="text/javascript">
+    var BlockNumber = 2;  //Infinate Scroll starts from second block
+    var NoMoreData = false;
+    var inProgress = false;
+
+    function LoadMore() {
+        inProgress = true;
+        $("#loadingDiv").show();
+        $("#morelist").hide();
+        CategoryId = '@ViewBag.lstCate';
+
+        $.post("@Url.Action("InfinateScroll", "TinTuc")", { "BlockNumber": BlockNumber, "CategoryId": CategoryId},
+            function (data) {
+                BlockNumber = BlockNumber + 1;
+                NoMoreData = data.NoMoreData;
+                $("#bookListDiv").append(data.HTMLString);
+                $("#loadingDiv").hide();
+
+                inProgress = false;
+
+                if (NoMoreData == true) {
+                    $("#morelist").remove();
+                }
+                else {
+                    $("#morelist").show();
+
+                }
+
+            });
+    }
+    </script>
+}

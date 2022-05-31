@@ -1,0 +1,47 @@
+﻿@model Sebox.Models.SupportOnline
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>SupportOnline</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.yahoo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.yahoo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.skype)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skype)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        <a class="toolbar back" href="#">Trở về danh sách</a>
+    </p>
+}

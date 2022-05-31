@@ -1,0 +1,27 @@
+﻿@model  BlueDataWeb.Models.Entites.About
+ 
+@{
+    ViewBag.Title = "Xóa bài giới thiệu";
+
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <fieldset class="fromlist">
+            <legend>Bạn có chắc muốn xóa bài viết này? @Model.Name</legend>
+
+            @using (Html.BeginForm())
+            {
+                <p>
+                    <input type="submit" value="Chắc chắn xóa" class="btn btn-danger" />
+                    <a class="btn btn-default " href="~/admin/About/Index">
+                        <i class="fa fa-backward">
+                        </i>
+                        Trở về danh sách
+                    </a>
+                </p>
+            }
+        </fieldset>
+    </div>
+</div>

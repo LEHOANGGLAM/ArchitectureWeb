@@ -1,0 +1,57 @@
+﻿@model BlueDataWeb.Models.Document
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Document</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DocID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DocID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DocFileName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DocFileName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateCreate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateCreate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateUpdate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateUpdate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</p>

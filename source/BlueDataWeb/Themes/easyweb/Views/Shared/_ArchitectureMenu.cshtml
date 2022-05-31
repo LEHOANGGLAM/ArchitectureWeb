@@ -1,0 +1,25 @@
+﻿ 
+@{ 
+    var lstCate = (List<BlueDataWeb.Models.Entites.ArchitectureCategory>)ViewBag.KienTrucCategory;
+}
+<div class="main_menu">
+    <div class="container">
+        <ul class="menu_dropdown">
+            <li><a class="menuitem" href="~/trang-chu">Trang chủ</a></li>
+            <li> <a class="menuitem" href="~/gioi-thieu">Giới thiệu</a></li>
+
+            @foreach (var item in lstCate.Where(x=>x.ParentCategoryID == 0).ToList())
+            {
+
+                string link   = Url.RouteUrl("KienTrucList", new {  title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID });
+
+                <li>
+                    <a class="menuitem "  href="@link">@item.Name</a>
+                </li>
+            }
+
+            
+            <li><a class="" href="~/lien-he">Liên hệ</a></li>
+        </ul>
+    </div>
+</div>

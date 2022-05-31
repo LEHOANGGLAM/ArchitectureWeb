@@ -1,0 +1,16 @@
+.validation-summary-errors {
+    background-color: #D9FFB2;
+    border: 1px solid #5CBA30;
+    width: 400px;
+}
+
+span.validation-summary-errors {
+    border-bottom-color: #D9FFB2;
+    display: block;
+}
+
+ul.validation-summary-errors {
+    margin: 0;
+    padding: 0;
+    border-top: none;
+}

@@ -1,0 +1,88 @@
+﻿@model ExpressBD.Models.Setting
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="~/nicEditor/nicEdit.js"></script>
+<script>
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/@ExpressBD.Models.GlobalVariables.PathFolderName/Home/nicUpload' }).panelInstance('area');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/@ExpressBD.Models.GlobalVariables.PathFolderName/Home/nicUpload' }).panelInstance('area1');
+
+    });
+    bkLib.onDomLoaded(function () {
+        new nicEditor({ fullPanel: true, uploadURI: '/@ExpressBD.Models.GlobalVariables.PathFolderName/Home/nicUpload' }).panelInstance('area2');
+
+    });
+</script>
+@using (Html.BeginForm("Edit", "About", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Key)
+    @Html.HiddenFor(m => m.LanguageId)
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Chỉnh sửa</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/@ExpressBD.Models.GlobalVariables.PathFolderName/TuyenDung/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <div>
+                <fieldset class="fromlist">
+                    <ul>
+                        @Html.HiddenFor(model => model.SettingId)
+                        <li>
+                            <div style="width: 470px">
+                                @Html.ValidationMessageFor(model => model.values, null, new { @class = "validate" })
+                            @Html.LabelFor(model => model.values, "Nội dung")
+                            <div style="margin-left: 245px">
+                                @Html.TextAreaFor(model => model.values, new { id = "area", rows = 20, clos = 55, style = "Width:800px;" })
+                                <span id="valuesE" style="color: red"></span>
+                            </div>
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    $('form').submit(function () {
+        if ($('#values').val() == '') {
+            $('#valuesE').html('Vui lòng nhập Liệu');
+            return false;
+        }
+        else {
+            $('#valuesE').html('');
+            return true;
+        }
+    });
+</script>

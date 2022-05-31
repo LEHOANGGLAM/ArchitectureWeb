@@ -1,0 +1,5 @@
+User-agent:*
+Disallow: /bin
+Allow: /
+
+Sitemap: https://www.baohanhdientu.net/sitemap.xml

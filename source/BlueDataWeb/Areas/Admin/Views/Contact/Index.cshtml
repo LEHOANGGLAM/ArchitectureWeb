@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Contact>
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Quản lý tư vấn</span>
+    </div>
+</div>
+
+<!--end borall-->
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <div class="div100">
+ 
+
+  
+            <fieldset class="fromlist">
+                <table class="formtable">
+                    <tbody>
+                        <tr>
+                            <th>Ngày đăng ký</th>
+                            <th>Tên</th>
+                            <th>Email</th>
+                            <th>Điện thoại</th>
+                            <th>Công ty</th>
+                            <th>Địa chỉ</th>
+                            <th>Trạng thái</th>
+                            <th style="text-align:right">Action</th>
+                        </tr>
+
+                        @foreach (var item in Model.Where(m=>m.TypeContact=="E_DichVu"))
+                        {
+                            <tr>
+                                <td width="5%">
+                                  @string.Format("{0:dd/MM/yyyy}", item.CreateDate)
+                                </td>
+                                <td width="20%">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td width="15%">
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td width="10%">
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                <td width="20%">
+                                    @Html.DisplayFor(modelItem => item.CongTy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.udTrangThaiLienHe)
+                                </td>
+                                <td width="10%">
+                                    <a class="button blue" title="Sửa" href="/admin/Contact/EditDichVu?id=@item.ContactId">
+                                        <div class="icon">
+                                            <p class="ic-edit"></p>
+                                        </div>
+                                    </a>
+                                    <a class="button red" style="float:right" href="/admin/Contact/Delete?id=@item.ContactId" title="Xóa">
+                                        <div class="icon">
+                                            <p class="ic-delete"></p>
+                                        </div>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </fieldset>
+       
+        
+    </div>
+</div>
+<script>$("tr:even").css("background-color", "#f2f2f2");</script>
+ 

@@ -1,0 +1,96 @@
+﻿@model BlueDataWeb.Models.Category
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Thêm danh mục giải pháp</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/Category/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+    <div class="clear0"></div>
+
+    <!--end borall mar10-->
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+
+            <div>
+
+                <fieldset class="fromlist">
+                    <ul>
+
+                        <li>
+                            @Html.LabelFor(model => model.CategoryName, "Tên danh mục")
+                            @Html.TextBoxFor(model => model.CategoryName, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.CategoryName, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Description)
+                            @Html.TextAreaFor(model => model.Description, new { cols = "55", rows = "5" })
+                            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.ParentCategoryID, "Danh mục cấp trên")
+                            @Html.DropDownList("ParentCategoryID", null, new { @class = "font11" })
+                            @Html.ValidationMessageFor(model => model.ParentCategoryID, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.DisplayOrder, "Thứ tự hiển thị")
+                            @Html.TextBoxFor(model => model.DisplayOrder, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.DisplayOrder, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.MetaKeywords, "Meta Keywords")
+                            @Html.TextBoxFor(model => model.MetaKeywords, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.MetaKeywords, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.MetaDescription, "Meta Description")
+                            @Html.TextBoxFor(model => model.MetaDescription, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.MetaDescription, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.MetaTitle, "Meta title")
+                            @Html.TextBoxFor(model => model.MetaTitle, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.MetaTitle, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Class, "Class")
+                            @Html.TextBoxFor(model => model.Class, new { size = "70" })
+                            @Html.ValidationMessageFor(model => model.Class, null, new { @class = "validate" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Image, "Hình")
+                            <input type="file" name="img" />
+                            @Html.ValidationMessageFor(model => model.Image, null, new { @class = "validate" })
+                        </li>
+                        <li class="toolbar">
+                            <label></label>
+                            @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "button_sm" })
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+            <!--end idTrangChuTren1-->
+        </div>
+    </div>
+    <!--end mar10-->
+}

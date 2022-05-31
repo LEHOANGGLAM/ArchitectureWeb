@@ -1,0 +1,90 @@
+﻿@model  BlueDataWeb.Models.CustomsModel.
+
+@{
+    ViewBag.Title = "List";
+    var linkCate = Url.RouteUrl("KienTrucList", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.cate.Name), id = Model.cate.ID });
+    ViewBag.SEO_DES =  Model.cate.MetaDescription;
+    ViewBag.SEO_TITLE = Model.cate.MetaTitle;
+    ViewBag.SEO_IMG = Model.cate.Image;
+
+}
+
+
+
+<div class="container">
+    <div class="row custom flex-row">
+        <div class="col s12 m12 l9 xl9 flex-col">
+            <div class="box_vien caocot1">
+                <ul class="thanh_dieu_huong">
+                    <li>
+                        <a href="~/">
+                            Trang chủ
+                        </a>
+                    </li>
+                    @if (Model.cateParent != null)
+                    {
+                        string linkCateparent = Url.RouteUrl("KienTrucList", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.cateParent.Name), id = Model.cateParent.ID });
+
+                        <li>
+
+                            <a href="@linkCateparent">@Model.cateParent.Name</a>
+                        </li>
+                    }
+                    <li>
+
+                        <a href="@linkCate">@Model.cate.Name</a>
+                    </li>
+                </ul>
+                <div class="title_f detail">@Model.cate.Name</div>
+                <div class="tab_load">
+                    @foreach (var item in @Model.cateChild)
+                    {
+
+                        string linkSubmenu = Url.RouteUrl("KienTrucList", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID });
+                        <a href="@linkSubmenu">@item.Name</a>
+                    }
+                </div>
+
+                <div class="row custom custom2">
+
+                    @if (Model.cate.ViewName == "BangGia")
+                    {
+
+                        @Html.Partial("_ViewListBangGia", Model.data)
+
+                    }
+                    else
+                    {
+                        @Html.Partial("_ViewLisDefault", Model.data)
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("_Right_Menu")
+    </div>
+
+    
+
+
+</div>
+
+
+<div class="container">
+    <div class="group_phongthuy">
+        <div class="container">
+            <div class="row custom">
+                <div class="col s12 m12 l6 xl6">
+                    @{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "phong-thuy", view = "_PhongThuy" });}
+                </div>
+                <div class="col s12 m12 l6 xl6">
+                    @{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "mau-nha-dep", view = "_CacMauNhaDep" });}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "du-an-da-hoan-thanh", view = "_DuAnHT" });}
+</div>
+ 

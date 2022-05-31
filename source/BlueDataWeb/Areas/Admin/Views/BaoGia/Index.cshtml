@@ -1,0 +1,118 @@
+﻿@model List<BlueDataWeb.Models.Entites.BaoGia>
+
+@using BlueDataWeb.Models.Entites
+
+@{
+    ViewBag.Title = "Bảng giá";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+   
+
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Bảng giá</span>
+    </div>
+
+    
+
+    <ul class="floatr toolbar-list">
+
+        <li class="button">
+            <a class="toolbar" href="/admin/BaoGia/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    STT
+                </th>
+                <th>
+                    Tên
+                </th>
+                
+                <th>
+                    Giá
+                </th>
+                <th>
+                    Hình ảnh
+                </th>
+
+
+                <th width="100px"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                int num = 0;
+            }
+            @foreach (var item in Model)
+            {
+                num++;
+                <tr>
+                    <td style="width:5%">
+                        @num
+                    </td>
+                    <td style="width:40%">
+                        @Html.DisplayFor(modelItem => item.Ten)
+                    </td>
+                    
+                    <td>
+                        @item.TongGia
+                    </td>
+
+                    <td>
+                        <img src="~/Images/News/@item.HinhAnh" height="80" />
+
+                    </td>
+
+                   
+                    <td class="text-right">
+                        <div>
+                            <a class="button " title="Sửa" href="/admin/BaoGia/Edit/@item.BaoGiaID">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_edit.png" />
+                            </a>
+
+
+                            <a class="button " title="Chi tiết" href="/admin/BaoGia/DetailBangGia?baogiaID=@item.BaoGiaID">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_list.png" />
+                            </a>
+
+
+                            <a class="button " href="/admin/BaoGia/Delete/@item.BaoGiaID" title="Xóa">
+
+                                <img class="icon_mane" src="~/Areas/Admin/Content/images/icon_delete.png" />
+                            </a>
+
+                           
+                           
+                        </div>
+                    </td>
+                </tr>
+                            }
+        </tbody>
+    </table>
+</div>
+<!--end borall-->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+        $("#NewCategoriesID").change(function () {
+            alert("Handler for .change() called.");
+        });
+    </script>
+
+}

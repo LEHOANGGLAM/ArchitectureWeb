@@ -1,0 +1,65 @@
+﻿@model BlueDataWeb.Models.SendEmail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>SendEmail</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Emailfrom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Emailfrom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Subject)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Subject)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Body)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Body)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Passmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Passmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Servermail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Servermail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Port)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Port)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    <a class="toolbar back" href="#">Trở về danh sách</a>
+</p>

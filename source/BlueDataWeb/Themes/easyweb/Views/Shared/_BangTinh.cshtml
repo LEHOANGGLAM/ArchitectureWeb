@@ -1,0 +1,196 @@
+﻿@{
+    Layout = null;
+}
+ 
+@Html.Partial("_BanTinhKQ")
+<div class="col s12 m12 l3 xl3 sticky">
+    <div class="khung_boxr">
+        <div class="title">Dự toán chi phí xây dựng</div>
+        <div class="boc">
+            <div class="line_dutoan">
+                <p>Chọn loại nhà:</p>
+                <select id="loainha">
+                    <option value="">Chọn loại nhà</option>
+                    <option value="NhaPho">Nhà phố</option>
+                    <option value="Cap4">Nhà cấp 4</option>
+                    <option value="BietThu">Biệt thự</option>
+                </select>
+            </div>
+            <div class="line_dutoan">
+                <p>Chọn hình thức xây nhà:</p>
+                <select id="hinhthuc">
+                    <option value="">Chọn hình thức</option>
+                    <option value="XD_Tho">Xây dựng phần thô</option>
+                    <option value="XD_TronGoi">Xây dựng trọn gói</option>
+                </select>
+            </div>
+            <div class="line_dutoan">
+                <p>Chiều rộng m2 (ví dụ2.5):</p>
+                <input type="number" id="chieurong" value="0">
+            </div>
+            <div class="line_dutoan">
+                <p>Chiều dài m2 (ví dụ2.5):</p>
+                <input type="number" id="chieudai" value="0">
+            </div>
+            <div class="line_dutoan">
+                <p>Chọn loại móng:</p>
+                <select id="mong">
+                    <option value="">Chọn loại móng</option>
+                    <option value="Mong_Dai">Móng đài cọc</option>
+                    <option value="Mong_Bang">Móng băng</option>
+                    <option value="Mong_Don">Móng đơn</option>
+                </select>
+            </div>
+            <div class="line_dutoan">
+                <p>Chọn loại mái:</p>
+                <select id="mai">
+                    <option value="">Chọn loại mái</option>
+                    <option value="MaiBTCT">Mái bằng đúc BTCT</option>
+                    <option value="MaiTonLanh">Mái lợp tôn lạnh</option>
+                    <option value="MaiNgoi">Mái đúc BTCT lợp ngói</option>
+                </select>
+            </div>
+            <div class="line_dutoan">
+                <select id="solau">
+                    <option value="0">Chọn số lầu</option>
+                    <option value="1">1 Lầu</option>
+                    <option value="2">2 Lầu</option>
+                    <option value="3">3 Lầu</option>
+                    <option value="4">4 Lầu</option>
+                    <option value="5">5 Lầu</option>
+                    <option value="6">6 Lầu</option>
+                    <option value="7">7 Lầu</option>
+                </select>
+            </div>
+            <div class="line_dutoan">
+                <button type="button" class="btn_dutoan2" id="btnPost">Tính kết quả</button>
+                <button type="reset">Làm lại</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#btnPost").click(function () {
+
+        var request = new Object();
+        request.ChieuDai = parseInt($('#chieudai').val());
+        request.ChieuRong = parseInt($('#chieurong').val());
+        request.LoaiNha = $('#loainha').val();
+        request.HinhThuc = $('#hinhthuc').val();
+        request.LoaiMong = $('#mong').val();
+        request.LoaiMai = $('#mai').val();
+        request.SoLau = $('#solau').val();
+
+        if (request != null) {
+            $.ajax({
+                type: "POST",
+                url: "/BangTinh/Tinh",
+                data: JSON.stringify(request),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+
+                    $("#popup_dutoan_blankTinh").addClass("active");
+                    debugger;
+
+                    $("#tongSoTien")[0].innerHTML = response.TongSoTien;
+                    $("#tongDienTich")[0].innerHTML = response.TongDienTich;
+                    $("#dttangtret")[0].innerHTML = response.DTTangTret;
+                    $("#mongg")[0].innerHTML = response.Mong;
+                    $("#maii")[0].innerHTML = response.Mai;
+                    $("#dongia")[0].innerHTML = response.DonGia;
+
+                    $("#chieudai2")[0].innerHTML = $('#chieudai').val()
+                    $("#chieurong2")[0].innerHTML = $('#chieurong').val();
+                    $("#mongstring")[0].innerHTML =   $("#mong option:selected").text(); 
+                    $("#maistring")[0].innerHTML = $("#mai option:selected").text();
+                    $("#loainhastring1")[0].innerHTML = $("#loainha option:selected").text();
+                    $("#loainhastring2")[0].innerHTML = $("#loainha option:selected").text();
+                    $("#hinhthucstring1")[0].innerHTML = $("#hinhthuc option:selected").text();
+                    $("#hinhthucstring2")[0].innerHTML = $("#hinhthuc option:selected").text();
+                    $("#hinhthucstring3")[0].innerHTML = $("#hinhthuc option:selected").text();
+
+                    $("#popup_dutoan_blankTinh").show();
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    });
+
+
+
+    $("#close_popupBangTinh").click(function () {
+        debugger;
+        $("#popup_dutoan_blankTinh").hide();
+
+    });
+</script>
+
+@*<div class="khung_boxr">
+        <div class="title">Ý kiến khách hàng</div>
+        <div class="boc">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.slick_ykienkhachhang').slick({
+                        infinite: true,
+                        accessibility: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        speed: 1000,
+                        arrows: false,
+                        centerMode: false,
+                        dots: false,
+                        draggable: true,
+                        pauseOnHover: true
+                    });
+                });</script>
+
+            <div class="slick_ykienkhachhang slick-initialized slick-slider">
+                <div aria-live="polite" class="slick-list draggable">
+                    <div class="slick-track" style="opacity: 1; width: 1672px; transform: translate3d(-1254px, 0px, 0px);">
+                        <div class="item_ykienkhachhang slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 209px;">
+                            <a>
+                                <img src="upload/sanpham/sua-49456_500x500.jpg" alt="ÔNG ĐẶNG QUÂN QUẬN TÂN PHÚ">
+                                <h3 class="m-0">ÔNG ĐẶNG QUÂN QUẬN TÂN PHÚ</h3>
+                                <p>Khi Gđ tôi mua căn nhà tại số 144/2/1 Đường Lê Trọng Tấn do căn nhà này đã quá xuống cấp và không đủ...</p>
+                            </a>
+                        </div>
+
+                        <div class="item_ykienkhachhang slick-slide" data-slick-index="0" aria-hidden="true" style="width: 209px;">
+                            <a>
+                                <img src="upload/sanpham/kh11360_500x500.jpg" alt="CHỊ HUỲNH ÁI LINH - QUẬN BÌNH TÂN">
+                                <h3 class="m-0">CHỊ HUỲNH ÁI LINH - QUẬN BÌNH TÂN</h3>
+                                <p>Gđ tôi xây dựng căn nhà tại số 338/28 đường chiến lược, bình trị đông A, quận bình tân. Qua tìm hiểu...</p>
+                            </a>
+                        </div>
+
+                        <div class="item_ykienkhachhang slick-slide" data-slick-index="1" aria-hidden="true" style="width: 209px;">
+                            <a>
+                                <img src="upload/sanpham/kh1423_500x500.jpg" alt="ÔNG HUỲNH ĐỨC HƯNG - QUẬN BÌNH TÂN">
+                                <h3 class="m-0">ÔNG HUỲNH ĐỨC HƯNG - QUẬN BÌNH TÂN</h3>
+                                <p>Căn nhà tôi tại số 54/11 Đường Liên Khu 10-11 Bình Tân, do nhu cầu mở rộng công năng sử dụng nên tôi quyết...</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@*<div class="khung_boxr">
+        <div class="title">Tin tức - sự kiện</div>
+        <div class="boc">
+
+            @{Html.RenderAction("NewHome", "TinTuc", new { keyname = "E_TinTuc", view = "_TinTucSideBarRight" });}
+        </div>
+    </div>*@

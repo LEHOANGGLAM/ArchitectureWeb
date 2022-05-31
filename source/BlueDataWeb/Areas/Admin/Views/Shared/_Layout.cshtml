@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @if (!string.IsNullOrEmpty(ViewBag.Title))
+    {
+        <title>@ViewBag.Title</title>
+
+    }
+    else
+    {
+        <title>Quản trị</title>
+    }
+
+    <script src="~/Scripts/jquery.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="~/Scripts/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <link href="~/Scripts/toastrJs/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastrJs/toastr.min.js"></script>
+
+    <!-- include summernote css/js -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+
+    <link href="~/Areas/Admin/Content/css/tabcontent.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Areas/Admin/Content/css/styleAdmin.css" rel="stylesheet" />*@
+
+    <link href="~/Areas/Admin/Content/css/main.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+
+    <link href="~/Scripts/datatable/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/Scripts/datatable/jquery.dataTables.min.js"></script>
+
+    <script src="~/Areas/Admin/Content/js/tabcontent.js" type="text/javascript"></script>
+    <script src="~/Areas/Admin/Content/js/jquery.validate.js"></script>
+
+    <script src="~/Areas/Admin/Content/js/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Areas/Admin/Content/js/bootbox.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/main.js"></script>
+
+    @RenderSection("scripts", required: false)
+</head>
+
+<body>
+    <div class="se-pre-con overlay"></div>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default  ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/admin/home/index">Web Admin</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li><a href="~/admin/About/index">Giới thiệu</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bài viết <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="~/admin/ArchitectureCategories/Index">Danh mục bài viết</a></li>
+                            <li><a href="~/admin/ArchitectureNews/Index">Bài viết</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="~/admin/NewsCategory/Index">Danh mục Blog</a></li>
+                            <li><a href="~/admin/News/Index">Blog</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cài đặt <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="~/admin/Slider/Index">Slider</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="~/admin/SettingABC/Index">Cài đặt text</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="~/" target="_blank"><i class="fa fa-home"></i></a></li>
+                    <li><a href="~/admin/SettingABC/ClearCache"><i class="fa fa-recycle"></i></a></li>
+                    <li><a href="/admin/Membership/Profile" title="Profile"><i class="fa fa-user"></i></a></li>
+                    <li><a href="/admin/Account/LogOff"><i class="fa fa-power-off"></i></a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="clear10"></div>
+
+    <div class="container">
+
+        @RenderBody()
+    </div>
+
+    <div class="modal fade"
+         id="Modal_ThemDoanhNghiep"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal_dialog_doanhnghiep modal-lg" style="width:90%">
+        </div>
+    </div>
+
+    <!--end content-->
+
+    <script src="~/Areas/Admin/Content/js/jsClient.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#summernote1').summernote({
+                height: (300),
+                callbacks: {
+                    onImageUpload: function (image) {
+                        uploadImage(image[0], '#summernote1');
+                    }
+                }
+            });
+            $('#summernote2').summernote({
+                height: (900),
+                callbacks: {
+                    onImageUpload: function (image) {
+                        uploadImage(image[0], '#summernote2');
+                    }
+                }
+            });
+            function uploadImage(image, element) {
+                var data = new FormData();
+                data.append("image", image);
+                $.ajax({
+                    url: '/admin/Home/Upload',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    type: "post",
+                    success: function (url) {
+                        var image = $('<img>').attr({ src: url, width: "90%", });
+                        $(element).summernote("insertNode", image[0]);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

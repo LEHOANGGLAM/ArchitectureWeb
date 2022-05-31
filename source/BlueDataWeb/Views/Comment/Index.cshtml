@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ExpressBD.Models.Comment>
+@using ExpressBD.Models;
+@{
+    List<Comment> lstcomment = ViewBag.lstcomment as List<Comment>;
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.formReply').hide();
+        $('.comment-content').each(function () {
+            var reply = $(this).find('.reply');
+            var recordToDelete = $(this).attr("data-id");
+            $(reply).click(function () {
+                $('#row-' + recordToDelete).show();
+            });
+        });
+    });
+</script>
+<div class="dList-comment">
+    @{
+        if (Model.Count() > 0)
+        {
+            foreach (var com in Model)
+            {
+                                        
+        <div class="comment-content" data-id="@com.CommentId">
+            <div class="profile-info">
+                <a href="#" class="avatar-user">
+                    @if (com.IsUserAdmin == true)
+                    {
+                        <img width="44" height="44" alt="Member_869614" src="~/Content/images/isset/logocomment.png">                        
+                    }
+                    else
+                    {
+                        <img width="44" height="44" alt="Member_869614" src="~/Content/images/isset/no-avatar.gif">
+                    }
+
+
+                </a>
+                <p class="user-info vip-sim">
+
+                    <a href="#">@com.User.Name</a><br>
+                    <span content="5:26PM - 11/09/2013" itemprop="datePublished">@string.Format("{0:dd/MM/yyy HH:mm:ss tt}", com.Date)</span>
+                    <span class="reply">Trả lời</span>
+                </p>
+            </div>
+            <div class="inner-content-cm">
+                <p>@com.Contents</p>
+                @*<a class="total-comment">1 lời bình</a>*@
+            </div>
+        </div>
+                    var lstcommentreply = lstcomment.Where(m => m.CommentParentId == com.CommentId);
+                    foreach (var item in lstcommentreply)
+                    {
+        <div class="comment-reply">
+            <div class="profile-info">
+                <a href="#" class="avatar-user">
+                    @if (item.IsUserAdmin == true)
+                    {
+                        <img width="44" height="44" alt="Member_869614" src="~/Content/images/isset/logocomment.png">                        
+                    }
+                    else
+                    {
+                        <img width="44" height="44" alt="Member_869614" src="~/Content/images/isset/no-avatar.gif">
+                    }
+                </a>
+
+                <p class="user-info vip-sim">
+                    <a href="#">@item.User.Name</a><br>
+                    <span content="5:26PM - 11/09/2013" itemprop="datePublished">@string.Format("{0:dd/MM/yyy HH:mm:ss tt}", item.Date)</span>
+                </p>
+            </div>
+            <div class="inner-content-cm">
+                <p>@item.Contents</p>
+            </div>
+        </div>
+                    }
+        <div class="formReply" id="row-@com.CommentId">
+            @using (Html.BeginForm("Create", "Comment", new { productid = com.ProductID, commentid = com.CommentId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                @Html.Partial("_Create")
+            }
+        </div>
+            }
+
+        }
+    }
+</div>

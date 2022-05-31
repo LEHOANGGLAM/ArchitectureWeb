@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Product>
+@using BlueDataWeb.Models.Entites;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Image> lstImg = ViewBag.lstimg as List<Image>;
+    int counts = 0;
+    int count = 0;
+    count = ViewBag.CountProduct / 8;
+    if (ViewBag.CountProduct % 8 != 0)
+    {
+        count += 1;
+    }
+    
+}
+@*@{Html.RenderAction("breadcrumb", "Category", new { id = ViewBag.CategoryID });}*@
+<div class="warperSlideProd">
+                <div class="container">
+<div class="DivAdv">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            counts++;
+            Html.RenderPartial("~/Views/Category/ProductBox.cshtml", item);
+            if (counts % 4 == 0)
+            {
+
+            <div class="clean margin_top20">
+            </div>
+            }
+        }
+    </div>
+</div>
+</div>
+    </div>
+@*  @if (count > 0)
+    {
+
+<div class="pager">
+
+    @{
+        int pagenew = 0;
+        if (Request["page"] != null)
+        {
+            pagenew = Convert.ToInt32(Request["page"]);
+        }
+
+    }
+    <ul>
+         @if(Request["page"] != null && Convert.ToInt32(Request["page"]) >= 2)
+         {
+          <li class="previous-first-page">
+           <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=1")"> < </a>
+        </li>
+         <li class="previous-page">
+           <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=" + ((pagenew - 1) < 1 ? pagenew : (pagenew - 1)))"> < </a>
+        </li>
+         }
+        @for (int i = 1; i <= count; i++)
+        {
+            if (Request["page"] != null && Convert.ToInt32(Request["page"]) == i || (i == 1 && Request["page"] == null))
+            {
+                <li class="individual-page active"><a class="buttonpage pagenaviselect" href=@Url.Content("~/?page=" + @i)>@i</a>
+                </li>
+            }
+            else
+            {
+                 <li class="individual-page"><a class="buttonpage pagenaviselect" href=@Url.Content("~/?page=" + @i)>@i</a>
+            </li>
+            }
+        }
+        <li class="next-page">
+            <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=" + ((pagenew + 1) > count ? pagenew : (pagenew + 1)))">></a>
+       </li>
+         <li class="previous-last-page">
+           <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=" + count)"> < </a>
+        </li>
+    </ul>
+
+</div>
+  }*@

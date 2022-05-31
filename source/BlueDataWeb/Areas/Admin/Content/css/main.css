@@ -1,0 +1,233 @@
+.title_page {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.txtRight {
+    text-align: right;
+}
+
+.txtCenter {
+    text-align: center;
+}
+
+.btn100 {
+    min-width: 100px;
+}
+
+span.field-validation-error {
+    color: red;
+}
+
+.gallery {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .gallery img {
+        width: 200px;
+        margin: 10px;
+        box-shadow: 4px 7px 45px -10px rgba(0,0,0,0.4);
+        border-radius: 7px;
+    }
+
+label {
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 12px;
+}
+fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+
+.overlay {
+    background: white none repeat scroll 0 0;
+    display: none;
+    height: 100%;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+    
+
+
+
+.se-pre-con {
+    background: white url("../images/loading.gif") no-repeat scroll center center;
+    height: 100%;
+    left: 0;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999999;
+}
+
+
+
+/* Pager */
+.pager {
+    margin: 8px 3px;
+    padding: 3px;
+}
+
+    .pager .disabled {
+        border: 1px solid #ddd;
+        color: #999;
+        margin-top: 4px;
+        padding: 3px;
+        text-align: center;
+    }
+
+    .pager .current {
+        background-color: #6ea9bf;
+        border: 1px solid #6e99aa;
+        color: #fff;
+        font-weight: bold;
+        margin-top: 4px;
+        padding: 3px 5px;
+        text-align: center;
+    }
+
+    .pager span, .pager a {
+        margin: 4px 3px;
+    }
+
+    .pager a {
+        border: 1px solid #aaa;
+        padding: 3px 5px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+.source {
+    margin-top: 30px;
+}
+/*Phatht 13/9/2016*/
+ul.pagination li a {
+    font-size: 15px;
+}
+
+.pagingButton {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 7px 14px;
+    color: #428bca;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.pagingButton_active {
+    background: #428bca;
+    color: #fff;
+}
+
+
+
+h3.errorstring_Ok {
+    color: green;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+h3.errorstring {
+    font-size: 12px;
+    font-weight: bold;
+    color: red;
+}
+
+.notered{
+    color:red
+}
+.btn-100{
+    min-width:100px
+}
+
+#sortable li {
+    margin: 0 3px 3px 3px;
+    /* padding: 0.4em; */
+    padding-left: 1.5em;
+    font-size: 14px;
+    /* height: 18px; */
+    list-style: none;
+}
+
+.required {
+    background: #fff8d4
+}
+
+
+
+.dataTables_wrapper .dataTables_filter input {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+    .dataTables_wrapper .dataTables_filter input:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    }
+
+
+.dataTables_wrapper select {
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 18px;
+     border-bottom: 0px solid #d5c7c7 !important;
+    background: #31708f;
+    color: white;
+    font-size: 14px;
+    font-weight: 100;
+
+}
+
+table.dataTable.no-footer {
+    border-bottom: 0px solid #111 !important;
+}
+
+.red {
+    color: red;
+}
+
+a.btn.btn-outline-success.linkCateActive {
+    border: 1px solid #ccc;
+    background: #4f4d58;
+    color: white;
+}
+a.btn.btn-outline-success.linkCateActive {
+    border: 1px solid #ccc;
+    background: #4f4d58;
+    color: white;
+}

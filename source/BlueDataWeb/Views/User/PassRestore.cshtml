@@ -1,0 +1,54 @@
+﻿@model BlueDataWeb.Models.User
+@{
+    ViewBag.Description = "Nơi mua hàng giảm giá cùng các đợt khuyến mãi đặc biết giá cực rẻ cực shock, deal giảm giá hot mỗi ngày với những sản phẩm mới lạ, dealtop 1 kênh shopping giá rẻ  dành cho bạn";
+    ViewBag.Keywords = "BlueDataWeb,mua hàng theo nhóm,mua chung, nhóm mua, cùng mua, deal, deals, giá tốt, giá rẻ, giảm giá, khuyến mại, ưu đãi, Group Buy, daily deals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Mua hàng giảm giá, Deal khuyến mãi giá rẻ | dealtop1.com";
+}
+
+<section class="clearfix">
+    <div class="container">
+        <div class="margin">
+    <br/>
+        <h1 class="sec-title" >Khôi phục mật khẩu</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <p style="color: red">@ViewBag.erroremail</p>
+            <p style="color: red">@ViewBag.erroremail2</p>
+            <div class="login-1">
+                <fieldset>
+                    <ol>
+                        <li>
+                            <label  >Hãy nhập địa chỉ Email của bạn để khôi phục mật khẩu<span class="star">&nbsp;</span></label>
+                            <label>Email<span class="star">&nbsp;*</span></label>
+                            @Html.TextBoxFor(m => m.Email)
+                        </li>
+
+                    </ol>
+                    <p style="color: red">@ViewBag.error</p>
+                    <div class="clear10"></div>
+                    <div class="floatl" style="text-align:center">
+                        <input class="btn floatl" type="submit" name="" value="Khôi phục" onclick="">
+                    </div>
+                </fieldset>
+            </div>
+        }
+        </div>
+    </div>
+</section>
+@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#dialog-message").dialog({
+                modal: true,
+                buttons: {
+                    Ok: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+}

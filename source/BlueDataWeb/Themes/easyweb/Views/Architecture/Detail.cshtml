@@ -1,0 +1,32 @@
+﻿@model  BlueDataWeb.Models.Entites.ArchitectureNew
+@{
+    string linkCate = Url.RouteUrl("KienTrucList", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.ArchitectureCategory.Name), id = Model.ArchitectureCategory.ID });
+
+    ViewBag.SEO_DES = Model.MetaDescription;
+    ViewBag.SEO_TITLE = Model.MetaTitle;
+    ViewBag.SEO_IMG = Model.ImagePath;
+
+}
+
+<div class="container">
+    <div class="row custom">
+        <div class="col s12 m12 l9 xl9">
+            <div class="box_vien">
+                <ul class="thanh_dieu_huong">
+                    <li><a href="">Trang chủ</a></li>
+                    <li><a href="@linkCate">@Model.ArchitectureCategory.Name</a></li>
+                    <li><span>@Model.Title</span></li>
+                </ul>
+                <div class="title_f detail">@Model.Title</div>
+                <section class="clearfix noidungweb  detail">
+                    @Html.Raw(Model.Description)
+                </section>
+                <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="100%" data-numposts="5"></div>
+                <ul class="thanh_dieu_huong">
+                    <li><a href="">Trang chủ</a></li>
+                    <li><span>Tin liên quan</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

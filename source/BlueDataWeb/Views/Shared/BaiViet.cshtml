@@ -1,0 +1,34 @@
+﻿@model ExpressBD.Models.Setting
+@{
+  
+}
+<div class="container body-content" style="margin-top: 87px; ">
+
+    <div class="row">
+        <div class="col-md-3" style="border-right: 1px solid rgb(204, 204, 204);">
+            @Html.Partial("_MenuLeft")
+
+        </div>
+        <div class="col-md-9">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <legend>@Model.Name</legend>
+
+                        <div class="col-md-12">
+
+                            @Html.Raw(Model.values)
+
+                        </div>
+
+                        
+                    </fieldset>
+                </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .header {
+        color: #36A0FF;
+    }
+</style>

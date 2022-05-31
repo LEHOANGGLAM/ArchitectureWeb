@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+.span4, .span3, .span5, .span6 { float:left; margin:0px 0px 10px 10px}
+.divBasket { float:right}
+.bg-search{ width:200px; margin-left:0px;}
+.bg-search input[type="text"] { background-position:-12px -906px; padding-left:25px; width:100px; height:24px; color:#ccc; line-height:24px;}
+

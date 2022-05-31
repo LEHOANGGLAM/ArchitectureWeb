@@ -1,0 +1,23 @@
+﻿<script type="text/jscript">
+    jQuery(function ($) {
+        $('#City_Province').change(function () {
+            $.getJSON('/User/DistrictList/' + $('#City_Province').val(), function (data) {
+                var items = '<option value=' + 0 + '>--Chọn Quận/Huyện--</option>';
+                $.each(data, function (i, district) {
+                    items += "<option value='" + district.Value + "'>" + district.Text + "</option>";
+                });
+                $('#District').html(items);
+            });
+        });
+
+        $('#District').change(function () {
+            $.getJSON('/User/WardList/' + $('#District').val(), function (data) {
+                var items = '<option value=' + 0 + '>--Chọn Phường/Xã--</option>';
+                $.each(data, function (i, ward) {
+                    items += "<option value='" + ward.Value + "'>" + ward.Text + "</option>";
+                });
+                $('#Ward').html(items);
+            });
+        });
+    });
+</script>

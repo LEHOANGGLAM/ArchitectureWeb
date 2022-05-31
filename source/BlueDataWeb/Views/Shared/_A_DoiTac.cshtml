@@ -1,0 +1,29 @@
+﻿<div class="col-sm-12 col-xs-12 paddingleft0 paddingright0">
+    <div>
+        <h3 class=" title title-side_right title-side  hongha">
+            <a href="~/doi-tac">Đối tác</a>
+        </h3>
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+
+        var link_src = "/Images/Partners/" + item.ImgName;
+
+    <div class=" col-md-3 center">
+
+        <img src="@link_src">
+    </div>
+
+
+
+      
+    }
+
+
+
+
+</div>
+
+<div class="clearfix"></div>

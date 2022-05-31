@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+
+<div class="container">
+    <div class="title_f custom" style="margin-bottom: 20px;"><a href="~/tin-tuc">Tin tức mới</a></div>
+    <div class="slick_tintucchay owl-carousel owl-theme">
+
+        @foreach (var item in Model)
+        {
+            string link_detail = Url.RouteUrl("TinTucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.NewCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID });
+
+            <div class="border-0 d-block">
+                <div class="item_baivietquantam w-100" style="padding-left: 0 !important">
+                    <a href="@link_detail">
+                        <img src="~/Images/News/@item.ImagePath" alt="@item.ShortDescription">
+                        <h3 class="m-0 catchuoi2">@item.Title</h3>
+                        <p class="catchuoi3"> @Html.Raw(item.ShortDescription)</p>
+                    </a>
+                </div>
+            </div>
+        }
+
+
+    </div>
+    
+</div>
+<script>
+    $('.slick_tintucchay').owlCarousel({
+        loop: false,
+        margin: 20,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        responsive: {
+            0: {
+                items: 2, margin: 10
+            },
+            600: {
+                items: 2, margin: 10
+            },
+            1000: {
+                items: 4, margin: 20
+            }
+        }
+    })
+</script>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.ArchitectureCategory>
+
+@{
+    ViewBag.Title = "Danh mục bài viết";
+
+}
+
+<div class="title_page">
+
+    <div class="row">
+        <div class="col-md-10">
+            <h4> @ViewBag.Title </h4>
+        </div>
+
+        <div class="col-md-2  txtRight">
+
+            <a class="btn btn-primary " href="~/admin/ArchitectureCategories/Create">
+                <i class="fa fa-plus">
+                </i>
+                Thêm mới
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-12">
+
+        <ul class="list-group list-group-flush">
+            @foreach (var item in Model.Where(m => m.ParentCategoryID == 0))
+            {
+                <li class="list-group-item">
+
+                    <a class="button blue" title="Sửa" href="/admin/ArchitectureCategories/Create?id=@item.ID">
+                        @item.Name
+                    </a>
+
+                     
+                    <a class="btn-small  red" href="/admin/ArchitectureCategories/Delete?id=@item.ID" title="Xóa">
+                        <i class="fa fa-recycle"></i>
+                    </a>
+                </li>
+
+                var lstcatelv2 = Model.Where(m => m.ParentCategoryID == item.ID).ToList();
+                foreach (var itemlv2 in lstcatelv2)
+                {
+                    <li class="list-group-item">
+
+                        <a class="button blue" title="Sửa" href="/admin/ArchitectureCategories/Create?id=@itemlv2.ID">
+                            -- @itemlv2.Name   
+                        </a>
+
+                        <a class="btn-small  red" href="/admin/ArchitectureCategories/Delete?id=@itemlv2.ID" title="Xóa">
+                            <i class="fa fa-recycle"></i>
+                        </a>
+                    </li>
+
+                    var lstcatelv3 = Model.Where(m => m.ParentCategoryID == itemlv2.ID).ToList();
+                    foreach (var itemlv3 in lstcatelv3)
+                    {
+
+                        <a class="button blue" title="Sửa" href="/admin/ArchitectureCategories/Create?id=@itemlv3.ID">
+                         ---- @itemlv3.Name
+                        </a>
+
+                        <a class="btn-small  red" href="/admin/ArchitectureCategories/Delete?id=@itemlv3.ID" title="Xóa">
+                            <i class="fa fa-recycle"></i>
+                        </a>
+
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>

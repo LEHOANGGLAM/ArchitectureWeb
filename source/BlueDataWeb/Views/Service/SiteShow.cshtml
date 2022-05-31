@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ExpressBD.Models.AboutCategory>
+ <!--DIV SLIDE SHOW-->
+    <div class="warperSildeShow">
+        <div class="container">
+            <div id="feature_list">
+                <ul id="tabs">
+                    @foreach(var item in Model)
+                    {
+                        string bg_color = @ExpressBD.Models.common.GenerateColor();
+                    <li>
+                        <a href="javascript:;">
+                            <i class="arow"></i>
+                            <div class="imgfeature" style="background-color:#@bg_color">
+                                <img src="/Images/Service/@item.SmallImage">
+                            </div>
+                            <div class="testFeauter">
+                                <h3>@item.Name</h3>
+                                <span>@item.Note</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
+                    }
+                </ul>
+                <ul id="output">
+                     @foreach(var item in Model)
+                    {
+                    <li>
+                        <img class="img-responsive" src="/Content/data/sl1.jpg" />
+                        <div class="testDes">
+                            <p>
+                               @item.ShortDescription
+                            </p>
+                            <p class="view"><a href="@Url.RouteUrl("services", new { title = ExpressBD.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.AboutID })">Xem thêm...</a></p>
+                        </div>
+                    </li>
+                     }
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--END DIV SLIDE SHOW-->

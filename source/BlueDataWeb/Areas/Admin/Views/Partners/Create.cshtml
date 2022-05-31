@@ -1,0 +1,69 @@
+﻿@model BlueDataWeb.Models.Entites.Image
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Partners", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="mar10 borall">
+        <div class="floatl">
+            <span class="floatl">
+                <img src="/Areas/Admin/images/icon-48-generic.png" />
+            </span>
+            <span class="title-name">Thêm ảnh mới</span>
+        </div>
+        <ul class="floatr toolbar-list">
+            <li id="toolbar-cancel" class="button">
+                <a class="toolbar" href="/admin/Partners/Index">
+                    <span class="icon-32-cancel"></span>
+                    Hủy bỏ
+                </a>
+            </li>
+            <li class="button">
+                <div class="toolbar">
+                    <span class="icon-32-apply"></span>
+                    <input type="submit" value="Lưu" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--end borall-->
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <div class="div100">
+            <fieldset class="fromlist">
+                <legend>Create</legend>
+                <ul>
+                    <li>
+
+                        @Html.HiddenFor(model => model.AppID)
+                     
+
+                        <label class="red" for="ImgName">Hình(320*210)</label>
+                       
+                        <input type="file" name="img" id="img" />
+                        @Html.ValidationMessageFor(model => model.ImgName, null, new { @class = "validate" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.ImagePath, "Đường dẫn")
+                        @Html.TextBoxFor(model => model.ImagePath, new { size = "70" })
+                        @Html.ValidationMessageFor(model => model.ImagePath, null, new { @class = "validate" })
+                    </li>
+
+                    <li>
+                        @Html.LabelFor(model => model.ImageTile, "Tên đối tác")
+                        @Html.TextBoxFor(model => model.ImageTile, new { size = "70" })
+                        @Html.ValidationMessageFor(model => model.ImageTile, null, new { @class = "validate" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.IsShow, "Hiện trên trang chủ")
+                        @Html.CheckBox("IsShow")
+                        @Html.ValidationMessageFor(model => model.IsShow, null, new { @class = "validate" })
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+    </div>
+}

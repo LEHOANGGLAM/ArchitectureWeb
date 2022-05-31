@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Thành tích";
+}
+@model List<BlueDataWeb.Models.Entites.Image>
+
+<div class="container body-content">
+
+    <div class="row" style="margin-top:0px!important">
+
+        <div class="panel ">
+            <div class="panel-heading">
+                <div class="tilte_green">
+                    <span> <i class="icon_sanpham"></i> Thành tích</span>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                @for (int i = 0; i < Model.Count(); i=i+2)
+                {
+                    <div class="row">
+                        <div class="col-lg-6  col-xs-12 ">
+                            <div   class="thumbnail img-hover">
+                                <img class="img-responsive" src="/Images/ThanhTich/@Model[i].ImgName" alt="" />
+                            </div>
+                           
+
+                        </div>
+
+
+                        <div class="col-lg-6  col-xs-12 ">
+                           
+                            <div   class="thumbnail img-hover">
+                                <img class="img-responsive" src="/Images/ThanhTich/@Model[i+1].ImgName" alt="" />
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>

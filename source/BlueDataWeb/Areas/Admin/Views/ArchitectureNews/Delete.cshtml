@@ -1,0 +1,30 @@
+﻿@model BlueDataWeb.Models.Entites.ArchitectureNew
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <fieldset class="fromlist">
+            <legend>Bạn có chắc muốn xóa bài viết này? @Model.Title</legend>
+
+            @using (Html.BeginForm())
+            {
+                <p>
+                    <input type="submit" value="Chắc chắn xóa" class="btn btn-danger" />
+                    <a class="btn btn-default " href="~/admin/ArchitectureNews/Index">
+                        <i class="fa fa-backward">
+                        </i>
+                        Trở về danh sách
+                    </a>
+                </p>
+            }
+        </fieldset>
+    </div>
+</div>
+
+ 

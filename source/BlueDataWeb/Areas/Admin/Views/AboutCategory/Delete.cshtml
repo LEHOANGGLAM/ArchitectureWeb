@@ -1,0 +1,71 @@
+﻿@model BlueDataWeb.Models.AboutCategory
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Xóa giải pháp</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li id="toolbar-cancel" class="button">
+            <a class="toolbar" href="/admin/AboutCategory/Index">
+                <span class="icon-32-cancel"></span>
+                Hủy bỏ
+            </a>
+        </li>
+        <li class="button">
+            <div class="toolbar">
+                <span class="icon-32-apply"></span>
+                <input type="submit" value="Lưu" />
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <div class="div100">
+
+        <div>
+
+            <fieldset class="fromlist">
+                <legend>Bạn có chắc muốn xóa dự án này?</legend>
+                <ul>
+                    <li style="display:none">
+                        @Html.HiddenFor(model => model.AboutID)
+                        @Html.HiddenFor(model => model.AboutID)
+                    </li>
+                    <li>
+                        @Html.LabelFor(model => model.Name, "Tên dự án")
+                        @Html.DisplayFor(model => model.Name)
+                    </li>
+                    @*<li style="display:none">
+                            @Html.LabelFor(model => model.Status)
+                            @Html.DisplayFor(model => model.Status)
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Parentcate, "Danh mục cấp trên")
+                            @Html.DropDownList("Parentcate", null, "-- Chọn danh mục cấp trên --", new { @class = "font11" })
+                        </li>
+                        <li>
+                            @Html.LabelFor(model => model.Contents, "Nội dung")
+                            @Html.Raw(@Model.Contents)
+                        </li>*@
+                    <li class="toolbar">
+                        <label></label>
+
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                <input type="submit" value="Delete" class="button_sm" /> |
+                                <a class="toolbar back" href="#">Trở về danh sách</a>
+                            </p>
+                        }
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+        <!--end idTrangChuTren1-->
+    </div>
+</div>
+<!--end mar10-->

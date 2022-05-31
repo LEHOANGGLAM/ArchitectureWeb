@@ -1,0 +1,88 @@
+﻿<script type="text/jscript">
+    $(function ($) {
+        $('#City_Province').change(function () {
+            $.getJSON('/User/DistrictList/' + $('#City_Province').val(), function (data) {
+                var items = '<option value=' + 0 + '>-- Quận/Huyện --</option>';
+                $.each(data, function (i, district) {
+                    items += "<option value='" + district.Value + "'>" + district.Text + "</option>";
+                });
+                $('#District').html(items);
+            });
+        });
+    })(jQuery);
+</script>
+<script type="text/jscript">
+    $(function ($) {
+        $('#District').change(function () {
+            $.getJSON('/User/WardList/' + $('#District').val(), function (data) {
+                var items = '<option value=' + 0 + '>-Chọn Phường/Xã-</option>';
+                $.each(data, function (i, ward) {
+                    items += "<option value='" + ward.Value + "'>" + ward.Text + "</option>";
+                });
+                $('#Ward').html(items);
+            });
+        });
+    })(jQuery);
+
+</script>
+
+<script>
+    $('.emailre2').live('keyup', function () {
+        if (!isValidEmailAddress($('.emailre2').val())) {
+            document.getElementById('Checkemail2').innerHTML = 'Email không hợp lệ';
+            $('#register').attr('disabled', 'disabled');
+        }
+        else {
+            document.getElementById('Checkemail2').innerHTML = '';
+            $('#register').attr('disabled', false);
+
+        }
+    })
+
+    function isValidEmailAddress(emailAddress) {
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        return pattern.test(emailAddress);
+    }
+
+    $('#repassword').live('keyup', function () {
+        var pass = $('.passwordre').val();
+        var repass = document.getElementById('repassword').value;
+        if (pass != repass) {
+            document.getElementById('Checkpass').innerHTML = 'Mật khẩu không trùng';
+            $('#register').attr('disabled', 'disabled');
+        }
+        else {
+            document.getElementById('Checkpass').innerHTML = '';
+            $('#register').attr('disabled', false);
+        }
+
+    });
+
+    </script>
+<script type="text/javascript">
+    //<![CDATA[
+
+    var config = {};
+    config = {
+        changeMonth: true,
+        duration: 'fast',
+        changeYear: true,
+        numberOfMonths: 1,
+        selectOtherMonths: true,
+        showOtherMonths: true,
+        firstDay: 1,
+        dayNames: ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
+        monthNamesShort: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
+        yearRange: '1902:2013',
+        dateFormat: 'yyyy-MM-dd'
+    };
+
+    if (jQuery.ua.browser == 'Internet Explorer') {
+        $(window).load(function () {
+            $('#datepicker').datepicker(config);
+        });
+    } else {
+        $('#datepicker').datepicker(config);
+    }
+    //]]>
+</script>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Sebox.Models.SupportOnline>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" /></span>
+        <span class="title-name">Support</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="#">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+<div id="result">
+    <div class="clear0"></div>
+    <!--end borall mar10-->
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <table class="formtable">
+            <tbody>
+                <tr>
+                    <th>Tên
+                    </th>
+                    <th>Phone
+                    </th>
+
+                    <th>Yahoo
+                    </th>
+
+                    <th>Skype
+                    </th>
+                    <th style="width: 80px">Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.yahoo)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.skype)
+                        </td>
+                        <td>
+                            <a class="button blue" title="Sửa" href="/@Sebox.Models.GlobalVariables.PathFolderName/SupportOnline/Edit?id=@item.SupportOnlineId">
+                                <div class="icon">
+                                    <p class="ic-edit"></p>
+                                </div>
+                            </a>
+                            @*<a class="button red" href="/@Sebox.Models.GlobalVariables.PathFolderName/Support/Delete?id=@item.Id" title="Xóa">
+                                <div class="icon">
+                                    <p class="ic-delete"></p>
+                                </div>
+                            </a>*@
+                        </td>
+                    </tr>
+                    }
+
+            </tbody>
+        </table>
+        <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+    </div>
+    <!--end mar10-->
+</div>

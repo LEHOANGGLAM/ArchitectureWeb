@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.Membership>
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = "Index";
+    List<UsersInRole> lstrole = ViewBag.lstrole as List<UsersInRole>;
+    
+}
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" /></span>
+        <span class="title-name">Thành viên</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/Membership/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+    <div class="clear0"></div>
+    <div class="mar10 borall">
+        <table  class="formtable">
+            <tbody>
+            <tr>
+                <th>
+                    UserID
+                </th>
+                <th>
+                    UserName
+                </th>
+                <th>
+                    Email
+                </th>
+                
+                <th >
+                    Quyền
+                </th>
+                
+                <th style="width: 80px">Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @if (lstrole != null)
+                        {
+                            var lstroles = lstrole.Where(m => m.UserId == item.UserId).ToList();
+                            if (lstroles.Count() > 0)
+                            {
+                                foreach (var role in lstroles)
+                                {
+                            <text>
+                            @role.Role.Description<br />
+                            </text>
+                                }
+                            }
+                        }
+                    </td>
+
+                    <td>
+                        <a class="button blue" title="Sửa" href="/admin/Membership/Edit?id=@item.UserId">
+                            <div class="icon">
+                                <p class="ic-edit"></p>
+                            </div>
+                        </a>
+                        <a class="button red" href="/admin/Membership/Delete?id=@item.UserId" title="Xóa">
+                            <div class="icon">
+                                <p class="ic-delete"></p>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            }
+</tbody>
+        </table>
+        <script>$("tr:even").css("background-color", "#f2f2f2");</script>
+    </div>

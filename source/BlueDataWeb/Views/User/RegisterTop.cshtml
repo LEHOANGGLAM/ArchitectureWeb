@@ -1,0 +1,202 @@
+﻿@model BlueDataWeb.Models.User
+
+@{
+    ViewBag.Description = "Nơi mua hàng giảm giá cùng các đợt khuyến mãi đặc biết giá cực rẻ cực shock, deal giảm giá hot mỗi ngày với những sản phẩm mới lạ, dealtop 1 kênh shopping giá rẻ  dành cho bạn";
+    ViewBag.Keywords = "BlueDataWeb,mua hàng theo nhóm,mua chung, nhóm mua, cùng mua, deal, deals, giá tốt, giá rẻ, giảm giá, khuyến mại, ưu đãi, Group Buy, daily deals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "dealtop 1, deal, mua hang giam gia, khuyen mai, deal giam gia, deal hot";
+    
+}
+
+
+@Html.Partial("_ScriptRegTop");
+
+<section class="clearfix">
+    
+		<div class="clear15"></div>
+    @using (Html.BeginForm("RegisterTop", "User", FormMethod.Post, new { id = "FormRegisterTop" }))
+    {
+                    @Html.ValidationSummary(true)
+		<div class="container bgw">
+             
+         	 <div class="pad15">
+             	<h3>Đăng Ký</h3>
+                <p>Thông tin có <span class="star">*</span> là bắt buộc nhập, cần phải nhập.</p>
+                <div class="clear20"></div>
+                <h3>Thông Tin Tài Khoản</h3>
+                <ol class="register">
+                	<li>
+                    	<label>Email : <span class="star">*</span></label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "emailre2"})
+                         <span id="Checkemail2" class="clear" style="color: red; font-style: italic" ></span>
+                                    @Html.ValidationMessageFor(m => m.Email)
+                                    <p class="error">@ViewBag.errorEmail</p>
+                                    <p class="error">@ViewBag.errorEmaildoub</p>
+                        
+                    </li>
+                    <li>
+                    	<label>Mật Khẩu : <span class="star">*</span></label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "passwordre"})
+                                    @Html.ValidationMessageFor(m => m.Password)
+                        <p class="error">@ViewBag.errorPassword</p>
+                    </li>
+                    <li>
+                    	<label>Nhập Lại Mật Khẩu : <span class="star">*</span></label>
+                        <input name="repassword" id="repassword" type="password" size="40">
+                        <span id="Checkpass" class="clear" style="color: red; font-style: italic"></span>
+                    </li>
+                    <li>
+                     
+                    	<label>Ngày Sinh : <span class="star">*</span></label>
+                        @*<input class="ct" name="Birthday" type="text" id="datepicker"/>*@
+                        @Html.TextBoxFor(m => m.Birthday, new { @class = "datepicker Re" })
+                        <span id="checkbirthdayRe" class="clear" style="color: red; font-style: italic"></span>
+                        <p class="error Retop">@ViewBag.errorBirthday</p>
+
+                    </li>
+                     <li>
+                    	<label>Giới Tính:</label>
+                        <select id="Gender"  class="select" name="Gender">
+                        <option value="">--</option>
+                        <option  value="true">Nữ</option>
+                        <option  value="false">Nam</option>
+                             
+                        </select>
+                    </li>
+                </ol>
+                 <div class="clear20"></div>
+                <h3>Thông Tin Giao Hàng</h3>
+                <ol class="register">
+                	<li>
+                    	<label>Họ Tên : <span class="star">*</span></label>
+                        @Html.TextBoxFor(m => m.Name)
+                                    @Html.ValidationMessageFor(m => m.Name)
+                         <p style="color: red;text-align:center">@ViewBag.errorName</p>
+                        
+                    </li>
+                     <li>
+                    	<label>Tỉnh/Thành Phố :</label>
+                      @*  @Html.DropDownList("City_Province", "--- Chọn Tỉnh/TP ---")*@
+                          @Html.DropDownList("City_Province", ViewBag.City_Province as SelectList, "-Chọn Tỉnh/Thành phố -", new { @class = "select2 ct" })
+                    </li>
+                    <li>
+                    	<label>Quận/Huyện :</label>
+                 
+                       <select class="select2 ct" id="District" name="District" style="min-width:137px"><option value="">- Quận/Huyện -</option>></select>
+                    </li>
+                    <li>
+                    	<label>Phường/Xã :</label>
+                         <select class="select2 ct" id="Ward" name="Ward" style="min-width:137px"><option value="">- Chọn Phường/Xã -</option></select>
+                       
+                    </li>
+                    <li>
+                    	<label>Số Nhà - Ngõ - Ngách :</label>
+                        @Html.TextBoxFor(m => m.Home_Number)
+                                    @Html.ValidationMessageFor(m => m.Home_Number)
+                    </li>
+                    <li>
+                    	<label>Đường :</label>
+                        @Html.TextBoxFor(m => m.Street)
+                                    @Html.ValidationMessageFor(m => m.Street)
+                    </li>
+                    <li>
+                    	<label>Lầu</label>
+                        @Html.TextBoxFor(m => m.Floor)
+                                    @Html.ValidationMessageFor(m => m.Floor)
+                    </li>
+                    <li>
+                    	<label>Số điện thoại : <span class="star">*</span></label>
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "phone"})
+                                    @Html.ValidationMessageFor(m => m.Phone)
+                        <span id="checkphone" class="clear" style="color: red; font-style: italic"></span>
+                        <p class="error">@ViewBag.errorPhone</p>
+                    </li>
+                     <li>
+                    	<label></label>
+                        <input id="register" type="submit" class="btn" value="Đăng Ký" />
+                    </li>
+                </ol>
+             </div><!--end margin-->
+            
+        </div><!--end container-->
+             }
+    <div class="clear10"></div>
+ 
+</section>
+
+<script type="text/javascript">
+//<![CDATA[
+
+var config = {};
+config = {
+			changeMonth: true,
+			duration: 'fast',
+			changeYear: true,
+			numberOfMonths: 1,
+			selectOtherMonths: true,
+			showOtherMonths: true,
+			firstDay: 1,
+			dayNames: ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
+			monthNamesShort: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
+			yearRange: '1902:2013',
+			dateFormat: 'dd/mm/yy'
+		};
+
+if (jQuery.ua.browser == 'Internet Explorer') {
+	$(window).load(function(){
+	    $('.datepicker').datepicker(config);
+	});
+} else {
+    $('.datepicker').datepicker(config);
+}
+//]]>
+</script>
+<script type="text/javascript">
+    function checkPhone() {
+        var p = $('.phone').val();
+         
+        if (isNaN(p) == true || p.length < 9 || p.length > 12) {
+            document.getElementById("checkphone").innerHTML = "Số điện thoại không hợp lệ";
+            return false;
+        }
+        return true;
+      
+    }
+</script>
+<script type="text/javascript">
+    function CheckBirthday() {
+       
+        var birthday = $('.Re').val();
+  var reg = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
+  if (birthday.match(reg)) {
+      return true;;
+  }
+  else 
+  {
+      document.getElementById("checkbirthdayRe").innerHTML = "Ngày sinh không hợp lệ";
+      document.getElementById("repassword").focus();
+      return false;
+  }
+}
+    </script>
+@*<script type="text/javascript">
+    $('#repassword').live('keyup', function () {
+        
+        var birthday = $('.Re').val();
+       
+        var reg = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
+        
+        if ( birthday.match(reg)){
+            return true;}
+        else 
+        {
+            alert("Please enter dd/mm/yyyy");
+        }
+    })
+
+        </script>*@
+<script type="text/javascript">
+    $('#FormRegisterTop').submit(function () {
+        return !!(checkPhone() & CheckBirthday());
+    });
+    </script>

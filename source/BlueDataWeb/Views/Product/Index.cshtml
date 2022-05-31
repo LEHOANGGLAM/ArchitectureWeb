@@ -1,0 +1,101 @@
+﻿@model BlueDataWeb.ViewModels.ProductCateViewModel
+@using BlueDataWeb.Models.Service;
+@using BlueDataWeb.Models.Entites;
+@{
+    int count = 0;
+    count = Model.CountProduct / 8;
+    if (Model.CountProduct % 8 != 0)
+    {
+        count += 1;
+    }
+    int counts = 0;
+}
+@foreach (var item in Model.Categorys.Where(m=>m.ParentCategoryID==0).OrderBy(m=>m.DisplayOrder))
+{
+
+    <div class="DivAdv">
+        <h1 class="home-widget-title">
+            <span class="span">@item.CategoryName</span>
+        </h1>
+
+   </div>
+    <div class="clearfix"></div>
+    <div class="DivAdv">
+        <div class="row">
+            @{
+                List<Product> lstproduct = new List<Product>();
+                lstproduct.AddRange(ProductService.GetLstProductFlowBoPhan(item.CategoryID));
+                ProductService.ListProductFolowCateFull(item.CategoryID, ref lstproduct);
+          }
+            @if(lstproduct.Count() > 0)
+            {
+                foreach (var product in lstproduct)
+                {
+                    counts++;
+                    Html.RenderPartial("~/Views/Category/ProductBox.cshtml", product);
+                    if (counts % 4 == 0)
+                    {
+
+                    <div class="clean margin_top20">
+                    </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+}
+@*@if (count > 0)
+{
+
+        <div class="pager">
+
+            @{
+                int pagenew = 0;
+                if (Request["page"] != null)
+                {
+                    pagenew = Convert.ToInt32(Request["page"]);
+                }
+
+            }
+            <ul>
+                 @if(Request["page"] != null && Convert.ToInt32(Request["page"]) >= 2)
+                 {
+                  <li class="previous-first-page">
+                   <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=1")"> < </a>
+                </li>
+                 <li class="previous-page">
+                   <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=" + ((pagenew - 1) < 1 ? pagenew : (pagenew - 1)))"> < </a>
+                </li>
+                 }
+                @for (int i = 1; i <= count; i++)
+                {
+                    if (Request["page"] != null && Convert.ToInt32(Request["page"]) == i || (i == 1 && Request["page"] == null))
+                    {
+                        <li class="individual-page active"><a class="buttonpage pagenaviselect" href=@Url.Content("~/?page=" + @i)>@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                         <li class="individual-page"><a class="buttonpage pagenaviselect" href=@Url.Content("~/?page=" + @i)>@i</a>
+                    </li>
+                    }
+                }
+                <li class="next-page">
+                    <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=" + ((pagenew + 1) > count ? pagenew : (pagenew + 1)))">></a>
+               </li>
+                 <li class="previous-last-page">
+                   <a class="buttonpage pagenaviselect" href="@Url.Content("~/?page=" + count)"> < </a>
+                </li>
+            </ul>
+
+        </div>
+ }*@
+<script type="text/javascript">
+    $(function () {
+        jQuery("img.lazyloadimg").lazyload({
+            placeholder: "http://dealtop1.vn/Content/images/isset/grey.gif",
+            effect: "fadeIn",
+            threshhold: 200
+        });
+    });
+</script>

@@ -1,0 +1,187 @@
+﻿@model BlueDataWeb.Models.User
+@{
+    //ViewBag.Description = "Nơi mua hàng giảm giá cùng các đợt khuyến mãi đặc biết giá cực rẻ cực shock, deal giảm giá hot mỗi ngày với những sản phẩm mới lạ, dealtop 1 kênh shopping giá rẻ  dành cho bạn";
+    //ViewBag.Keywords = "BlueDataWeb,mua hàng theo nhóm,mua chung, nhóm mua, cùng mua, deal, deals, giá tốt, giá rẻ, giảm giá, khuyến mại, ưu đãi, Group Buy, daily deals";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.Title = "Mua hàng giảm giá, Deal khuyến mãi giá rẻ | dealtop1.com";
+}
+
+<div class="container body-content" style="margin-top: 87px;margin-bottom: 0 !important">
+
+    <div class="col-md-10 col-md-offset-1">
+
+        @using (Html.BeginForm("Register", "User", FormMethod.Post, new { id = "FormRegisterSubmit" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <h1>Đăng ký tài khoản</h1>
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Họ Tên : <span class="star">*</span></div>
+                    <div class="col-md-9">
+                        <input id="Name" name="Name" type="text" placeholder="Nhập tên" class="form-control required">
+                        @Html.ValidationMessageFor(m => m.Name)
+
+                        @*<p id="usernameError" style="color: red">@ViewBag.errorName</p>*@
+                        <label class="error"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Email : <span class="star">*</span></div>
+                    <div class="col-md-9">
+                        <input id="emailRegister" name="Email" type="text" placeholder="Nhập email" class="form-control required">
+                        @Html.ValidationMessageFor(m => m.Email)
+
+                        <p id="emailError" style="color: red">@ViewBag.errorEmail</p>
+                        <p style="color: red">@ViewBag.errorEmaildoub</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Mật Khẩu : <span class="star">*</span></div>
+                    <div class="col-md-9">
+                        <input id="passwordre" name="Password" type="text" placeholder="" class="form-control required">
+                        @Html.ValidationMessageFor(m => m.Password)
+
+                        <p id="passError" style="color: red">@ViewBag.errorPassword</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Nhập Lại Mật Khẩu : <span class="star">*</span></div>
+                    <div class="col-md-9">
+                        <input id="repassword" name="repassword" type="text" placeholder="" class="form-control required">
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Điện thoại : <span class="star">*</span></div>
+                    <div class="col-md-9">
+                        <input id="Phone" name="Phone" type="text" placeholder="Nhập số điện thoại" class="form-control required">
+                        @Html.ValidationMessageFor(m => m.Phone)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Di động : </div>
+
+                    <div class="col-md-9">
+                        <input id="CellPhone" name="CellPhone" type="text" placeholder="" class="form-control required">
+                        @* @Html.ValidationMessageFor(m => m.CellPhone)*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Tên công ty : <span class="star">*</span></div>
+
+                    <div class="col-md-9">
+                        <input id="CongTy" name="CongTy" type="text" placeholder="Nhập tên công ty" class="form-control required">
+                        @*@Html.ValidationMessageFor(m => m.CongTy)*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10">Đia chỉ : </div>
+
+                    <div class="col-md-9">
+                        <input id="Address" name="Address" type="text" placeholder="Nhập địa chỉ" class="form-control required">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3 text-right paddingTop10"></div>
+                    <div class="col-md-9">
+                        Đăng ký nhận bản tin của chúng tôi
+
+                        @Html.CheckBox("sube")
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="form-group paddingTop10">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary  ">Xác nhận</button>
+                    </div>
+                </div>
+            </form>
+
+        }
+    </div>
+</div>
+
+@*<script>
+        $('#emailRegister').live('keyup', function () {
+            if (!isValidEmailAddress($('#emailRegister').val())) {
+                document.getElementById('CheckemailRegister').innerHTML = 'Email không hợp lệ';
+                $('.btnregister').attr('disabled', 'disabled');
+            }
+            else {
+                document.getElementById('CheckemailRegister').innerHTML = '';
+                $('.btnregister').attr('disabled', false);
+
+            }
+        })
+
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+            return pattern.test(emailAddress);
+        }
+        $('#repassword').live('keyup', function () {
+            var pass = $('#passwordre').val();
+            var repass = document.getElementById('repassword').value;
+            if (pass != repass) {
+                document.getElementById('Checkpass').innerHTML = 'Mật khẩu không trùng';
+                $('.btnregister').attr('disabled', 'disabled');
+            }
+            else {
+                document.getElementById('Checkpass').innerHTML = '';
+                $('.btnregister').attr('disabled', false);
+            }
+
+        });
+    </script>
+    <script type="text/javascript">
+        function CheckNull() {
+            passwordre
+            var repass1 = document.getElementById('repassword').value;
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('emailRegister').value;
+            var pass = document.getElementById('passwordre').value;
+            if (repass1 == "" || username == "" || email == "" || pass == "") {
+                if (repass1 == "") {
+                    document.getElementById("Checkpassre").innerHTML = "Vui lòng nhập 'Nhập Lại Mật Khẩu'";
+                    document.getElementById("repassword").focus();
+                }
+                if (pass == "") {
+                    document.getElementById("passError").innerHTML = "Vui lòng nhập 'Mật khẩu'";
+                    document.getElementById("passwordre").focus();
+                }
+                if (email == "") {
+                    document.getElementById("emailError").innerHTML = "Vui lòng nhập 'Email'";
+                    document.getElementById("emailRegister").focus();
+                }
+                if (username == "") {
+                    document.getElementById("usernameError").innerHTML = "Vui lòng nhập 'Tên'";
+                    document.getElementById("username").focus();
+                }
+
+                return false;
+
+            }
+            if (!isValidEmailAddress($('#emailRegister').val())) {
+                return false;
+            }
+            return true;
+
+        }
+        </script>
+
+    <script type="text/javascript">
+        $('#FormRegisterSubmit').submit(function () {
+            return CheckNull();
+        });
+        </script>*@

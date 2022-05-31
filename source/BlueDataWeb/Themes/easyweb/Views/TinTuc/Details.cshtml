@@ -1,0 +1,116 @@
+﻿@model BlueDataWeb.Models.Entites.News
+
+@using System.Configuration
+
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+
+
+    ViewBag.Img = "Images/News/" + Model.ImagePath;
+
+    var NewsList = (List<News>)ViewBag.TopNewRelate;
+    List<NewCategory> lstnewcategory = ViewBag.lstCate as List<NewCategory>;
+
+    string link_Sub = Url.RouteUrl("tintucsub", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.NewCategory.Name), id = Model.NewCategory.NewCategoriesID });
+
+    string link_detail = Url.RouteUrl("TinTucDetail", new
+    {
+        cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.NewCategory.Name),
+        title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.Title),
+        id = Model.NewsID
+    });
+}
+
+
+<div class="view_xam">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="~/">Trang chủ</a> <i class="fa fa-angle-right"></i> </li>
+                        <li class="breadcrumb-item"><a href="~/tin-tuc">Tin tức <i class="fa fa-angle-right"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="@Model.Title">
+                            <a href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.Title), id = Model.NewsID })">
+
+                                @Model.Title
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+
+
+<div class="view_white">
+    <div class="container">
+
+        <div class="row">
+            <h1 class="title_new">@Model.Title </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9 border-right">
+         
+
+                @*@Html.Partial("_Div_Social")*@
+
+                <p class="short_content">
+                    @Html.Raw(Model.ShortDescription)
+                </p>
+
+                <p>
+                    @Html.Raw(Model.Description)
+                </p>
+
+                @if (Model.isCaseStudy != null && Model.isCaseStudy.Value == true)
+            {
+                    <div class="span12  margin_lelf0">
+                        <h2>Tổng quan giải pháp </h2>
+                        <p>
+                            @Html.Raw(Model.CaseStudy_OverView)
+                        </p>
+                    </div>
+                    <div class="span12 margin_lelf0">
+                        <h2>Mô tả chi tiết </h2>
+                        <p>
+                            @Html.Raw(Model.CaseStudy_Main)
+                        </p>
+                    </div>
+
+                    <div class="span12 margin_lelf0">
+                        <h2>Định hướng tương lai</h2>
+                        <p>
+                            @Html.Raw(Model.CaseStudy_Use)
+                        </p>
+                    </div>
+                }
+
+                <hr />
+
+                <h3 class="title_new">Bài viết khác</h3>
+
+                @Html.Partial("TinTucListOri", NewsList)
+
+
+            </div>
+
+            <div class="col-md-3">
+                @Html.Partial("_SiderBar_TinTuc")
+
+            </div>
+
+
+          
+        </div>
+    </div>
+</div>
+ 

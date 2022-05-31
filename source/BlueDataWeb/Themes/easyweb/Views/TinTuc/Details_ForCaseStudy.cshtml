@@ -1,0 +1,88 @@
+﻿@model BlueDataWeb.Models.Entites.News
+
+@using BlueDataWeb.Models.Entites;
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+
+    var NewsList = ViewBag.AllData as List<BlueDataWeb.Models.Entites.News>;
+
+}
+
+<!-- Top Background Image Wrapper -->
+<div class="bgded" style="background-image:url('https://www.baohanhdientu.net/images/backgrounds/ewarranty-ict-news.jpg');">
+
+    <div class="wrapper overlay">
+        <div id="breadcrumb" class="hoc clear">
+
+            <ul>
+                <li><a href="~/">Trang chủ</a></li>
+                <li><a href="~/trien-khai">Triển khai</a></li>
+                <li>
+                    <a href="@Url.RouteUrl("trienkhaidetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(Model.Title), id = Model.NewsID })">
+
+                        @Model.Title
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Top Background Image Wrapper -->
+
+<div class="wrapper row3">
+    <main class="hoc container content_detail clear">
+        <!-- main body -->
+        <div class="content three_quarter first">
+            <h1>@Model.Title  </h1>
+
+            @Html.Partial("_Div_Social")
+
+            <p class="short_content">
+                @Html.Raw(Model.ShortDescription)
+            </p>
+
+            <div class="span12  margin_lelf0">
+                <h2>Overview  </h2>
+                <p>
+                    @Html.Raw(Model.CaseStudy_OverView)
+                </p>
+            </div>
+            <div class="span12 margin_lelf0">
+                <h2>CASE STUDIES </h2>
+                <p>
+                    @Html.Raw(Model.CaseStudy_Main)
+                </p>
+            </div>
+
+            <div class="span12 margin_lelf0">
+                <h2>USES AND APPLICATIONS </h2>
+                <p>
+                    @Html.Raw(Model.CaseStudy_Use)
+                </p>
+            </div>
+        </div>
+        <div class="sidebar one_quarter">
+
+            <h6 class="sibar_tile">Triển khai</h6>
+            <nav class="sdb_holder">
+                <ul>
+
+                    @foreach (var item in NewsList)
+                    {
+                        <li>
+                            <a href="@Url.RouteUrl("trienkhaidetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID })">
+
+                                @item.Title
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+        <!-- / main body -->
+        <div class="clear"></div>
+    </main>
+</div>
+

@@ -1,0 +1,13 @@
+﻿ <input type="hidden" name="shiptemp" id="shiptemp" value="@ViewData["Getship"]" />
+
+<br />
+ <li class="bor-bottom padb">
+            <div class="clear0"></div>
+            <span>Phí Vận Chuyển</span>
+            <span class="floatr mp" id="ship">@string.Format("{0:0,0}", ViewData["Getship"])</span>
+        </li>
+          <li>
+            <div class="clear10"></div>
+            <span class="mp">Tổng Tiền</span>
+            <span class="title-tt floatr TotalOder">@string.Format("{0: 0,0}",  ViewData["GetTotal"])</span>
+</li>

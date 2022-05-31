@@ -1,0 +1,26 @@
+﻿@{
+
+    var Category = (List<BlueDataWeb.Models.Entites.NewCategory>)ViewBag.TinTucController_Menu;
+
+}
+
+<div class="sidebar one_quarter">
+
+    <div class="list-group rounded-top">
+        <a href="~/tin-tuc" class="list-group-item active waves-light">
+            @Category[0].Name
+        </a>
+
+        @for (int i = 1; i < Category.Count; i++)
+        {
+            var item = Category[i];
+            string link_Sub = Url.RouteUrl("tintucsub", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.NewCategoriesID });
+
+            <a title="@item.Name" href="@link_Sub" class="list-group-item waves-effect">
+
+                @item.Name
+            </a>
+
+        }
+    </div>
+</div>

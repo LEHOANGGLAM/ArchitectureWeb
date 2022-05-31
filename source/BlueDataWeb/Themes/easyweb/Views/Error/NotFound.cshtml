@@ -1,0 +1,43 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "NotFound";
+}
+<div class="clearfix"></div>
+<div class="container body-content">
+    <div class="list-sfs-holder">
+        @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+        {
+            <div>
+                <p>
+                    <b>Exception:</b> @Model.Exception.Message<br />
+                    <b>Controller:</b> @Model.ControllerName<br />
+                    <b>Action:</b> @Model.ActionName
+                </p>
+                <div style="overflow: scroll">
+                    <pre>
+                            @Model.Exception.StackTrace
+                        </pre>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="div100 bgw">
+
+        <img src="/Content/images/issets/error.jpg" />
+        <div id="dCountDown"></div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var countDownVal = 10;
+    $('#dCountDown').html(countDownVal);
+    var timer1 = setInterval(function () { myTimer() }, 1000);
+    function myTimer() {
+        countDownVal--;
+        $('#dCountDown').html(countDownVal);
+        if (countDownVal == 0) {
+            clearInterval(timer1); // this thing can be here, or not, it's OK
+            window.location.replace("/"); // or whatever address you want
+        }
+    }
+</script>

@@ -1,0 +1,195 @@
+﻿@{
+    var Setting = (List<BlueDataWeb.Models.Entites.SettingDB>)ViewBag.lstSetting;
+
+    var DiaChi = Setting.Where(x => x.Ma == "DiaChi").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "DiaChi").FirstOrDefault().Value : "";
+    var Hotline = Setting.Where(x => x.Ma == "Hotline").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "Hotline").FirstOrDefault().Value : "";
+
+    var lstCate = (List<BlueDataWeb.Models.Entites.ArchitectureCategory>)ViewBag.KienTrucCategory;
+
+    ViewBag.SEO_DES = Setting.Where(x => x.Ma == "SEO_DES").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "SEO_DES").FirstOrDefault().Value : "";
+    ViewBag.SEO_TITLE = Setting.Where(x => x.Ma == "SEO_TITLE").FirstOrDefault() != null ? Setting.Where(x => x.Ma == "SEO_TITLE").FirstOrDefault().Value : "";
+    ViewBag.SEO_IMG = "http://suanhahoaphat.com/Themes/easyweb/images/logo.jpg";
+
+}
+
+@{Html.RenderAction("ViewSlider", "Slider", new { typleSider = "E_Home" });}
+
+@{Html.RenderAction("Top", "GioiThieu", new { view = "_GioiThieu" });}
+
+@{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "bang-bao-gia", view = "_ButtonBaoGia", page = 4 });}
+
+@{Html.RenderAction("NewHome", "TinTuc", new { keyname = "E_TinTuc", view = "_TinTucMoi" });}
+
+@{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "thiet-ke-kien-truc", view = "_ThietKeKienTruc" });}
+
+<!-- @*<div class="intro_thietke">
+    <div class="container">
+        <div class="title_f"><a href="intro-thiet-ke-kien-truc.html">quy trình thiết kế kiến trúc</a></div>
+        <div class="desc_kientruc clearfix">
+            <p><span style="line-height:2"><span style="font-size:20px"><span style="font-family:Times New Roman,Times,serif">Quy tr&igrave;nh thiết kế nh&agrave; được rất nhiều kh&aacute;ch h&agrave;ng quan t&acirc;m hiện nay bởi điều đ&oacute; sẽ đ&aacute;nh gi&aacute; được sự chuy&ecirc;n nghiệp của c&aacute;c c&ocirc;ng ty thiết kế kiến tr&uacute;c chuy&ecirc;n nghiệp v&agrave; uy t&iacute;n.</span></span></span></p>
+        </div>
+        <a href="intro-thiet-ke-kien-truc.html" class="xemthem">Xem thêm _</a>
+    </div>
+</div>*@ -->
+<!-- <div class="group_dutoan">
+    <div class="container">
+        <div class="group_dutoan1">
+            <div class="group_dutoan2">
+                <div class="title_m">dự toán chi phí xây dựng</div>
+                <div class="group_dutoan3a">
+                    <div class="line_dutoan">
+                        <p>Chọn loại nhà:</p>
+                        <select id="loainha">
+                            <option value="">Chọn loại nhà</option>
+                            <option value="131">Nhà phố</option>
+                            <option value="132">Nhà cấp 4</option>
+                            <option value="133">Biệt thự</option>
+                        </select>
+                    </div>
+                    <div class="line_dutoan">
+                        <p>Chọn hình thức xây nhà:</p>
+                        <select id="hinhthuc">
+                            <option value="">Chọn hình thức</option>
+                            <option value="134">Xây dựng phần thô</option>
+                            <option value="135">Xây dựng trọn gói</option>
+                        </select>
+                    </div>
+                    <div class="line_dutoan">
+                        <p>Chiều rộng m2 (ví dụ2.5):</p>
+                        <input type="number" id="chieurong" value="0">
+                    </div>
+                    <div class="line_dutoan">
+                        <p>Chiều dài m2 (ví dụ2.5):</p>
+                        <input type="number" id="chieudai" value="0">
+                    </div>
+                    <div class="line_dutoan">
+                        <p>Chọn loại móng:</p>
+                        <select id="mong">
+                            <option value="">Chọn loại móng</option>
+                            <option value="136">Móng đài cọc</option>
+                            <option value="137">Móng băng</option>
+                            <option value="138">Móng đơn</option>
+                        </select>
+                    </div>
+                    <div class="line_dutoan">
+                        <p>Chọn loại mái:</p>
+                        <select id="mai">
+                            <option value="">Chọn loại mái</option>
+                            <option value="139">Mái bằng đúc BTCT</option>
+                            <option value="140">Mái lợp tôn lạnh</option>
+                            <option value="141">Mái đúc BTCT lợp ngói</option>
+                        </select>
+                    </div>
+                    <div class="line_dutoan">
+                        <select id="solau">
+                            <option value="0">Chọn số lầu</option>
+                            <option value="142">1 Lầu</option>
+                            <option value="143">2 Lầu</option>
+                            <option value="144">3 Lầu</option>
+                            <option value="234">4 Lầu</option>
+                            <option value="235">5 Lầu</option>
+                            <option value="281">6 Lầu</option>
+                            <option value="282">7 Lầu</option>
+                        </select>
+                    </div>
+                    <div class="line_dutoan">
+                        <button type="button" class="btn_dutoan">Tính kết quả</button>
+                        <button type="reset" class="btn_reset">Làm lại</button>
+                    </div>
+                </div>
+                <div class="box_kqdutoan">
+                    <div class="title_f black-text">kết quả tính diện tích & chi phí xây dựng</div>
+                    <style>
+                        .box_blank:after {
+                            background: url(upload/hinhanh/dt-9447.jpg);
+                        }
+                    </style>
+                    <div class="box_blank"></div>
+                </div>
+            </div>
+            <div class="group_dutoan3">
+                @{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "dich-vu-xay-dung", view = "_DichVuXayDung" });}
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_QuyTrinhXayDung")
+
+<div class="group_dichvusuachuanha">
+    <div class="container">
+        <div class="group_flexsuachua">
+            <div class="group_flexsuachua1">
+                @{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "dich-vu-sua-chua-nha", view = "_DichVuSuaChuaNha" });}
+            </div>
+            <div class="group_flexsuachua2">
+                <div class="title_m"><a href="tu-van-trang-tri-noi-that.html">tư vấn trang trí nội thất</a></div>
+                <div class="group_slick_congtrinh">
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('.slick_congtrinh3').slick({
+                                infinite: true,
+                                accessibility: false,
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                autoplay: true,
+                                autoplaySpeed: 3000,
+                                speed: 1000,
+                                arrows: false,
+                                centerMode: false,
+                                dots: false,
+                                draggable: true,
+                                pauseOnHover: true,
+                                vertical: true
+                            });
+                        });
+                    </script>
+                    <div class="slick_congtrinh3">
+                        <div class="border-0 d-block">
+                            <a href="tu-van-trang-tri-noi-that/cac-mau-tran-thach-cao-phong-khach-dep-278.html">
+                                <img src="~/Themes/easyweb/images/sanpham/mttcpk29042_500x500.jpg" alt="CÁC MẪU TRẦN THẠCH CAO PHÒNG KHÁCH ĐẸP">
+                                <h3 class="m-0">CÁC MẪU TRẦN THẠCH CAO PHÒNG KHÁCH ĐẸP</h3>
+                            </a>
+                        </div>
+                        <div class="border-0 d-block">
+                            <a href="tu-van-trang-tri-noi-that/cach-chon-mau-son-cho-phong-ngu-277.html">
+                                <img src="~/Themes/easyweb/images/sanpham/mspn65794_500x500.jpg" alt="CÁCH CHỌN MÀU SƠN CHO PHÒNG NGỦ">
+                                <h3 class="m-0">CÁCH CHỌN MÀU SƠN CHO PHÒNG NGỦ</h3>
+                            </a>
+                        </div>
+                        <div class="border-0 d-block">
+                            <a href="tu-van-trang-tri-noi-that/chat-lieu-go-trong-trang-tri-noi-that-272.html">
+                                <img src="~/Themes/easyweb/images/sanpham/nt299495_500x500.jpg" alt="CHẤT LIỆU GỖ TRONG TRANG TRÍ NỘI THẤT">
+                                <h3 class="m-0">CHẤT LIỆU GỖ TRONG TRANG TRÍ NỘI THẤT</h3>
+                            </a>
+                        </div>
+                        <div class="border-0 d-block">
+                            <a href="tu-van-trang-tri-noi-that/xu-huong-trang-tri-noi-that-224.html">
+                                <img src="~/Themes/easyweb/images/sanpham/nt250478_500x500.jpg" alt="XU HƯỚNG TRANG TRÍ NỘI THẤT">
+                                <h3 class="m-0">XU HƯỚNG TRANG TRÍ NỘI THẤT</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_QuyTrinhSuaChuaNha") -->
+
+<div class="group_phongthuy">
+    <div class="container">
+        <div class="row custom">
+            <div class="col s12 m12 l6 xl6">
+                @{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "phong-thuy", view = "_PhongThuy" });}
+            </div>
+            <div class="col s12 m12 l6 xl6">
+
+                @{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "mau-nha-dep", view = "_CacMauNhaDep" });}
+            </div>
+        </div>
+    </div>
+</div>
+
+@{Html.RenderAction("ListViewByKeyName", "Architecture", new { keyname = "du-an-da-hoan-thanh", view = "_DuAnHT" });}

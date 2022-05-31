@@ -1,0 +1,28 @@
+﻿@model  IEnumerable<BlueDataWeb.Models.Entites.ArchitectureNew>
+<div class="title_m"><a href="/kien-truc/dich-vu-sua-chua-nha-7">DỊCH VỤ SỬA CHỮA NHÀ</a></div>
+<div class="group_slick_congtrinh">
+    <div id="dichvusuachua">
+        <div class="flex_dichvusuachua list">
+            @foreach (var item in Model)
+            {
+                string link_detail = Url.RouteUrl("KienTrucDetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.ArchitectureCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.ID });
+
+                <div class="item_baivietquantam custom">
+                    <a href="@link_detail">
+                        <img src="~/Images/News/@item.ImagePath" alt="@item.Title">
+                        <h3 class="m-0">@item.Title</h3>
+                        <p>@item.ShortDescription</p>
+                    </a>
+                </div>
+            }
+
+        </div>
+        <ul class="pagination paging_list"></ul>
+        <script>
+            var monkeyList = new List('dichvusuachua', {
+                page: 6,
+                pagination: true
+            });
+        </script>
+    </div>
+</div>

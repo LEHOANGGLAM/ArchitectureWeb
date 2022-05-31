@@ -1,0 +1,98 @@
+﻿@model List<BlueDataWeb.Models.Entites.spNewsPaging_Result>
+
+@{
+
+    var cate = ViewBag.newcategory as BlueDataWeb.Models.Entites.NewCategory;
+
+    ViewBag.Title = cate.MetaTitle;
+    ViewBag.Description = cate.MetaDescription;
+    ViewBag.Keywords = cate.MetaKeywords;
+
+    if (!string.IsNullOrEmpty(cate.Image))
+    {
+        ViewBag.Img = "Images/News/" + cate.Image;
+
+    }
+}
+
+<div class="view_xam">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="~/">Trang chủ</a> <i class="fa fa-angle-right"></i> </li>
+                        <li class="breadcrumb-item active"><a href="~/tin-tuc">Tin tức <i class="fa fa-angle-right"></i></a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="view_white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 border-right marb20">
+
+                <div id="bookListDiv">
+                    @{Html.RenderPartial("TinTucList", Model);}
+                </div>
+
+
+                @if (Model != null && Model.Count > 0 && ViewBag.NoMoreData == false)
+                {
+                    <a id="morelist" class="viewmore" onclick="LoadMore();">
+                        Xem thêm
+                        <b></b>
+                    </a>
+                }
+
+                <div id="loadingDiv" style="text-align: center; display: none; margin-bottom: 20px; clear:both" onclick="LoadMore();">
+
+                    <img src="~/Content/images/loading.gif" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.Partial("_SiderBar_TinTuc")
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script type="text/javascript">
+    var BlockNumber = 2;  //Infinate Scroll starts from second block
+    var NoMoreData = false;
+    var inProgress = false;
+
+    function LoadMore() {
+        inProgress = true;
+        $("#loadingDiv").show();
+        $("#morelist").hide();
+        CategoryId = '@ViewBag.lstCate';
+
+        $.post("@Url.Action("InfinateScroll", "TinTuc")", { "BlockNumber": BlockNumber, "CategoryId": CategoryId},
+            function (data) {
+                BlockNumber = BlockNumber + 1;
+                NoMoreData = data.NoMoreData;
+                $("#bookListDiv").append(data.HTMLString);
+                $("#loadingDiv").hide();
+
+                inProgress = false;
+
+                if (NoMoreData == true) {
+                    $("#morelist").remove();
+                }
+                else {
+                    $("#morelist").show();
+
+                }
+
+            });
+    }
+    </script>
+}

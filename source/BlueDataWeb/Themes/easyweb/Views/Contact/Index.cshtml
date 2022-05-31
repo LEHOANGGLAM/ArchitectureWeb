@@ -1,0 +1,178 @@
+﻿@model BlueDataWeb.Models.CustomsModel.ContactModels
+@using BlueDataWeb.Models
+@using BlueDataWeb.Models.Enum
+@{
+
+    var NewsList = ViewBag.GioiThieu as List<BlueDataWeb.Models.Entites.About>;
+
+}
+ 
+<div class="view_xam">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="~/">Trang chủ</a> <i class="fa fa-angle-right"></i> </li>
+                        <li class="breadcrumb-item active"><a href="~/lien-he">Liên hệ  <i class="fa fa-angle-right"></i></a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="view_white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 border-right marb20">
+
+                @*@Html.Partial("_Div_Social")*@
+
+                <ul class="nospace btmspace-30 linklist contact contact_page">
+
+                    <li>
+                        <h1 class="marginL0 marginT20">Công ty </h1>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker" style="margin-right: 6px;margin-top:10px"></i>
+                        <span>
+                            Địa chi:  
+                        </span>
+                    </li>
+                    <li><i class="fa fa-phone"></i> Hotline:  6</li>
+                    <li><i class="fa fa-envelope-o"></i> Email:   </li>
+                </ul>
+
+                <hr />
+                <br />
+
+                <div class="contact-intro size14">
+
+                    Xin vui lòng gửi email qua địa chỉ hoặc điền vào mẫu dưới đây. Chúng tôi sẽ liên lạc lại trong thời gian sớm nhất. Xin cảm ơn!
+
+                </div>
+
+                <div class="col-md-8">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+
+                        @Html.HiddenFor(m => m.AppID)
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Họ và tên <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Name)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Điện thoại <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Phone)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Email <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Chức vụ <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.ChucVu, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.ChucVu)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Công ty <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.CongTy, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CongTy)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Địa chỉ <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Address)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Lĩch vực <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.LinhVuc, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.LinhVuc)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Loại dịch vụ  <span class="color_red">*</span></label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(m => m.BangGiaID, Model.lstBangGia, new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(m => m.BangGiaID)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Ghi chú</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(m => m.contents, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label"> </label>
+                            <div class="col-sm-9">
+
+                                <input type="submit" name="send" value="Đăng ký" class="btn btn-primary   btn_submit">
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <div class="col-md-3">
+
+                <div class="sidebar one_quarter">
+
+                    <div class="list-group rounded-top">
+
+                        <a href="#" class="list-group-item active waves-light">Giới thiệu</a>
+
+                        @foreach (var item in NewsList)
+                        {
+
+                            <a href="@Url.RouteUrl("gioithieudetail", new { title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Name), id = item.ID })" class="list-group-item waves-effect">
+                                <i class="icon_list_blue">
+                                </i>
+                                @item.Name
+                            </a>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+}

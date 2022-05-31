@@ -1,0 +1,43 @@
+﻿
+@model IPagedList<BlueDataWeb.Models.Entites.Document>
+@using BlueDataWeb.Paging;
+@using BlueDataWeb.Models
+
+@{Html.RenderAction("GetByKeyName", "ImagePage", new { keyName = "tailieu" });}
+@{
+    ViewBag.Title = "Tài liệu";
+    ViewBag.Description = TempData["Description"];
+    ViewBag.Keywords = TempData["Keywords"];
+}
+<div class="container body-content">
+
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="breadcumb2 hongha">
+                <span class="b-intro">Tài liệu  </span>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12  ">
+                <a href="~/Content/Document/@item.DocFileName">
+                    <div class="col-md-1 paddingleft0">
+                        <img class="report-item_img" src="~/Content/images/report.png" />
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="report-title">@item.Description</div>
+                        <div class="report-date">@String.Format("{0:dd/MM/yyyyy}", @item.DateCreate) </div>
+                    </div>
+
+                    <div class="col-md-1">
+                        <img src="~/Content/images/d.png" />
+                    </div>
+                </a>
+            </div>
+
+            <div class="  clearfix" style="margin-top: 10px; display: block; height: 10px; width: 100%; clear: both;">
+            </div>
+        }
+    </div>
+</div>

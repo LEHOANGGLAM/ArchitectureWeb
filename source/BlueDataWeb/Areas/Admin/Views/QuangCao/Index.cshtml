@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.QuangCao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="mar10 borall">
+    <div class="floatl">
+        <span class="floatl">
+            <img src="/Areas/Admin/images/icon-48-generic.png" />
+        </span>
+        <span class="title-name">Quảng cáo</span>
+    </div>
+    <ul class="floatr toolbar-list">
+        <li class="button">
+            <a class="toolbar" href="/admin/QuangCao/Create">
+                <span class="icon-32-new"></span>
+                Thêm mới
+            </a>
+        </li>
+    </ul>
+</div>
+<!--end borall-->
+
+<div class="clear0"></div>
+<div class="mar10 borall">
+    <table class="formtable">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Hình
+            </th>
+            <th>
+                Link
+            </th>
+
+            <th>
+                IS show
+            </th>
+            <th>
+                Position
+            </th>
+
+            <th>
+                Width
+            </th>
+
+            <th>
+                Height
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <img src="/Images/QuangCao/@item.Image" width="140px" height="70px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Link)
+                </td>
+
+                <td>
+                    @if (@item.IsShow == true)
+                    {
+                        <a href="#"><p class="frue-on state"></p></a>
+                    }
+                    else
+                    {
+                        <a href="#"><p class="frue-of state"></p></a>
+                    }
+                </td>
+
+                <td>
+
+                    @if (item.PositionID == 0)
+                    {
+                        <text>Top</text>
+                    }
+                    else
+                    {
+                        <text>Center</text>
+
+                    }
+                </td>
+
+                <td>
+                    @Html.Raw(item.Height)
+                </td>
+
+                <td>
+                    @Html.Raw(item.Width)
+                </td>
+
+                <td>
+                    <a class="button blue" title="Sửa" href="/admin/QuangCao/Edit/@item.QuangCaoID">
+                        <div class="icon">
+                            <p class="ic-edit"></p>
+                        </div>
+                    </a>
+                    <a class="button red" href="/admin/QuangCao/Delete/@item.QuangCaoID" title="Xóa">
+                        <div class="icon">
+                            <p class="ic-delete"></p>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BlueDataWeb.Models.Entites.News>
+@{
+    var news = Model.FirstOrDefault();
+}
+<div class="panel ">
+
+    <div class="panel-heading">
+
+        <h3 class="title_left">
+            <a title="  Dự án xây dựng" href="~/du-an">
+                <span>
+
+                    <i class="icon_sanpham"></i>
+                    Dự án xây dựng
+                </span>
+            </a>
+        </h3>
+    </div>
+
+    <div class="panel-body">
+
+        <div class="col-sm-6 col-xs-12">
+            @{
+                string link_detail = Url.RouteUrl("duandetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(news.NewCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(news.Title), id = news.NewsID });
+                
+            }
+            <a class="thumbnail img-hover" title="@news.Title" href="@link_detail">
+                <img class="  img-responsive" src="~/Images/News/@news.ImagePath">
+            </a>
+            <a title="@news.Title" href="@link_detail">
+                <h3 class=" hongha   dot_title dot_Des title_big">
+                    @news.Title
+                </h3>
+            </a>
+
+            <p class="ShortDescription_content dot_Des">
+                @news.ShortDescription
+            </p>
+
+            <div class="clearfix"></div>
+
+            <p class="pull-right datetime_post">
+                @*(@news.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture))*@
+
+                @{
+                    if (news.CreatedDate.Value.AddDays(7) > DateTime.Now && news.IsNew == true)
+                    {
+
+                        <span style="color:red">New</span>
+                    }
+
+                }
+            </p>
+
+            <div class="clearfix"></div>
+
+            @*<a class="pull-right btn btn-success">Xem thêm</a>*@
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-sm-6 col-xs-12">
+            @foreach (var item in Model.Skip(1))
+            {
+              
+                link_detail = Url.RouteUrl("duandetail", new { cate = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.NewCategory.Name), title = BlueDataWeb.Utility.HelperSEO.ToSeoUrl(item.Title), id = item.NewsID });
+                
+          
+                <div class="col-sm-12 col-xs-12 padding0">
+
+                    <div class="col-sm-6">
+                        <a class="thumbnail img-hover" title="@item.Title" href="@link_detail">
+                            <img class="  img-responsive" src="~/Images/News/@item.ImagePath">
+                        </a>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <p>
+                            <a title="@item.Title" class="text_gt ShortDescription_content dot_Des" href="@link_detail">@item.Title</a>
+                        </p>
+                        <div class="clearfix"></div>
+
+                        <p class="pull-right datetime_post">
+                            @*(@item.CreatedDate.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture))*@
+
+                            @{
+                if (item.CreatedDate.Value.AddDays(7) > DateTime.Now && item.IsNew == true)
+                {
+
+                    <span style="color:red">New</span>
+                }
+
+                            }
+                        </p>
+                    </div>
+                </div>
+
+                <div class=" clearfix">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>

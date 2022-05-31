@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ce20ebe48b5f448dbf4ac561b4d5724e" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="BlueDataWebModel.AboutCategory" Width="1.5" PointX="3" PointY="25.125" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Album" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Application" Width="1.5" PointX="2.75" PointY="1.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Banner" Width="1.5" PointX="7.75" PointY="10.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.BaoGia" Width="1.5" PointX="12.75" PointY="1.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.BaoGia_GiaTri" Width="1.5" PointX="9.75" PointY="10.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.BaoGia_Loai" Width="1.5" PointX="13.75" PointY="6.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.CartItem" Width="1.5" PointX="5.25" PointY="24" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Category" Width="1.5" PointX="0.75" PointY="14" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Comment" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Country" Width="1.5" PointX="16.75" PointY="1.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.District" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Document" Width="1.5" PointX="12.75" PointY="17.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.ExportBill" Width="1.5" PointX="14.75" PointY="17.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.ImagePage" Width="1.5" PointX="16.75" PointY="17.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Image" Width="1.5" PointX="5.25" PointY="27.5" />
+        <EntityTypeShape EntityType="BlueDataWebModel.LabelProduct" Width="1.5" PointX="0.75" PointY="11" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Membership" Width="1.5" PointX="8.75" PointY="20.5" />
+        <EntityTypeShape EntityType="BlueDataWebModel.NewCategory" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.News" Width="1.5" PointX="15" PointY="11.125" />
+        <EntityTypeShape EntityType="BlueDataWebModel.OrderDetail" Width="1.5" PointX="10.5" PointY="15.5" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Order" Width="1.5" PointX="8.25" PointY="1.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Price" Width="1.5" PointX="17.75" PointY="4.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.ProductColor" Width="1.5" PointX="3" PointY="22" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Product" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.ProductSize" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="BlueDataWebModel.ProductVariant" Width="1.5" PointX="17.75" PointY="8.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Profile" Width="1.5" PointX="17.75" PointY="11.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Promotion" Width="1.5" PointX="7.75" PointY="17.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Provice" Width="1.5" PointX="0.75" PointY="19.5" />
+        <EntityTypeShape EntityType="BlueDataWebModel.QuangCao" Width="1.5" PointX="18.75" PointY="14.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Role" Width="1.5" PointX="8.75" PointY="8" />
+        <EntityTypeShape EntityType="BlueDataWebModel.SendEmail" Width="1.5" PointX="18.75" PointY="18.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Ship" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Size" Width="1.5" PointX="8.25" PointY="14.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Solution" Width="1.5" PointX="19.75" PointY="1.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.SubEmail" Width="1.5" PointX="19.75" PointY="7.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Supplier" Width="1.5" PointX="0.75" PointY="22.625" />
+        <EntityTypeShape EntityType="BlueDataWebModel.SupportOnline" Width="1.5" PointX="19.75" PointY="10.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.TypeDeal" Width="1.5" PointX="10.75" PointY="20.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.TypeVoucher" Width="1.5" PointX="20.75" PointY="13.875" />
+        <EntityTypeShape EntityType="BlueDataWebModel.User" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="BlueDataWebModel.UsersInRole" Width="1.5" PointX="11" PointY="8" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Ward" Width="1.5" PointX="6" PointY="0.75" />
+        <AssociationConnector Association="BlueDataWebModel.FK_AboutCategories_Categories" />
+        <AssociationConnector Association="BlueDataWebModel.FK_dbo_CartItems_dbo_Products_ProductId" />
+        <AssociationConnector Association="BlueDataWebModel.FK_dbo_Products_dbo_Categories_CategoryID" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Products_Categories" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Comments_Products" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Comments_User" />
+        <AssociationConnector Association="BlueDataWebModel.FK_District_Provice" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Orders_District" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Ward_District" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Images_Products" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Products_LabelProducts" />
+        <AssociationConnector Association="BlueDataWebModel.FK_UsersInRoles_Memberships" />
+        <AssociationConnector Association="BlueDataWebModel.FK_News_NewCategories" />
+        <AssociationConnector Association="BlueDataWebModel.FK_dbo_OrderDetails_dbo_Orders_OrderId" />
+        <AssociationConnector Association="BlueDataWebModel.FK_OrderDetails_Products" />
+        <AssociationConnector Association="BlueDataWebModel.FK_OrderDetails_ProductSize" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Orders_Provice" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Orders_Ward" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Products_Provice" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Products_Suppliers" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Ship_Products" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Sizes_Products" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Sizes_ProductSize" />
+        <AssociationConnector Association="BlueDataWebModel.FK_UsersInRoles_Roles" />
+        <EntityTypeShape EntityType="BlueDataWebModel.BaoGia_Loai_ThuocTinh" Width="1.5" PointX="21.375" PointY="16.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.SettingDB" Width="1.5" PointX="21.375" PointY="20.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.About" Width="1.5" PointX="22.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Contact" Width="1.5" PointX="22.375" PointY="6.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.ArchitectureCategory" Width="1.5" PointX="11.375" PointY="23.75" />
+        <EntityTypeShape EntityType="BlueDataWebModel.Color" Width="1.5" PointX="5.25" PointY="18.875" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Colors_ProductColor" />
+        <AssociationConnector Association="BlueDataWebModel.FK_Colors_Products" />
+        <AssociationConnector Association="BlueDataWebModel.FK_OrderDetails_Colors" />
+        <EntityTypeShape EntityType="BlueDataWebModel.ArchitectureNew" Width="1.5" PointX="13.625" PointY="24.625" />
+        <AssociationConnector Association="BlueDataWebModel.FK_ArchitectureNews_ArchitectureNews" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

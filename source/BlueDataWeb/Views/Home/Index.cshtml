@@ -1,0 +1,35 @@
+﻿@*@{Html.RenderAction("ViewSider", "Sider", new { typleSider = "E_Home" });}*@
+
+@using BlueDataWeb.Models.Entites;
+
+<div class="clearfix"></div>
+@{
+    var LstGioiThieu = ViewBag.LstGioiThieu as List<About>;
+}
+
+@{Html.RenderAction("ViewSider", "Sider", new { typleSider = "E_Home" });}
+ 
+<div class="container body-content">
+
+    <div class="row" style="margin-top:0px!important">
+        <div class="col-md-8 main-content padding0">
+
+            @Html.Partial("_A_GioiThieu", LstGioiThieu)
+            @{Html.RenderAction("SanPhamHome", "SanPham", new { keyname = "E_ChucNang", view = "_A_SanPham", page = 6 });}
+            @{Html.RenderAction("DichVuHome", "DichVu", new { keyname = "E_DichVu" });}
+
+            @{Html.RenderAction("DuAnHome", "DuAn", new { keyname = "E_TrienKhai", view = "_DuAn_Home" });}
+
+            @{Html.RenderAction("NewHome", "TinTuc", new { keyname = "E_TinChuyenMon", view = "_TinTucChuyenMon_Home" });}
+
+            @{Html.RenderAction("NewHome", "TinTuc", new { keyname = "E_DoanThe", view = "_HoatDongDoanThe_Home" });}
+
+            @{Html.RenderAction("NewHome", "TinTuc", new { keyname = "E_TinKhac", view = "_TinTucKhac_Home" });}
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-4 sidebar">
+            @Html.Partial("_A_SideBar")
+        </div>
+    </div>
+</div>
